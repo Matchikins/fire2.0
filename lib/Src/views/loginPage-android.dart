@@ -1,7 +1,6 @@
 import 'package:cefops/Src/Repository/repositoryCourse.dart';
-import 'package:cefops/Src/views/home.dart';
-import 'package:cefops/Src/views/navegacaoHome.dart';
-import 'package:cefops/Src/views/widget/SiginStudant_Widget.dart';
+import 'package:cefops/Src/views/widgets/ButtonLogin_widget.dart';
+import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 var _controler;
@@ -12,19 +11,19 @@ String os = Platform.operatingSystem;
 bool android=false;
 int widet=1;
 int height=1;
+int colorIcons=0xff15355C;
 
-class loginPage extends StatefulWidget {
+class loginPage_Mobile extends StatefulWidget {
   @override
-  _loginPageState createState() => _loginPageState();
+  _loginPage_MobileState createState() => _loginPage_MobileState();
 }
 
-class _loginPageState extends State<loginPage>
+class _loginPage_MobileState extends State<loginPage_Mobile>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
   void initState() {
-    COnnect();
 
     super.initState();
     _controller = AnimationController(vsync: this);
@@ -41,6 +40,8 @@ class _loginPageState extends State<loginPage>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
       theme:
           ThemeData(brightness: Brightness.dark, primaryColor: Colors.blueGrey),
       home: Scaffold(
@@ -49,100 +50,54 @@ class _loginPageState extends State<loginPage>
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Container(
+              color: Colors.white,
               child: Center(
-                  child: Container(
-
-                color: Colors.white,
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.height * 0.7,
+                  child: SingleChildScrollView(
                 child: Form(
                   key: _formKey,
                   child: Column(
                     children: [
                       Container(
-
-                        height: MediaQuery.of(context).size.height / 4,
-                        width: MediaQuery.of(context).size.width / 4,
+                        height: MediaQuery.of(context).size.height *0.20,
+                        width: MediaQuery.of(context).size.width *0.50,
                         child: Image.asset(
                           "assets/images/logo.png",
                         ),
+                        margin: EdgeInsets.only(bottom: 0.0),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: TextFormField(
-                          controller: UserController,
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                              fillColor: Colors.black,
-                              icon: Icon(
-                                Icons.person,
-                                color: Color(0xff15355C),
-                              ),
-                              labelText: 'Usuário ',
-                              labelStyle: TextStyle(color: Color(0xff15355C)),
-                              hintText: 'Insira Seu Usuário',
-                              hintStyle: TextStyle(color: Color(0xff15355C)),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 2, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 3, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por Favor Insira Seu Usuário';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
+                     Container(
+                       width: MediaQuery.of(context).size.width*0.90,
+                       child:  LoginForms(
+                           UserController,
+                           "Insira Seu Usuário",
+                           "Usuário",
+                           "Por Favor informe seu  Usuário",
+                           Icons.person,
+                         false,
+                       colorIcons),
+                     ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
+                        height: MediaQuery.of(context).size.height * 0.04,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: TextFormField(
-                          controller: passwController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por Favor Insira Sua Senha';
-                            }
-                            return null;
-                          },
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                              fillColor: Colors.black,
-                              icon: Icon(
-                                Icons.lock,
-                                color: Color(0xff15355C),
-                              ),
-                              labelText: 'Senha ',
-                              labelStyle: TextStyle(color: Color(0xff15355C)),
-                              hintText: 'Insira Sua Senha',
-                              hintStyle: TextStyle(color: Color(0xff15355C)),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 2, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 3, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                          obscureText: true,
+                        width: MediaQuery.of(context).size.width*0.90,
+                        child:LoginForms(
+                          passwController,
+                          "Insira Sua Senha",
+                          "Senha",
+                          "Por Favor Informe sua Senha",
+                          Icons.lock,
+                          true,
+                          colorIcons
                         ),
                       ),
                       Row(
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.63,
                           ),
                           Container(
+
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(16.0),
@@ -168,36 +123,7 @@ class _loginPageState extends State<loginPage>
                       ),
                       Container(
 
-                        child: FlatButton(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.02),
-                          ),
-
-                          color: Color(0xffFD7E14),
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  color: Color(0xff15355C),
-                                  width: 1,
-                                  style: BorderStyle.solid),
-                              borderRadius: BorderRadius.circular(7)),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute<Null>(
-                                    builder: (BuildContext context) {
-                                      return MyApp();
-                                    },
-                                    fullscreenDialog: true,
-                                  ));
-                            } else {}
-                          },
-                        ),
+                        child: logginButon(context,_formKey)
                       )
                     ],
                   ),
@@ -208,10 +134,5 @@ class _loginPageState extends State<loginPage>
         }),
       ),
     );
-  }
-}
-device(){
-  if (os=="android"){
-
   }
 }

@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:cefops/Src/views/Notes.dart';
 import 'package:cefops/Src/views/home.dart';
+import 'package:cefops/Src/views/loginPage.dart';
 import 'package:cefops/Src/views/myCourse.dart';
 import 'package:flutter/material.dart';
-
-import 'fragment.dart';
+import 'arequeriment.dart';
+import 'cadastroAlunos.dart';
+bool acessgaranted=false;
 
 void main() => runApp(MyApp());
 
@@ -89,12 +93,36 @@ class _MyHomePageState extends State<MyHomePage> {
                 titulos = "Minhas Notas";
               },
             ),
+           ! acessgaranted ?
             ListTile(
-              title: Text('Sair'),
-              leading: Icon(Icons.exit_to_app),
+              title: Text('Requerimentos'),
+              leading: Icon(Icons.note_add),
               selected: 3 == _selectedIndex,
               onTap: () {
                 _onSelectItem(3);
+                titulos = "RequerimentosRRR";
+
+              },
+            ):
+            ListTile(
+              title: Text('Cadastrar Aluno'),
+              leading: Icon(Icons.note_add),
+              selected: 3 == _selectedIndex,
+              onTap: () {
+                _onSelectItem(3);
+                titulos = "Cadastrar Alunos";
+
+              },
+            ),
+
+
+
+            ListTile(
+              title: Text('Sair'),
+              leading: Icon(Icons.exit_to_app),
+              selected: 4 == _selectedIndex,
+              onTap: () {
+                _onSelectItem(4);
               },
             ),
           ],
@@ -112,6 +140,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return myCourse();
       case 2:
         return NotesPage();
+      case 3:
+        return _viwesPermission();
+      case 4:
+        return exit(0);
     }
   }
 
@@ -128,4 +160,16 @@ Mydrawer(String text, int _selectedIndex, IconData? icons, ontap) {
     selected: _selectedIndex == _selectedIndex,
     onTap: ontap(),
   );
+}
+_viwesPermission(){
+  try{
+    if(acessgaranted==true){
+      return SiginStudant();
+    } else{
+      return RequeriViews();
+    }
+  }catch(e){
+    return RequeriViews();
+  }
+
 }

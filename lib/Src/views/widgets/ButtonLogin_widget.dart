@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import '../navegacaoHome.dart';
 
@@ -32,7 +31,7 @@ logginButon(context, _formKey) {
       print(isloading);
       if (_formKey.currentState!.validate()) {
         print("apertou logar e passou ");
-        startTimer();
+
         isloading = true;
         print(isloading);
 
@@ -50,17 +49,3 @@ logginButon(context, _formKey) {
   );
 }
 
-double _progress = 0;
-
-void startTimer() {
-  new Timer.periodic(
-    Duration(seconds: 1),
-    (Timer timer) => () {
-      if (_progress == 1) {
-        timer.cancel();
-      } else {
-        _progress += 0.2;
-      }
-    },
-  );
-}

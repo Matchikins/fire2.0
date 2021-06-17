@@ -1,10 +1,18 @@
-import 'package:cefops/Src/views/home.dart';
+import 'package:cefops/Src/Repository/repositoryCourse.dart';
+import 'package:cefops/Src/views/navegacaoHome.dart';
+import 'package:cefops/Src/views/widgets/ButtonLogin_widget.dart';
+import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:io' show Platform;
 var _controler;
 final _formKey = GlobalKey<FormState>();
 final UserController = TextEditingController();
 final passwController = TextEditingController();
+String os = Platform.operatingSystem;
+bool android=false;
+int widet=1;
+int height=1;
+int colorIcons=0xff15355C;
 
 class loginPage extends StatefulWidget {
   @override
@@ -17,8 +25,10 @@ class _loginPageState extends State<loginPage>
 
   @override
   void initState() {
+
     super.initState();
     _controller = AnimationController(vsync: this);
+
   }
 
   @override
@@ -31,6 +41,8 @@ class _loginPageState extends State<loginPage>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
       theme:
           ThemeData(brightness: Brightness.dark, primaryColor: Colors.blueGrey),
       home: Scaffold(
@@ -41,6 +53,7 @@ class _loginPageState extends State<loginPage>
             child: Container(
               child: Center(
                   child: Container(
+
                 color: Colors.white,
                 width: MediaQuery.of(context).size.width * 0.4,
                 height: MediaQuery.of(context).size.height * 0.7,
@@ -49,6 +62,7 @@ class _loginPageState extends State<loginPage>
                   child: Column(
                     children: [
                       Container(
+
                         height: MediaQuery.of(context).size.height / 4,
                         width: MediaQuery.of(context).size.width / 4,
                         child: Image.asset(
@@ -57,72 +71,28 @@ class _loginPageState extends State<loginPage>
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width / 3,
-                        child: TextFormField(
-                          controller: UserController,
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                              fillColor: Colors.black,
-                              icon: Icon(
-                                Icons.person,
-                                color: Color(0xff15355C),
-                              ),
-                              labelText: 'Usuário ',
-                              labelStyle: TextStyle(color: Color(0xff15355C)),
-                              hintText: 'Insira Seu Usuário',
-                              hintStyle: TextStyle(color: Color(0xff15355C)),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 2, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 3, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por Favor Insira Seu Usuário';
-                            }
-                            return null;
-                          },
-                        ),
+                        child: LoginForms(
+                          UserController,
+                          "Insira Seu Usuário",
+                          "Usuário",
+                          "Por Favor informe seu  Usuário",
+                          Icons.person,
+                          false,
+                            colorIcons),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width / 3,
-                        child: TextFormField(
-                          controller: passwController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por Favor Insira Sua Senha';
-                            }
-                            return null;
-                          },
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                              fillColor: Colors.black,
-                              icon: Icon(
-                                Icons.lock,
-                                color: Color(0xff15355C),
-                              ),
-                              labelText: 'Senha ',
-                              labelStyle: TextStyle(color: Color(0xff15355C)),
-                              hintText: 'Insira Sua Senha',
-                              hintStyle: TextStyle(color: Color(0xff15355C)),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 2, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 3, color: Color(0xff15355C)),
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                          obscureText: true,
+                        child: LoginForms(
+                          passwController,
+                          "Insira Sua Senha",
+                          "Senha",
+                          "Por Favor Informe sua Senha",
+                          Icons.lock,
+                          true,
+                            colorIcons
                         ),
                       ),
                       Row(
@@ -155,35 +125,8 @@ class _loginPageState extends State<loginPage>
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       Container(
-                        child: FlatButton(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.02),
-                          ),
-                          color: Color(0xffFD7E14),
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  color: Color(0xff15355C),
-                                  width: 1,
-                                  style: BorderStyle.solid),
-                              borderRadius: BorderRadius.circular(7)),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute<Null>(
-                                    builder: (BuildContext context) {
-                                      return HomePage();
-                                    },
-                                    fullscreenDialog: true,
-                                  ));
-                            } else {}
-                          },
-                        ),
+
+                        child: logginButon(context, _formKey)
                       )
                     ],
                   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-LoginForms(Controller, String labels,String hintTExt, String error, IconData icons, bool isobscure){
+LoginForms(Controller, String labels,String hintTExt, String error, IconData icons, bool isobscure,int  colorIcon){
  return TextFormField(
 
     controller: Controller,
@@ -9,7 +9,7 @@ LoginForms(Controller, String labels,String hintTExt, String error, IconData ico
     decoration: InputDecoration(
 
         fillColor: Colors.black,
-        prefixIcon: Icon(icons,color: Color(0xff15355C),
+        prefixIcon: Icon(icons,color: Color(colorIcon),
         ),
         labelText: labels,
 
