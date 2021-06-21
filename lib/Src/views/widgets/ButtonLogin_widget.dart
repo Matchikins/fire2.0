@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:cefops/Src/models/postesModel.dart';
+import 'package:cefops/Src/repository/postsRepository.dart';
 import 'package:flutter/material.dart';
 import '../navegacaoHome.dart';
 
@@ -34,8 +36,7 @@ logginButon(context, _formKey) {
 
         isloading = true;
         print(isloading);
-
-
+          postes();
         Navigator.push(
             context,
             MaterialPageRoute<Null>(

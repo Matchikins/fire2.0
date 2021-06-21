@@ -1,5 +1,5 @@
-import 'package:cefops/Src/Repository/repositoryCourse.dart';
-import 'package:cefops/Src/views/navegacaoHome.dart';
+import 'package:cefops/Src/models/postesModel.dart';
+import 'package:cefops/Src/repository/postsRepository.dart';
 import 'package:cefops/Src/views/widgets/ButtonLogin_widget.dart';
 import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +23,13 @@ class _loginPageState extends State<loginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
+  late Future<post> pos;
+
   @override
   void initState() {
 
     super.initState();
+    pos=postes() as Future<post>;
     _controller = AnimationController(vsync: this);
 
   }
@@ -48,9 +51,17 @@ class _loginPageState extends State<loginPage>
       home: Scaffold(
         body: Builder(builder: (context) {
           return Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/enfermagem.jpg"),
+                    fit: BoxFit.cover
+                )
+
+            ),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Container(
+
               child: Center(
                   child: Container(
 

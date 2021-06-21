@@ -1,9 +1,11 @@
+import 'package:cefops/Src/models/postesModel.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 
 int _selectedIndex = 0;
 
@@ -34,11 +36,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             width: MediaQuery.of(context).size.height/3,
             color: Colors.red,
-            child:Text("Mussum Ipsum, cacilds vidis litro abertis. Vehicula non."
-                " Ut sed ex eros. Vivamus sit amet nibh non tellus tristique interdum."
-                " Viva Forevis aptent taciti sociosqu ad litora torquent. "
-                "Quem num gosta di mé, boa gentis num é. Copo furadis é disculpa de bebadis, "
-                "arcu quam euismod magna.", style: TextStyle(fontSize: 22),textAlign: TextAlign.end,) ,
+          child:Text("", style: TextStyle(fontSize: 22),textAlign: TextAlign.end,) ,
           ),
         ],
       )),

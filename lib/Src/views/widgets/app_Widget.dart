@@ -1,8 +1,8 @@
 import 'package:cefops/Src/views/Notes.dart';
-import 'package:cefops/Src/views/arequeriment.dart';
 import 'package:cefops/Src/views/cadastroAlunos.dart';
 import 'package:cefops/Src/views/navegacaoHome.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../home.dart';
 import '../loginPage-android.dart';
 import '../loginPage.dart';
@@ -11,19 +11,17 @@ var websafePlatform = WebsafePlatform();
 
 bool isIos = websafePlatform.isIOS();
 bool isWeb = websafePlatform.isWeb();
-bool isAndroid=websafePlatform.isIOS();
+bool isAndroid=websafePlatform.isAndroid();
 bool acessgaranted=false;
+
+
 
 class AppWidget extends StatelessWidget {
 
 
-
   @override
   Widget build(BuildContext context) {
-    print("********************");
-    print("teste");
-    print("********************");
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
@@ -36,19 +34,32 @@ class AppWidget extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
-      title: 'Routes',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => _viewDetect(),
-        '/home': (context) => HomePage(),
-        "/notes": (context) => NotesPage(),
-        "/navegation": (context) => MyApp(),
-        "/siginStudant":(context)=>SiginStudant(),
-      },
+      getPages: [
+        GetPage(
+            name: "/",
+            page: ()=>_viewDetect()
+        ),
+        GetPage(
+            name: "/home",
+            page: ()=> HomePage()),
+        GetPage(
+            name: "/notes",
+            page: ()=> NotesPage()),GetPage(
+            name: "/navegation",
+            page: ()=> MyApp()),
+        GetPage(
+            name: "/siginStudant",
+            page: ()=> SiginStudant()),
+
+
+
+      ],
+
     );
   }
 }
  _viewDetect(){
+  print(isAndroid);
   try{
     if(isAndroid||isIos){
     return loginPage_Mobile();
