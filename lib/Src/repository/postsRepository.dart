@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:cefops/Src/models/postesModel.dart';
-
+final String url ="https://cefopsweb.herokuapp.com/diciplinas";
 Future<post> postes() async {
-  final response =
-  await http.get(Uri.parse('https://cefopsweb.herokuapp.com/diciplinas'));
-
+  final response;
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
