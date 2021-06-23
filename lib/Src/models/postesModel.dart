@@ -1,18 +1,36 @@
-class post {
-  int ?id ;
-  String ?name;
 
-  post({this.id, this.name} );
+import 'dart:convert';
+class UserModel {
 
-  post.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
+  int id;
+  String name;
+
+  
+  UserModel({
+    this.id,
+    this.name,
+
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+
+    };
   }
 
-  Map toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    return data;
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    if (map == null) return null;
+  
+    return UserModel(
+      id: map['id'] ?? 1,
+      name: map['name'] ?? '',
+
+    );
   }
+
+  String toJson() => json.encode(toMap());
+
+  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source));
 }

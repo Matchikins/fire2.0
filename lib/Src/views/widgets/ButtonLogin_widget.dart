@@ -1,6 +1,4 @@
-import 'dart:async';
-import 'package:cefops/Src/models/postesModel.dart';
-import 'package:cefops/Src/repository/postsRepository.dart';
+
 import 'package:flutter/material.dart';
 import '../navegacaoHome.dart';
 
@@ -29,14 +27,10 @@ logginButon(context, _formKey) {
             color: Color(0xff15355C), width: 1, style: BorderStyle.solid),
         borderRadius: BorderRadius.circular(7)),
     onPressed: () {
-      print("apertou logar  e deu erro");
-      print(isloading);
-      if (_formKey.currentState!.validate()) {
-        print("apertou logar e passou ");
 
-        isloading = true;
-        print(isloading);
-          postes();
+
+      if (_formKey.currentState!.validate()) {
+
         Navigator.push(
             context,
             MaterialPageRoute<Null>(
@@ -44,7 +38,10 @@ logginButon(context, _formKey) {
                 return MyApp();
               },
               fullscreenDialog: true,
-            ));
+            )
+        );
+
+
       } else {}
     },
   );

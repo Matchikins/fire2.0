@@ -23,13 +23,12 @@ class _loginPageState extends State<loginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
-  late Future<post> pos;
+  late Future<postModels> pos;
 
   @override
   void initState() {
 
     super.initState();
-    pos=postes() as Future<post>;
     _controller = AnimationController(vsync: this);
 
   }
@@ -132,12 +131,13 @@ class _loginPageState extends State<loginPage>
                           ),
                         ],
                       ),
+
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       Container(
 
-                        child: logginButon(context, _formKey)
+                        child: logginButon(context, _formKey,)
                       )
                     ],
                   ),
@@ -147,6 +147,8 @@ class _loginPageState extends State<loginPage>
           );
         }),
       ),
+
     );
+
   }
 }

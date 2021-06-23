@@ -1,3 +1,5 @@
+import 'package:cefops/Src/get/get_connect_bindings.dart';
+import 'package:cefops/Src/get/get_connect_page.dart';
 import 'package:cefops/Src/views/Notes.dart';
 import 'package:cefops/Src/views/cadastroAlunos.dart';
 import 'package:cefops/Src/views/navegacaoHome.dart';
@@ -12,7 +14,7 @@ var websafePlatform = WebsafePlatform();
 bool isIos = websafePlatform.isIOS();
 bool isWeb = websafePlatform.isWeb();
 bool isAndroid=websafePlatform.isAndroid();
-bool acessgaranted=false;
+bool acessgaranted=true;
 
 
 
@@ -21,12 +23,10 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.lightBlue[800],
-        accentColor: Colors.cyan[600],
         fontFamily: 'Georgia',
         textTheme: TextTheme(
           headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
@@ -50,6 +50,11 @@ class AppWidget extends StatelessWidget {
         GetPage(
             name: "/siginStudant",
             page: ()=> SiginStudant()),
+        GetPage(
+            name: "/tr",
+            page:()=> GetConnectPage(),
+          binding: GetConnectBindings(),
+        ),
 
 
 
