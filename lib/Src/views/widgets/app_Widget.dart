@@ -1,11 +1,9 @@
-import 'package:cefops/Src/get/get_connect_bindings.dart';
-import 'package:cefops/Src/get/get_connect_page.dart';
+
 import 'package:cefops/Src/views/Notes.dart';
 import 'package:cefops/Src/views/cadastroAlunos.dart';
 import 'package:cefops/Src/views/navegacaoHome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../home.dart';
 import '../loginPage-android.dart';
 import '../loginPage.dart';
 import 'package:websafe_platform/websafe_platform.dart';
@@ -39,9 +37,7 @@ class AppWidget extends StatelessWidget {
             name: "/",
             page: ()=>_viewDetect()
         ),
-        GetPage(
-            name: "/home",
-            page: ()=> HomePage()),
+
         GetPage(
             name: "/notes",
             page: ()=> NotesPage()),GetPage(
@@ -50,11 +46,6 @@ class AppWidget extends StatelessWidget {
         GetPage(
             name: "/siginStudant",
             page: ()=> SiginStudant()),
-        GetPage(
-            name: "/tr",
-            page:()=> GetConnectPage(),
-          binding: GetConnectBindings(),
-        ),
 
 
 

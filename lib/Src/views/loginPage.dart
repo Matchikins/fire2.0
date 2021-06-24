@@ -1,5 +1,4 @@
-import 'package:cefops/Src/models/postesModel.dart';
-import 'package:cefops/Src/repository/postsRepository.dart';
+
 import 'package:cefops/Src/views/widgets/ButtonLogin_widget.dart';
 import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ class _loginPageState extends State<loginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
-  late Future<postModels> pos;
 
   @override
   void initState() {

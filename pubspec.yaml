@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   websafe_platform: ^1.2.0-nullsafety.0
   get: ^4.1.4
+  http: ^0.13.3
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -49,10 +51,10 @@ flutter:
     - assets/images/
    
 
-  fonts:
-    - family: Nunito
-      fonts:
-        - asset: assets/fonts/NunitoSans-SemiBold.ttf
+#  fonts:
+#    - family: Nunito
+#      fonts:
+#        - asset: assets/fonts/NunitoSans-SemiBold.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

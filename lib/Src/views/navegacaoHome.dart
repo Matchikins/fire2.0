@@ -1,9 +1,8 @@
 import 'dart:io';
-import 'package:get/get.dart';
-import 'package:cefops/Src/get/get_connect_page.dart';
+
 import 'package:cefops/Src/views/Notes.dart';
-import 'package:cefops/Src/views/home.dart';
-import 'package:cefops/Src/views/loginPage.dart';
+import 'package:cefops/Src/views/homePage.dart';
+
 import 'package:cefops/Src/views/myCourse.dart';
 import 'package:flutter/material.dart';
 import 'arequeriment.dart';
@@ -19,6 +18,7 @@ bool item7=false;
 bool item8=false;
 bool item9=false;
 bool selectedS=false;
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
 
                 leading: Icon(Icons.home,color:item1 ? Colors.white: Color(iconColor),),
-                title: Text('Inicio',style: TextStyle(color: Colors.white),),
+                title: Text('Início',style: TextStyle(color: Colors.white),),
                 selected:item1,
 
                 onTap: () {
@@ -223,15 +223,14 @@ class _MyHomePageState extends State<MyHomePage> {
   _getDrawerItem(int pos) {
     switch (pos) {
       case 0:
-        return HomePage();
+        return HomePage() ;
       case 1:
         return myCourse();
       case 2:
         return NotesPage();
       case 3:
         return SiginStudant();
-      case 4:
-        return GetConnectPage();
+
       case 5:
         return exit(0);
 
@@ -246,3 +245,4 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 }
+

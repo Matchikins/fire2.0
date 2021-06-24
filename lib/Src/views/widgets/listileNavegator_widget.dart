@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:cefops/Src/views/Notes.dart';
 import 'package:cefops/Src/views/cadastroAlunos.dart';
-import 'package:cefops/Src/views/home.dart';
-import 'package:cefops/Src/views/loginPage.dart';
 import 'package:cefops/Src/views/myCourse.dart';
 import 'package:flutter/material.dart';
 import '../arequeriment.dart';
@@ -26,8 +24,7 @@ menuIten(String titulo,IconData icon,int SelectedPage,context,String tituloappba
 
 getDrawerItem(int pos) {
   switch (pos) {
-    case 0:
-      return HomePage();
+
     case 1:
       return myCourse();
     case 2:
