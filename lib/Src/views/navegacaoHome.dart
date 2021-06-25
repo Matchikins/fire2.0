@@ -1,27 +1,29 @@
 import 'dart:io';
 
+import 'package:cefops/Src/model/post_model.dart';
+import 'package:cefops/Src/repository/PostRepository.dart';
 import 'package:cefops/Src/views/Notes.dart';
 import 'package:cefops/Src/views/homePage.dart';
 
 import 'package:cefops/Src/views/myCourse.dart';
+import 'package:cefops/Src/views/widgets/getAlunos.dart';
 import 'package:flutter/material.dart';
 import 'arequeriment.dart';
 import 'cadastroAlunos.dart';
 bool acessgaranted=true;
-bool item1=false;
-bool item2=false;
-bool item3=false;
-bool item4=false;
-bool item5=false;
-bool item6=false;
-bool item7=false;
-bool item8=false;
-bool item9=false;
-bool selectedS=false;
+
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late Future<PostModel> futurePost;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+
   final String? title;
 
   const MyHomePage({
@@ -51,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   int _selectedIndex = 0;
-  String titulos = "Inicio";
+  String titulos = "Início";
 
   @override
   Widget build(BuildContext context) {
@@ -89,45 +92,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
               ListTile(
 
-                leading: Icon(Icons.home,color:item1 ? Colors.white: Color(iconColor),),
+                leading: Icon(Icons.home,color:  Color(iconColor),),
                 title: Text('Início',style: TextStyle(color: Colors.white),),
-                selected:item1,
 
                 onTap: () {
                   _selectedIndex=0;
                   _onSelectItem(0);
                   titulos = "início";
-                  item1=true;
-                  item2=false;
-                  item3=false;
-                  item4=false;
-                  item5=false;
-                  item6=false;
-                  item7=false;
-                  item8=false;
-                  item9=false;
 
 
                 },
 
               ),
               ListTile(
-                leading: Icon(Icons.book,color:item2 ? Colors.white: Color(iconColor),),
+                leading: Icon(Icons.book,color: Color(iconColor),),
                 title: Text('Meu Curso',style: TextStyle(color: Colors.white),),
-                selected:item2,
                 onTap: () {
       _selectedIndex=1;
-                 setState(() {
-                   item1=false;
-                   item2=true;
-                   item3=false;
-                   item4=false;
-                   item5=false;
-                   item6=false;
-                   item7=false;
-                   item8=false;
-                   item9=false;
-                 });
+
                   _onSelectItem(1);
                   titulos = "Meu Curso";
                 },
@@ -136,66 +118,56 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text('Minhas Notas',style: TextStyle(color: Colors.white),),
                 leading: Icon(
                   Icons.calendar_view_month,
-                  color:item3 ? Colors.white: Color(iconColor),),
+                  color:   Color(iconColor),),
                   selected: 2 == _selectedIndex,
                 onTap: () {
-                  setState(() {
-                    item1=false;
-                    item2=false;
-                    item3=true;
-                    item4=false;
-                    item5=false;
-                    item6=false;
-                    item7=false;
-                    item8=false;
-                    item9=false;
-                  });
+
                   _onSelectItem(2);
                   titulos = "Minhas Notas";
                 },
               ),
              if(acessgaranted==true) ListTile(
                title: Text('Cadastrar Aluno',style: TextStyle(color: Colors.white),),
-               leading: Icon(Icons.person_add,color:item4 ? Colors.white: Color(iconColor),),
-               selected: item4,
+               leading: Icon(Icons.person_add,color: Color(iconColor),),
                onTap: () {
                  _selectedIndex=3;
-                 setState(() {
-                   item1=false;
-                   item2=false;
-                   item3=false;
-                   item4=true;
-                   item5=false;
-                   item6=false;
-                   item7=false;
-                   item8=false;
-                   item9=false;
-                 });
                  _onSelectItem(3);
                  titulos = "Cadastrar Alunos";
 
                },
              ),
+              if(acessgaranted==true) ListTile(
+                title: Text('Listar Alunos',style: TextStyle(color: Colors.white),),
+                leading: Icon(Icons.person_search,color: Color(iconColor),),
+                onTap: () {
+                  _selectedIndex=4;
+                  _onSelectItem(4);
+                  titulos = "Listar Alunos";
+
+                },
+              ),
+
 
 
               ListTile(
                 title: Text('Requerimentos',style: TextStyle(color: Colors.white),),
-                leading: Icon(Icons.note_add,color:item5 ? Colors.white: Color(iconColor)),
-                selected: 4 == _selectedIndex,
+                leading: Icon(Icons.note_add,color: Color(iconColor)),
+                selected: 5 == _selectedIndex,
                 onTap: () {
-                  _onSelectItem(4);
-                  setState(() {
-                    item1=false;
-                    item2=false;
-                    item3=false;
-                    item4=false;
-                    item5=true;
-                    item6=false;
-                    item7=false;
-                    item8=false;
-                    item9=false;
-                  });
+                  _onSelectItem(5);
+
                   titulos = "Requerimentos";
+
+                },
+              ),
+              ListTile(
+                title: Text('Financeiro',style: TextStyle(color: Colors.white),),
+                leading: Icon(Icons.description,color: Color(iconColor)),
+                selected: 5 == _selectedIndex,
+                onTap: () {
+                  _onSelectItem(5);
+
+                  titulos = "Financeiro";
 
                 },
               ),
@@ -206,9 +178,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text('Sair',style: TextStyle(color: Colors.white),),
                 leading: Icon(Icons.exit_to_app,color: Color(iconColor),),
 
-                selected: 4 == _selectedIndex,
+                selected: 6 == _selectedIndex,
                 onTap: () {
-                  _onSelectItem(5);
+                  _onSelectItem(6);
                 },
               ),
             ],
@@ -230,8 +202,12 @@ class _MyHomePageState extends State<MyHomePage> {
         return NotesPage();
       case 3:
         return SiginStudant();
-
+      case 4:
+        return GetAlunos();
       case 5:
+        return RequeriViews();
+
+      case 6:
         return exit(0);
 
     }
