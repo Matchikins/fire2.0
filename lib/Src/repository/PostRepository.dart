@@ -1,12 +1,11 @@
 import 'dart:convert';
-
-import 'package:cefops/Src/model/user_model.dart';
+import 'package:cefops/Src/model/post_model.dart';
 import 'package:http/http.dart' as http;
 
-Future<PostModel> fetchPosts()   async {
+Future<PostModel> fetchPosts(context)   async {
   final response =
   await http.get(Uri.parse('https://cefopsweb.herokuapp.com/post/1'));
-  final String data=response.body;
+  final data=utf8.decode(response.bodyBytes);
   var decodeData=jsonDecode(data);
   if (response.statusCode == 200) {
       print(decodeData);
