@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../navegacaoHome.dart';
+import 'navegationHome_widget.dart';
 
 bool isloading = false;
 
