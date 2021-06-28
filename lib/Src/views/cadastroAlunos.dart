@@ -1,3 +1,5 @@
+import 'package:cefops/Src/model/Aluno_Model.dart';
+import 'package:cefops/Src/repository/newPostRepository.dart';
 import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
 import 'package:cefops/Src/views/widgets/formsPAge_Widget.dart';
 import 'package:flutter/material.dart';
@@ -11,30 +13,46 @@ class _SiginStudantState extends State<SiginStudant> {
   final _formKey = GlobalKey<FormState>();
 
   final NameController = TextEditingController();
-
+  final LastNameController = TextEditingController();
+  final grupeController = TextEditingController();
   final passwController = TextEditingController();
-
   final emailController = TextEditingController();
-
   final raController = TextEditingController();
-
   final telController = TextEditingController();
-
   final cursoController = TextEditingController();
-
   final turmaController = TextEditingController();
-
  int colorIcons=0xff15355C;
-
  int buttonColor=0xffFD7E14;
 
  String dropdownValue = 'Auxiliar';
+  Future<AlunoModel>? criarAluno;
+  final TextEditingController _controller = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      final String text = _controller.text.toLowerCase();
+      _controller.value = _controller.value.copyWith(
+        text: text,
+        selection:
+        TextSelection(baseOffset: text.length, extentOffset: text.length),
+        composing: TextRange.empty,
+      );
+    });
+  }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget  build(BuildContext context) {
+    var size=MediaQuery.of(context).size;
     var SizeForm = MediaQuery.of(context).size.width * 0.4;
     var space =MediaQuery.of(context).size.height * 0.01;
+
     return Container(
 
       alignment: Alignment.center,
@@ -65,6 +83,29 @@ class _SiginStudantState extends State<SiginStudant> {
                 ),
 
               _space(space),
+                Container(
+                    width: SizeForm,
+                    alignment: Alignment.center,
+                    child: inputsForms(
+                        LastNameController,
+                        "Insira o Sobrenome Aluno " ,
+                        "Sobrenome do Aluno",
+                        "Por favor preencha o Sobrenome do aluno"
+                    )
+                ),
+                _space(space),
+                Container(
+                    width: SizeForm,
+                    alignment: Alignment.center,
+                    child: inputsForms(
+                        grupeController,
+                        "Insira a Turma do Aluno " ,
+                        "Turma do Aluno",
+                        "Por favor preencha a Turma do aluno"
+                    )
+                ),
+                _space(space),
+
                 Container(
                     width: SizeForm,
                     alignment: Alignment.center,
@@ -159,7 +200,34 @@ class _SiginStudantState extends State<SiginStudant> {
                       cursoController,
                       "Insira o Link Da Turma na Plataforma",
                       "Insira o Link",
-                      "error"),)
+                      "error"),
+                ),
+                Container(
+                  height:size.height *0.06 ,
+                  width: size.width* 0.06,
+                  color: Color(0xff15355C),
+                  child: TextButton(
+                    child: Text("Cadastrar",style: TextStyle(color: Colors.white),),
+
+                    onPressed: (){
+                      var idcontroller=int.parse(raController.text);
+
+                      setState(() {
+                       print(idcontroller);
+                       print(NameController.text);
+                       print(LastNameController.text);
+                       print(emailController.text);
+                       criarAluno=createAluno(idcontroller, NameController.text,LastNameController.text, idcontroller, emailController.text, 1);
+
+
+                     });
+
+
+
+
+                    },
+                  ),
+                )
                ],
             )
         ),
