@@ -2,14 +2,15 @@ import 'dart:io';
 
 import 'package:cefops/Src/model/post_model.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
-import 'package:cefops/Src/views/Notes.dart';
+import 'package:cefops/Src/views/SocrePage.dart';
+import 'package:cefops/Src/views/editNewsPage.dart';
 import 'package:cefops/Src/views/homePage.dart';
 
-import 'package:cefops/Src/views/myCourse.dart';
+import 'package:cefops/Src/views/myCoursePage.dart';
 import 'package:cefops/Src/views/widgets/getAlunos.dart';
 import 'package:flutter/material.dart';
-import 'arequeriment.dart';
-import 'cadastroAlunos.dart';
+import '../arequerimentPage.dart';
+import '../siginStudantPage.dart';
 bool acessgaranted=true;
 
 
@@ -171,16 +172,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 },
               ),
+              ListTile(
+                title: Text('Postagem',style: TextStyle(color: Colors.white),),
+                leading: Icon(Icons.description,color: Color(iconColor)),
+                selected: 6 == _selectedIndex,
+                onTap: () {
+                  _onSelectItem(6);
 
+                  titulos = "Postagem";
+
+                },
+              ),
 
 
               ListTile(
                 title: Text('Sair',style: TextStyle(color: Colors.white),),
                 leading: Icon(Icons.exit_to_app,color: Color(iconColor),),
 
-                selected: 6 == _selectedIndex,
+                selected: 7 == _selectedIndex,
                 onTap: () {
-                  _onSelectItem(6);
+                  _onSelectItem(7);
                 },
               ),
             ],
@@ -206,8 +217,9 @@ class _MyHomePageState extends State<MyHomePage> {
         return GetAlunos();
       case 5:
         return RequeriViews();
-
       case 6:
+        return EditNews();
+      case 7:
         return exit(0);
 
     }

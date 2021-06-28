@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:cefops/Src/views/Notes.dart';
-import 'package:cefops/Src/views/cadastroAlunos.dart';
-import 'package:cefops/Src/views/myCourse.dart';
+import 'package:cefops/Src/views/SocrePage.dart';
+import 'package:cefops/Src/views/siginStudantPage.dart';
+import 'package:cefops/Src/views/myCoursePage.dart';
 import 'package:flutter/material.dart';
-import '../arequeriment.dart';
-import '../navegacaoHome.dart';
+import '../arequerimentPage.dart';
+import 'navegationHome_widget.dart';
 int? _selectedIndex;
 String? titulos;
 
