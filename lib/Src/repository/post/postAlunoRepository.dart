@@ -23,9 +23,16 @@ Future<AlunoModel> createAluno(int id,String name,String lastName,int Cpf,String
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
     return AlunoModel.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create studant.');
+  } else if(response.statusCode==409) {
+
+    throw Exception('conflito de usuario');
+
+  }
+  else if(response.statusCode==400) {
+
+    throw Exception('falha na requisição');
+
+  }else{
+    throw Exception("erro ao criar usuario");
   }
 }
