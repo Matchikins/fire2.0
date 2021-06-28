@@ -1,7 +1,7 @@
 
-import 'package:cefops/Src/views/Notes.dart';
-import 'package:cefops/Src/views/cadastroAlunos.dart';
-import 'package:cefops/Src/views/navegacaoHome.dart';
+import 'package:cefops/Src/views/SocrePage.dart';
+import 'package:cefops/Src/views/siginStudantPage.dart';
+import 'package:cefops/Src/views/widgets/navegationHome_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../loginPage-android.dart';
