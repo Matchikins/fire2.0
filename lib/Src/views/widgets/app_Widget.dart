@@ -4,15 +4,19 @@ import 'package:cefops/Src/views/siginStudantPage.dart';
 import 'package:cefops/Src/views/widgets/navegationHome_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../editNewsPage.dart';
 import '../loginPage-android.dart';
 import '../loginPage.dart';
 import 'package:websafe_platform/websafe_platform.dart';
+import 'package:get/get.dart';
 var websafePlatform = WebsafePlatform();
 
 bool isIos = websafePlatform.isIOS();
 bool isWeb = websafePlatform.isWeb();
 bool isAndroid=websafePlatform.isAndroid();
 bool acessgaranted=true;
+final testt=GetPlatform.isMobile;
+final windows=GetPlatform.isDesktop;
 
 
 
@@ -46,7 +50,9 @@ class AppWidget extends StatelessWidget {
         GetPage(
             name: "/siginStudant",
             page: ()=> SiginStudant()),
-
+        GetPage(
+            name: "/editNews",
+            page: ()=> EditNews()),
 
 
       ],
@@ -55,9 +61,9 @@ class AppWidget extends StatelessWidget {
   }
 }
  _viewDetect(){
-  print(isAndroid);
+
   try{
-    if(isAndroid||isIos){
+    if(windows==false){
     return loginPage_Mobile();
 
   }
