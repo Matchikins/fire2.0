@@ -25,6 +25,7 @@ import 'package:flutter/material.dart';
        }
        return null;
      },
+     maxLines: null,
    );
 
  }

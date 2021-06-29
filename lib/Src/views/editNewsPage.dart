@@ -14,6 +14,7 @@ class EditNews extends StatefulWidget {
 final TextEditingController _controller = TextEditingController();
 final titleControler = TextEditingController();
 final postController = TextEditingController();
+  String statusPost="";
 Future<PostModel>? editPost;
 
 
@@ -32,38 +33,54 @@ class _EditNewsState extends State<EditNews> {
     });
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Container(
-            child: inputsForms(titleControler, "Insira o titulo", "titulo", ""),
-
-          ),
-          Container(
-            child: inputsForms(postController, "Insira o post", "post", ""),
-
-          ),
-          Container(
-            child: TextButton(
-              child: Text("Postar"),
-              onPressed: (){
-                setState(() {
-                    print(titleControler.text);
-                    print(postController.text);
-                  editPost=UpdateNews(titleControler.text, postController.text);
-                });
-
-              },
+    var size =MediaQuery.of(context).size;
+    return Center(
+      child: Container(
+        width: size.height*1.3,
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height*0.03,
             ),
-          )
-        ],
+            Container(
+              child: inputsForms(titleControler, "Insira o titulo", "titulo", ""),
+
+            ),
+            Container(
+              child: inputsForms(postController, "Insira o post", "post", ""),
+
+            ),
+            Text(statusPost),
+            Container(
+              child: TextButton(
+                child: Text("Postar"),
+                onPressed: (){
+                  setState(() {
+                      if(titleControler.text ==null || postController.text==null){
+                        return ;
+
+
+                      }else{      setState(() {
+                        editPost=UpdateNews(titleControler.text, postController.text);
+                      });
+                      print(titleControler.text);
+                      }
+
+                  });
+
+
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
