@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:cefops/Src/model/post_model.dart';
 import 'package:http/http.dart' as http;
 
-Future<PostModel> fetchPosts(context)   async {
+Future<PostModel> FetchPosts(context)   async {
   final response =
   await http.get(Uri.parse('https://cefopsweb.herokuapp.com/post/1'));
   final data=utf8.decode(response.bodyBytes);

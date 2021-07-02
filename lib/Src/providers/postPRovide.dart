@@ -7,7 +7,7 @@ class PostProvider with ChangeNotifier {
   PostModel post = PostModel(poste:"" , id: 1,title: "");
   bool loading=true;
   getPostData(context) async{
-    post = await fetchPosts(context);
+    post = await FetchPosts(context);
     loading = false;
 
   }

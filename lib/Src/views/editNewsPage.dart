@@ -16,6 +16,7 @@ final titleControler = TextEditingController();
 final postController = TextEditingController();
   String statusPost="";
 Future<PostModel>? editPost;
+var sttat=status;
 
 
 class _EditNewsState extends State<EditNews> {
@@ -58,6 +59,7 @@ class _EditNewsState extends State<EditNews> {
 
             ),
             Text(statusPost),
+
             Container(
               child: TextButton(
                 child: Text("Postar"),

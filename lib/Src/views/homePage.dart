@@ -23,13 +23,13 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    futurePost = fetchPosts(context);
+    futurePost = FetchPosts(context);
 
 
   }
   @override
   void dispose() {
-    fetchPosts(context);
+    FetchPosts(context);
     super.dispose();
   }
   @override
