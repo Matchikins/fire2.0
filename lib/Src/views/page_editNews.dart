@@ -1,5 +1,5 @@
 
-import 'package:cefops/Src/model/post_model.dart';
+import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/post/putNoticeHomePage.dart';
 import 'package:cefops/Src/views/widgets/widget_FormsForAll.dart';
 import 'package:flutter/material.dart';

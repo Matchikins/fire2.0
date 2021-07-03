@@ -1,4 +1,4 @@
-import 'package:cefops/Src/model/Aluno_Model.dart';
+import 'package:cefops/Src/model/model_Aluno.dart';
 import 'package:cefops/Src/repository/AlunoRepositrory.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:cefops/Src/model/post_model.dart';
+import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
 import 'package:flutter/material.dart';
 

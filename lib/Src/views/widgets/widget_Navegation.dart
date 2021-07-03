@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:cefops/Src/model/post_model.dart';
+import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/views/page_Socre.dart';
 import 'package:cefops/Src/views/page_editNews.dart';
 import 'package:cefops/Src/views/page_Home.dart';

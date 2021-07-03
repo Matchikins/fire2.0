@@ -1,5 +1,5 @@
-import 'package:cefops/Src/model/Aluno_Model.dart';
-import 'package:cefops/Src/model/post_model.dart';
+import 'package:cefops/Src/model/model_Aluno.dart';
+import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/AlunoRepositrory.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
 import 'package:flutter/material.dart';
