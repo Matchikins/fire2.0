@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:cefops/Src/model/Aluno_Model.dart';
+import 'package:cefops/res.dart';
 import 'package:http/http.dart' as http;
-
 
   Future<List<AlunoModel>> fetchAlunos() async {
     final response = await http.get(

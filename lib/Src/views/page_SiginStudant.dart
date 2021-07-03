@@ -1,7 +1,6 @@
 import 'package:cefops/Src/model/Aluno_Model.dart';
 import 'package:cefops/Src/repository/post/postAlunoRepository.dart';
-import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
-import 'package:cefops/Src/views/widgets/formsPAge_Widget.dart';
+import 'package:cefops/Src/views/widgets/widget_FormsForAll.dart';
 import 'package:flutter/material.dart';
 
 class SiginStudant extends StatefulWidget {
@@ -141,6 +140,7 @@ class _SiginStudantState extends State<SiginStudant> {
                        _space(space),
 
                 Center(
+
                   child: Container(
 
                     width: SizeForm,

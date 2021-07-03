@@ -50,7 +50,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/fonts/NunitoSans-SemiBold.ttf
+    - assets/images/logoBranca.png
+    - assets/images/enfermagem.jpg
+    - assets/images/icon_add.png
+    - assets/images/icon_blogger.png
+    - assets/images/icon_home.png
+    - assets/images/icon_logout.png
+    - assets/images/icon_search.png
+    - assets/images/icon_settings.png
+    - assets/images/logo.png
+    - assets/images/logo2.png
+    - assets/images/Logo_Digital.png
    
 
 #  fonts:

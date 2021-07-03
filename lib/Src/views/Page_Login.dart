@@ -1,6 +1,6 @@
 
-import 'package:cefops/Src/views/widgets/ButtonLogin_widget.dart';
-import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
+import 'package:cefops/Src/views/widgets/widget_ButtonLogin.dart';
+import 'package:cefops/Src/views/widgets/widget_FormsForLoginPage.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 var _controler;

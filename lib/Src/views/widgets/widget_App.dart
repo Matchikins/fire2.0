@@ -1,12 +1,12 @@
 
-import 'package:cefops/Src/views/SocrePage.dart';
-import 'package:cefops/Src/views/siginStudantPage.dart';
-import 'package:cefops/Src/views/widgets/navegationHome_widget.dart';
+import 'package:cefops/Src/views/page_Socre.dart';
+import 'package:cefops/Src/views/page_SiginStudant.dart';
+import 'package:cefops/Src/views/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../editNewsPage.dart';
-import '../loginPage-android.dart';
-import '../loginPage.dart';
+import '../page_editNews.dart';
+import '../page_Login-android.dart';
+import '../Page_Login.dart';
 import 'package:websafe_platform/websafe_platform.dart';
 import 'package:get/get.dart';
 var websafePlatform = WebsafePlatform();

@@ -18,12 +18,12 @@ LoginForms(Controller, String labels,String hintTExt, String error, IconData ico
         hintStyle: TextStyle(color: Color(0xff15355C)),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-              width: 2, color: Color(0xff15355C)),
+              width: 2, color: Colors.white),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-              width: 3, color: Color(0xff15355C)),
+              width: 3, color: Colors.white),
           borderRadius: BorderRadius.circular(10),
         )),
     obscureText: isobscure,

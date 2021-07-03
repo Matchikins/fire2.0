@@ -1,5 +1,7 @@
-import 'package:cefops/Src/views/widgets/ButtonLogin_widget.dart';
-import 'package:cefops/Src/views/widgets/LoginForms_widget.dart';
+import 'package:cefops/Shared/assets.dart';
+import 'package:cefops/Src/views/widgets/widget_ButtonLogin.dart';
+import 'package:cefops/Src/views/widgets/widget_FormsForLoginPage.dart';
+import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 var _controler;
@@ -40,15 +42,16 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      theme:
-          ThemeData(brightness: Brightness.dark, primaryColor: Colors.blueGrey),
+
       home: Scaffold(
+        backgroundColor:  Colors.black,
         body: Builder(builder: (context) {
           return Container(
+
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Container(
-              color: Colors.white,
+              color: Color(0xff15355C),
               child: Center(
                   child: SingleChildScrollView(
                 child: Form(
@@ -59,7 +62,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                         height: MediaQuery.of(context).size.height *0.20,
                         width: MediaQuery.of(context).size.width *0.50,
                         child: Image.asset(
-                          "assets/images/logo.png",
+                          Res.logoBranca,
                         ),
                         margin: EdgeInsets.only(bottom: 0.0),
                       ),
