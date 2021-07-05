@@ -4,7 +4,7 @@ import 'package:cefops/Src/views/page_Socre.dart';
 import 'package:cefops/Src/views/page_editNews.dart';
 import 'package:cefops/Src/views/page_Home.dart';
 import 'package:cefops/Src/views/page_Course.dart';
-import 'package:cefops/Src/views/widgets/widget_GetAlunos.dart';
+import 'package:cefops/Src/views/page_List_Alunos.dart';
 import 'package:flutter/material.dart';
 import '../page_Requeriment.dart';
 import '../page_SiginStudant.dart';
@@ -236,7 +236,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         return SiginStudant();
       case 4:
-        return GetAlunos();
+        return ListAlunos();
       case 5:
         return RequeriViews();
       case 6:

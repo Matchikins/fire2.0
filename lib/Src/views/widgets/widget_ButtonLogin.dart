@@ -1,36 +1,36 @@
-
+import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'widget_Navegation.dart';
 
 bool isloading = false;
 
 logginButon(context, _formKey) {
+  final size = MediaQuery.of(context).size;
+
   return FlatButton(
-    height: MediaQuery.of(context).size.height * 0.07,
+    height: size.height * 0.07,
     child: Column(
       children: [
         Text(
           'Login',
-          style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.02),
+          style: TextStyle(
+              fontSize: size.height * 0.03, fontWeight: FontWeight.w500),
         ),
         if (isloading == true)
           CircularProgressIndicator(
-            backgroundColor: Colors.white,
-            valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff15355C)),
+            backgroundColor: AppColors.background,
+            valueColor: new AlwaysStoppedAnimation<Color>(AppColors.blue),
           )
       ],
     ),
-    color: Color(0xffFD7E14),
-    textColor: Colors.white,
+    color: AppColors.secondary,
+    textColor: AppColors.textOnSecondary,
     shape: RoundedRectangleBorder(
         side: BorderSide(
-            color: Color(0xff15355C), width: 1, style: BorderStyle.solid),
+            color: AppColors.blue, width: 1, style: BorderStyle.solid),
         borderRadius: BorderRadius.circular(7)),
     onPressed: () {
-
-
       if (_formKey.currentState!.validate()) {
-
         Navigator.push(
             context,
             MaterialPageRoute<Null>(
@@ -38,12 +38,8 @@ logginButon(context, _formKey) {
                 return MyApp();
               },
               fullscreenDialog: true,
-            )
-        );
-
-
+            ));
       } else {}
     },
   );
 }
-

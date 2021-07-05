@@ -1,3 +1,5 @@
+import 'package:cefops/Shared/themes/app_colors.dart';
+import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:flutter/material.dart';
 
  inputsForms(Controller, String labels,String hintTExt, String error,   ){
@@ -11,9 +13,9 @@ import 'package:flutter/material.dart';
 
          labelText: labels,
 
-         labelStyle: TextStyle(color: Color(0xff15355C), ),
+         labelStyle: TextStyles.titleRegular,
          hintText: hintTExt,
-         hintStyle: TextStyle(color: Color(0xff15355C)),
+         hintStyle: TextStyles.input,
          focusedBorder: OutlineInputBorder(
 
          )

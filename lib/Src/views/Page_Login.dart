@@ -106,9 +106,10 @@ class _loginPageState extends State<loginPage>
                       Row(
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.25,
                           ),
-                          Container(
+                          Expanded(
+
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(16.0),
@@ -117,12 +118,11 @@ class _loginPageState extends State<loginPage>
                               ),
                               onPressed: () {},
                               child: Text(
-                                'Esqueci a Senha',
+                                'Esqueci a Senha',overflow: TextOverflow.visible,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: MediaQuery.of(context).size.height *
-                                      0.015,
+                                  fontSize: MediaQuery.of(context).size.height * 0.019,
                                 ),
                               ),
                             ),

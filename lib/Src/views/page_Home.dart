@@ -1,3 +1,5 @@
+import 'package:cefops/Shared/themes/app_colors.dart';
+import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/model/model_Aluno.dart';
 import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/AlunoRepositrory.dart';
@@ -7,8 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 String name="Adm";
 bool obscure=true;
-int corLaranja=0xffFD7E14;
-int corAzul=0xff15355C;
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -34,15 +35,28 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Container(
-      color: Color(corAzul),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [
+          AppColors.primary,
+        AppColors.primaryDark,
+
+        ],
+    )
+      ),
+
       child: Center(
 
         child: SingleChildScrollView(
           child: Column(
             children: [
 
-              SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+              SizedBox(height:size.height*0.04,),
               FutureBuilder<PostModel>(
                 future: futurePost,
                 builder: (context, snapshot) {
@@ -54,33 +68,38 @@ class _HomePageState extends State<HomePage> {
                     }
 
                     return Container(
-                      
+
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
                           boxShadow: [
-                          BoxShadow(color: obscure? Colors.white : Color(corLaranja), spreadRadius: 3),
+                          BoxShadow(color: obscure? Colors.white :AppColors.orange, spreadRadius: 3),
                       ]
                     )
                   ,
 
-                      child: Column(
-                        children: [
-                          Text(snapshot.data!.title,
-                            style: TextStyle(
-                                fontSize: 26,
-                                fontWeight: FontWeight.bold,
-                              color: Color(corLaranja)
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            Text(snapshot.data!.title,
+                              style: TextStyle(
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.bold,
+                                color:AppColors.orange,
 
-                            ),),
-                          SizedBox(height: MediaQuery.of(context).size.height*0.04,),
-
-                          Container(
-
-                              width: MediaQuery.of(context).size.width/2,
-                              child: Text(snapshot.data!.poste,style:GoogleFonts.roboto(fontSize: 16,),
                               ),),
-                        ],
+                            SizedBox(height: size.height*0.04,),
+
+                        Container( height: size.height/1.5,
+                          width: size.width/2,
+                              child: SingleChildScrollView(
+
+                                  child: Text(snapshot.data!.poste,style:TextStyles.titleRegular,
+                                  ),),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   } else if (snapshot.hasError) {
@@ -89,8 +108,8 @@ class _HomePageState extends State<HomePage> {
 
                   // By default, show a loading spinner.
                   return CircularProgressIndicator(
-                    color: Color(corAzul),
-                    backgroundColor: Color(corLaranja),
+                    color: AppColors.background,
+                    backgroundColor: AppColors.orange,
                   );
                 },
               ),
