@@ -5,10 +5,13 @@ import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/AlunoRepositrory.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 String name="Adm";
 bool obscure=true;
+final ismobile=GetPlatform.isMobile;
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final  size = MediaQuery.of(context).size;
 
     return Container(
       decoration: BoxDecoration(
@@ -68,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                     }
 
                     return Container(
-
+                        width: size.width*0.9,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
@@ -92,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(height: size.height*0.04,),
 
                         Container( height: size.height/1.5,
-                          width: size.width/2,
+                          width: size.width,
                               child: SingleChildScrollView(
 
                                   child: Text(snapshot.data!.poste,style:TextStyles.titleRegular,
@@ -121,3 +124,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+verifyMobile(){
+    if(ismobile==true) {
+      print("è mobile");
+    }}

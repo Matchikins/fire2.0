@@ -1,3 +1,4 @@
+import 'package:cefops/Src/views/widgets/background.dart';
 import 'package:flutter/material.dart';
 class myCourse extends StatefulWidget {
   @override
@@ -9,29 +10,34 @@ class _myCourseState extends State<myCourse> {
 
   @override
   Widget build(BuildContext context) {
+    final  size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              SizedBox(height: MediaQuery.of(context).size.height/9,),
-              Center(child: Text("Ola Emison ",style: TextStyle(fontSize: 22),),),
-              SizedBox(height: MediaQuery.of(context).size.height/50,),
+      body: backgroundColor(
+          size.width,
+         size.height,
+          SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height/9,),
+                  Center(child: Text("Ola Emison ",style: TextStyle(fontSize: 22),),),
+                  SizedBox(height: MediaQuery.of(context).size.height/50,),
 
-              Center(child: Text("Essa é sua grade Curricular  ",style: TextStyle(fontSize: 22),),),
-              SizedBox(height: MediaQuery.of(context).size.height/40,),
+                  Center(child: Text("Essa é sua grade Curricular  ",style: TextStyle(fontSize: 22),),),
+                  SizedBox(height: MediaQuery.of(context).size.height/40,),
 
-              Center(child: Text("CURSO DE AUXILIAR DE ENFERMAGEM  ",style: TextStyle(fontSize: 22),),),
+                  Center(child: Text("CURSO DE AUXILIAR DE ENFERMAGEM  ",style: TextStyle(fontSize: 22),),),
 
-              SizedBox(height: MediaQuery.of(context).size.height/20,),
+                  SizedBox(height: MediaQuery.of(context).size.height/20,),
 
-              Container(
-                child: criaTabela(),
-              )
-            ],
-          ),
-        ),
-      )
+                  Container(
+                    child: criaTabela(),
+                  )
+                ],
+              ),
+            ),
+          ))
     );
   }
 }

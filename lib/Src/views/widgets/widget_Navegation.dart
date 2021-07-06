@@ -237,7 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         return SiginStudant();
       case 4:
-        return GetAlunos();
+        return ListUSers();
       case 5:
         return RequeriViews();
       case 6:

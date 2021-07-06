@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 
     if (response.statusCode == 200) {
       List jsonResponse = decodeData;
+      print(decodeData);
       return jsonResponse.map((aluno) => AlunoModel.fromJson(aluno)).toList();
     } else {
       throw Exception('Failed to load jobs from API');

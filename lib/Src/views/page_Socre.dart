@@ -1,14 +1,19 @@
+import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/views/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class NotesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final  size = MediaQuery.of(context).size;
     return Scaffold(
-      body: ListView.builder(
+      body:backgroundColor(size.width, size.height,
+
+          ListView.builder(
         itemBuilder: (BuildContext context, int index) =>
-        EntryItem(data[index]),
-    itemCount: data.length,
-      )
+            EntryItem(data[index]),
+        itemCount: data.length,
+      ))
     );
   }
 }
@@ -134,10 +139,11 @@ class EntryItem extends StatelessWidget {
   final Entry entry;
 
   Widget _buildTiles(Entry root) {
-    if (root.children.isEmpty) return ListTile(title: Text(root.title));
+    if (root.children.isEmpty) return ListTile(
+        title: Text(root.title,style: TextStyles.titleListTile2,));
     return ExpansionTile(
       key: PageStorageKey<Entry>(root),
-      title: Text(root.title),
+      title: Text(root.title,style: TextStyles.titleListTile2),
       children: root.children.map(_buildTiles).toList(),
     );
   }

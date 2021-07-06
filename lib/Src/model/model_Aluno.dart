@@ -1,7 +1,4 @@
-// To parse this JSON data, do
-//
-//     final alunoModel = alunoModelFromJson(jsonString);
-import 'package:meta/meta.dart';
+
 import 'dart:convert';
 
 AlunoModel alunoModelFromJson(String str) => AlunoModel.fromJson(json.decode(str));
