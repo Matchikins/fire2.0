@@ -50,7 +50,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Container(
-              color: Color(0xff15355C),
+              color: Colors.white,
               child: Center(
                   child: SingleChildScrollView(
                 child: Form(
@@ -61,7 +61,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                         height: MediaQuery.of(context).size.height *0.20,
                         width: MediaQuery.of(context).size.width *0.50,
                         child: Image.asset(
-                          Res.logoBranca,
+                          Res.logo,
                         ),
                         margin: EdgeInsets.only(bottom: 0.0),
                       ),
