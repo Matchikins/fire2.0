@@ -3,6 +3,7 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/model/model_Aluno.dart';
 import 'package:cefops/Src/repository/post/postAlunoRepository.dart';
 import 'package:cefops/Src/views/widgets/widget_FormsForAll.dart';
+import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
 
 class SiginStudant extends StatefulWidget {
@@ -62,65 +63,81 @@ class _SiginStudantState extends State<SiginStudant> {
             key: _formKey,
             child: Column(
               children: [
-                Center(
-                  child: Text(
-                    "Cadastrar novo aluno ",
-                    style: TextStyle(
-                      fontSize: 40,
-                    ),
+                Container(
+
+                  child: Center(
+                   child: Image.asset(Res.logo2),
                   ),
                 ),
                 _space(space),
-                Container(
-                    width: SizeForm,
-                    alignment: Alignment.center,
-                    child: inputsForms(NameController, "Insira o nome Aluno ",
-                        "Nome Aluno", "Por favor preencha o nome do aluno")),
+                Row(
+                  children: [
+                    Container(
+                        width: size.width/3,
+
+                        child: inputsForms(NameController, "Insira o nome Aluno ",
+                            "Nome Aluno", "Por favor preencha o nome do aluno")),
+                    SizedBox(width: size.width*0.02,),
+                    Container(
+                        width: size.width/3,
+
+                        child: inputsForms(
+                            LastNameController,
+                            "Insira o Sobrenome Aluno ",
+                            "Sobrenome do Aluno",
+                            "Por favor preencha o Sobrenome do aluno")),
+                  ],
+                ),
+
+
                 _space(space),
-                Container(
-                    width: SizeForm,
-                    alignment: Alignment.center,
-                    child: inputsForms(
-                        LastNameController,
-                        "Insira o Sobrenome Aluno ",
-                        "Sobrenome do Aluno",
-                        "Por favor preencha o Sobrenome do aluno")),
-                _space(space),
-                Container(
-                    width: SizeForm,
-                    alignment: Alignment.center,
-                    child: inputsForms(
-                        grupeController,
-                        "Insira a Turma do Aluno ",
-                        "Turma do Aluno",
-                        "Por favor preencha a Turma do aluno")),
-                _space(space),
-                Container(
-                    width: SizeForm,
-                    alignment: Alignment.center,
-                    child: inputsForms(
-                        raController,
-                        "Insira o CPF do Aluno ",
-                        "Nome CPF do Aluno",
-                        "Por favor preencha o CPF do Aluno")),
-                _space(space),
-                Container(
-                    width: SizeForm,
-                    alignment: Alignment.center,
-                    child: inputsForms(
-                        emailController,
-                        "Insira o E-mail do Aluno ",
-                        "Nome o E-mail do Aluno",
-                        "Por favor preencha o E-mail do Aluno")),
-                _space(space),
-                Container(
-                    width: SizeForm,
-                    alignment: Alignment.center,
-                    child: inputsForms(
-                        passwController,
-                        "A senha do Aluno ",
-                        "Nome senha do Aluno",
-                        "Por favor preencha o senha do Aluno")),
+                Row(
+                  children: [
+                    Container(
+                        width: size.width/3,
+                        alignment: Alignment.center,
+                        child: inputsForms(
+                            raController,
+                            "Insira o CPF do Aluno ",
+                            "Nome CPF do Aluno",
+                            "Por favor preencha o CPF do Aluno")),
+                    SizedBox(width: size.width*0.02,),
+                    Container(
+                        width: size.width/3,
+                        alignment: Alignment.center,
+                        child: inputsForms(
+                            emailController,
+                            "Insira o E-mail do Aluno ",
+                            "Nome o E-mail do Aluno",
+                            "Por favor preencha o E-mail do Aluno")),
+
+                  ],
+                ),
+                Row(
+                  children: [
+                    Container(
+                        width: SizeForm,
+                        alignment: Alignment.center,
+                        child: inputsForms(
+                            grupeController,
+                            "Insira a Turma do Aluno ",
+                            "Turma do Aluno",
+                            "Por favor preencha a Turma do aluno")),
+                    SizedBox(width: size.width*0.02,),
+
+                    Container(
+                        width: SizeForm,
+                        alignment: Alignment.center,
+                        child: inputsForms(
+                            passwController,
+                            "A senha do Aluno ",
+                            "Nome senha do Aluno",
+                            "Por favor preencha o senha do Aluno")),
+                  ],
+                ),
+
+
+
                 _space(space),
                 Center(
                   child: Container(

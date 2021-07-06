@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 String name="Adm";
 bool obscure=true;
 final ismobile=GetPlatform.isMobile;
+ double heightforMobile=0.9;
 
 
 class HomePage extends StatefulWidget {
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                     }
 
                     return Container(
-                        width: size.width*0.9,
+                        width: size.width*verifyMobile(),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
@@ -87,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(snapshot.data!.title,
                               style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                 color:AppColors.orange,
 
@@ -125,7 +126,10 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-verifyMobile(){
+verifyMobile( ){
     if(ismobile==true) {
-      print("è mobile");
-    }}
+    return  heightforMobile=0.9;
+    }else{
+      return heightforMobile=0.6;
+    }
+}

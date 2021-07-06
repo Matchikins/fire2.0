@@ -1,4 +1,8 @@
+// To parse this JSON data, do
+//
+//     final alunoModel = alunoModelFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 AlunoModel alunoModelFromJson(String str) => AlunoModel.fromJson(json.decode(str));
@@ -7,48 +11,36 @@ String alunoModelToJson(AlunoModel data) => json.encode(data.toJson());
 
 class AlunoModel {
   AlunoModel({
-    required this.teacherId,
-    required this.curso,
-    required this.id,
-    required this.email,
-    required this.lastName,
-    required this.courseId,
-    required this.grupe,
-    required this.cpf,
     required this.name,
+    required this.id,
+    required this.lastName,
+    required this.cpf,
+    required this.email,
+    required this.photo,
   });
 
-  int teacherId;
-  dynamic curso;
-  int id;
-  String email;
-  String lastName;
-  int courseId;
-  int grupe;
-  int cpf;
   String name;
+  int id;
+  String lastName;
+  String cpf;
+  String email;
+  String photo;
 
   factory AlunoModel.fromJson(Map<String, dynamic> json) => AlunoModel(
-    teacherId: json["teacherID"],
-    curso: json["curso"],
-    id: json["id"],
-    email: json["email"],
-    lastName: json["lastName"],
-    courseId: json["courseId"],
-    grupe: json["grupe"],
-    cpf: json["cpf"],
     name: json["name"],
+    id: json["id"],
+    lastName: json["lastName"],
+    cpf: json["cpf"],
+    email: json["email"],
+    photo: json["photo"],
   );
 
   Map<String, dynamic> toJson() => {
-    "teacherID": teacherId,
-    "curso": curso,
-    "id": id,
-    "email": email,
-    "lastName": lastName,
-    "courseId": courseId,
-    "grupe": grupe,
-    "cpf": cpf,
     "name": name,
+    "id": id,
+    "lastName": lastName,
+    "cpf": cpf,
+    "email": email,
+    "photo": photo,
   };
 }

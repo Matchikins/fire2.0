@@ -1,6 +1,7 @@
 
 import 'package:cefops/Src/views/widgets/widget_ButtonLogin.dart';
 import 'package:cefops/Src/views/widgets/widget_FormsForLoginPage.dart';
+import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 var _controler;
@@ -74,7 +75,7 @@ class _loginPageState extends State<loginPage>
                         height: MediaQuery.of(context).size.height / 4,
                         width: MediaQuery.of(context).size.width / 4,
                         child: Image.asset(
-                          "assets/images/logo.png",
+                          Res.cefops1_orig,
                         ),
                       ),
                       Container(

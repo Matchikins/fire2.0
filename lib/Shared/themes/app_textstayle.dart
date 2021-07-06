@@ -10,7 +10,7 @@ class TextStyles {
     color: AppColors.heading,
   );
   static final titleRegular = GoogleFonts.lexendDeca(
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.heading,
   );

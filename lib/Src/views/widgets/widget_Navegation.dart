@@ -6,12 +6,14 @@ import 'package:cefops/Src/views/page_Home.dart';
 import 'package:cefops/Src/views/page_Course.dart';
 import 'package:cefops/Src/views/page_List_Alunos.dart';
 import 'package:cefops/Src/views/widgets/widget_GetAlunos.dart';
+import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/platform/platform.dart';
 import '../page_Requeriment.dart';
 import '../page_SiginStudant.dart';
 
-bool acessgaranted = true;
-
+bool acessgaranted = false;
+final ismobiles=GetPlatform.isMobile;
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: <Widget>[
           Center(
-            child: Image.asset("assets/images/Logo_Digital.png"),
+            child: Image.asset(Res.logo_branco_Laranja),
           ),
         ],
       ),
@@ -133,6 +135,34 @@ class _MyHomePageState extends State<MyHomePage> {
                   titulos = "Minhas Notas";
                 },
               ),
+
+
+              ListTile(
+                title: Text(
+                  'Requerimentos',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: Icon(Icons.note_add, color: Color(iconColor)),
+                selected: 5 == _selectedIndex,
+                onTap: () {
+                  _onSelectItem(5);
+
+                  titulos = "Requerimentos";
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Financeiro',
+                  style: TextStyle(color: Colors.white),
+                ),
+                leading: Icon(Icons.description, color: Color(iconColor)),
+                selected: 5 == _selectedIndex,
+                onTap: () {
+                  _onSelectItem(5);
+
+                  titulos = "Financeiro";
+                },
+              ),
               if (acessgaranted == true)
                 ListTile(
                   title: Text(
@@ -165,32 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     titulos = "Listar Alunos";
                   },
                 ),
-              ListTile(
-                title: Text(
-                  'Requerimentos',
-                  style: TextStyle(color: Colors.white),
-                ),
-                leading: Icon(Icons.note_add, color: Color(iconColor)),
-                selected: 5 == _selectedIndex,
-                onTap: () {
-                  _onSelectItem(5);
-
-                  titulos = "Requerimentos";
-                },
-              ),
-              ListTile(
-                title: Text(
-                  'Financeiro',
-                  style: TextStyle(color: Colors.white),
-                ),
-                leading: Icon(Icons.description, color: Color(iconColor)),
-                selected: 5 == _selectedIndex,
-                onTap: () {
-                  _onSelectItem(5);
-
-                  titulos = "Financeiro";
-                },
-              ),
+              if (acessgaranted == true)
               ListTile(
                 title: Text(
                   'Postagem',
@@ -253,5 +258,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     Navigator.of(context).pop();
+  }
+}
+
+mobile(){
+  if(ismobile==true){
+    acessgaranted=false;
+  }else{
+    acessgaranted=true;
   }
 }

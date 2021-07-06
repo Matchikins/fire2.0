@@ -61,7 +61,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                         height: MediaQuery.of(context).size.height *0.20,
                         width: MediaQuery.of(context).size.width *0.50,
                         child: Image.asset(
-                          Res.logo,
+                          Res.cefops1_orig,
                         ),
                         margin: EdgeInsets.only(bottom: 0.0),
                       ),
