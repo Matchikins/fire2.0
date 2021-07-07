@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/views/widgets/background.dart';
+import 'package:cefops/Src/widgets/background.dart';
 import 'package:flutter/material.dart';
 class RequeriViews extends StatelessWidget {
   const RequeriViews({Key? key}) : super(key: key);

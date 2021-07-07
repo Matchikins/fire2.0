@@ -1,12 +1,14 @@
 
-import 'package:cefops/Src/views/page_Socre.dart';
-import 'package:cefops/Src/views/page_SiginStudant.dart';
-import 'package:cefops/Src/views/widgets/widget_Navegation.dart';
+import 'package:cefops/Src/views/Page_Login.dart';
+import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
+import 'package:cefops/Src/views/page_Login-android.dart';
+import 'package:cefops/Src/views/studants/page_Socre.dart';
+import 'package:cefops/Src/views/admLvl1/page_SiginStudant.dart';
+
+import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../page_editNews.dart';
-import '../page_Login-android.dart';
-import '../Page_Login.dart';
+
 import 'package:websafe_platform/websafe_platform.dart';
 import 'package:get/get.dart';
 var websafePlatform = WebsafePlatform();
@@ -39,7 +41,7 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
             name: "/",
-            page: ()=>_viewDetect()
+            page: ()=> MyApp()
         ),
 
         GetPage(

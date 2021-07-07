@@ -1,18 +1,21 @@
 import 'dart:io';
+import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/model/model_Publication.dart';
-import 'package:cefops/Src/views/page_Socre.dart';
-import 'package:cefops/Src/views/page_editNews.dart';
+import 'package:cefops/Src/views/studants/page_Socre.dart';
+import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
 import 'package:cefops/Src/views/page_Home.dart';
-import 'package:cefops/Src/views/page_Course.dart';
-import 'package:cefops/Src/views/page_List_Alunos.dart';
-import 'package:cefops/Src/views/widgets/widget_GetAlunos.dart';
+import 'package:cefops/Src/views/studants/page_Course.dart';
+import 'package:cefops/Src/widgets/widget_Drawer.dart';
+import 'package:cefops/Src/widgets/widget_NavegatorRoutes.dart';
+
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
-import '../page_Requeriment.dart';
-import '../page_SiginStudant.dart';
 
-bool acessgaranted = false;
+
+bool acessgaranted = true;
+bool studantPage=false;
 final ismobiles=GetPlatform.isMobile;
 void main() => runApp(MyApp());
 
@@ -50,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int menuColor = 0xff15355C;
   int iconColor = 0xffFD7E14;
 
-  int _selectedIndex = 0;
+  int selectedIndex = 0;
   String titulos = "Início";
 
   @override
@@ -88,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.04,
               ),
-              ListTile(
+              if (studantPage == true)  ListTile(
                 tileColor: Colors.white,
                 leading: Icon(
                   Icons.home,
@@ -99,12 +102,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  _selectedIndex = 0;
-                  _onSelectItem(0);
+                  selectedIndex = 0;
+                  onSelectItem(0);
                   titulos = "início";
                 },
               ),
-              ListTile(
+              if (studantPage == true)  ListTile(
                 leading: Icon(
                   Icons.book,
                   color: Color(iconColor),
@@ -114,13 +117,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  _selectedIndex = 1;
+                  selectedIndex = 1;
 
-                  _onSelectItem(1);
+                  onSelectItem(1);
                   titulos = "Meu Curso";
                 },
               ),
-              ListTile(
+              if (studantPage == true)  ListTile(
                 title: Text(
                   'Minhas Notas',
                   style: TextStyle(color: Colors.white),
@@ -129,36 +132,36 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icons.calendar_view_month,
                   color: Color(iconColor),
                 ),
-                selected: 2 == _selectedIndex,
+                selected: 2 == selectedIndex,
                 onTap: () {
-                  _onSelectItem(2);
+                  onSelectItem(2);
                   titulos = "Minhas Notas";
                 },
               ),
 
 
-              ListTile(
+              if (studantPage == true)  ListTile(
                 title: Text(
                   'Requerimentos',
                   style: TextStyle(color: Colors.white),
                 ),
                 leading: Icon(Icons.note_add, color: Color(iconColor)),
-                selected: 5 == _selectedIndex,
+                selected: 5 == selectedIndex,
                 onTap: () {
-                  _onSelectItem(5);
+                  onSelectItem(5);
 
                   titulos = "Requerimentos";
                 },
               ),
-              ListTile(
+              if (studantPage == true)   ListTile(
                 title: Text(
                   'Financeiro',
                   style: TextStyle(color: Colors.white),
                 ),
                 leading: Icon(Icons.description, color: Color(iconColor)),
-                selected: 5 == _selectedIndex,
+                selected: 5 == selectedIndex,
                 onTap: () {
-                  _onSelectItem(5);
+                  onSelectItem(5);
 
                   titulos = "Financeiro";
                 },
@@ -174,8 +177,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Color(iconColor),
                   ),
                   onTap: () {
-                    _selectedIndex = 3;
-                    _onSelectItem(3);
+                    selectedIndex = 3;
+                    onSelectItem(3);
                     titulos = "Cadastrar Alunos";
                   },
                 ),
@@ -190,9 +193,41 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Color(iconColor),
                   ),
                   onTap: () {
-                    _selectedIndex = 4;
-                    _onSelectItem(4);
+                    selectedIndex = 4;
+                    onSelectItem(4);
                     titulos = "Listar Alunos";
+                  },
+                ),
+              if (acessgaranted == true)
+                ListTile(
+                  title: Text(
+                    'Status Requerimentos',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  leading: Icon(
+                    Icons.web_asset_outlined,
+                    color: Color(iconColor),
+                  ),
+                  onTap: () {
+                    selectedIndex = 7;
+                    onSelectItem(7);
+                    titulos = "Status Requerimentos";
+                  },
+                ),
+              if (acessgaranted == true)
+                ListTile(
+                  title: Text(
+                    'Status Financeiro',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  leading: Icon(
+                    Icons.request_quote,
+                    color: Color(iconColor),
+                  ),
+                  onTap: () {
+                    selectedIndex = 8;
+                    onSelectItem(8);
+                    titulos = "Status Financeiro";
                   },
                 ),
               if (acessgaranted == true)
@@ -202,9 +237,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 leading: Icon(Icons.description, color: Color(iconColor)),
-                selected: 6 == _selectedIndex,
+                selected: 6 == selectedIndex,
                 onTap: () {
-                  _onSelectItem(6);
+                  onSelectItem(6);
+
 
                   titulos = "Postagem";
                 },
@@ -218,43 +254,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icons.exit_to_app,
                   color: Color(iconColor),
                 ),
-                selected: 7 == _selectedIndex,
+                selected: 7 == selectedIndex,
                 onTap: () {
-                  _onSelectItem(7);
+                  onSelectItem(7);
                 },
               ),
+              Mydrawer("teste", Icons.safety_divider, 0xffFD7E14, 5, 5, onSelectItem(5), 5, ontap)
             ],
           ),
         ),
       ),
-      body: _getDrawerItem(_selectedIndex),
+      body: getDrawerItem(selectedIndex,context: context),
     );
   }
 
-  _getDrawerItem(int pos) {
-    switch (pos) {
-      case 0:
-        return HomePage();
-      case 1:
-        return myCourse();
-      case 2:
-        return NotesPage();
-      case 3:
-        return SiginStudant();
-      case 4:
-        return ListUSers();
-      case 5:
-        return RequeriViews();
-      case 6:
-        return EditNews();
-      case 7:
-        return exit(0);
-    }
-  }
 
-  _onSelectItem(int index) {
+
+
+  onSelectItem(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
 
     Navigator.of(context).pop();

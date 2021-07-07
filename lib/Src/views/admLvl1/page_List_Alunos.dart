@@ -2,7 +2,6 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/model/model_Aluno.dart';
 import 'package:cefops/Src/repository/AlunoRepositrory.dart';
-import 'package:cefops/Src/views/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class ListUSers extends StatefulWidget {
@@ -34,12 +33,12 @@ class _ListUSersState extends State<ListUSers> {
                       title: Container(
                         child:Row(
                           children: [
-                            Container(
+                           CircleAvatar(
+                               radius: 22,
+                          backgroundImage: NetworkImage(snapshot.data![Index].photo),
 
-                              child: CircleAvatar(
-                                child: Image.network(snapshot.data![Index].photo,width: 42,height: 42,),
                               ),
-                            ),
+
                             SizedBox(
                               width: 22,
                             ),

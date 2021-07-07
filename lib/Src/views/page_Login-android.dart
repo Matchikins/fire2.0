@@ -1,8 +1,10 @@
-import 'package:cefops/Src/views/widgets/widget_ButtonLogin.dart';
-import 'package:cefops/Src/views/widgets/widget_FormsForLoginPage.dart';
-import 'package:cefops/res.dart';
+
+import 'package:cefops/Src/widgets/widget_ButtonLogin.dart';
+import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
+
+import '../../res.dart';
 var _controler;
 final _formKey = GlobalKey<FormState>();
 final UserController = TextEditingController();

@@ -1,4 +1,4 @@
-import 'package:cefops/Src/views/widgets/background.dart';
+import 'package:cefops/Src/widgets/background.dart';
 import 'package:flutter/material.dart';
 class myCourse extends StatefulWidget {
   @override
