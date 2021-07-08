@@ -14,8 +14,8 @@ import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 
 
-bool acessgaranted = true;
-bool studantPage=false;
+bool acessgaranted = false;
+bool studantPage=true;
 final ismobiles=GetPlatform.isMobile;
 void main() => runApp(MyApp());
 
@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.04,
               ),
-              if (studantPage == true)  ListTile(
+                ListTile(
                 tileColor: Colors.white,
                 leading: Icon(
                   Icons.home,
@@ -259,12 +259,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   onSelectItem(7);
                 },
               ),
-              Mydrawer("teste", Icons.safety_divider, 0xffFD7E14, 5, 5, onSelectItem(5), 5, ontap)
+
             ],
           ),
         ),
       ),
-      body: getDrawerItem(selectedIndex,context: context),
+      body:   getDrawerItem(selectedIndex,context: context),
     );
   }
 

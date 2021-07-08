@@ -41,7 +41,7 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
             name: "/",
-            page: ()=> MyApp()
+            page: ()=> _viewDetect()
         ),
 
         GetPage(
