@@ -1,3 +1,4 @@
+import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/widgets/background.dart';
 import 'package:flutter/material.dart';
 class myCourse extends StatefulWidget {
@@ -24,10 +25,10 @@ class _myCourseState extends State<myCourse> {
                   Center(child: Text("Ola Emison ",style: TextStyle(fontSize: 22),),),
                   SizedBox(height: MediaQuery.of(context).size.height/50,),
 
-                  Center(child: Text("Essa é sua grade Curricular  ",style: TextStyle(fontSize: 22),),),
+                  Center(child: Text("Essa é sua grade Curricular  ",style: TextStyle(fontSize: 22,color: AppColors.textOnPrimary),),),
                   SizedBox(height: MediaQuery.of(context).size.height/40,),
 
-                  Center(child: Text("CURSO DE AUXILIAR DE ENFERMAGEM  ",style: TextStyle(fontSize: 22),),),
+                  Center(child: Text("CURSO DE AUXILIAR DE ENFERMAGEM  ",style: TextStyle(fontSize: 22,color: AppColors.textOnPrimary),),),
 
                   SizedBox(height: MediaQuery.of(context).size.height/20,),
 
@@ -83,7 +84,7 @@ _criarLinhaTable(String listaNomes) {
         alignment: Alignment.center,
         child: Text(
           name,
-          style: TextStyle(fontSize: 20.0),
+          style: TextStyle(fontSize: 20.0,color: AppColors.textOnPrimary),
         ),
         padding: EdgeInsets.all(8.0),
       );

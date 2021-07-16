@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 
 
-bool acessgaranted = false;
+bool acessgaranted = true;
 bool studantPage=true;
 final ismobiles=GetPlatform.isMobile;
 void main() => runApp(MyApp());
@@ -282,7 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 mobile(){
   if(ismobile==true){
-    acessgaranted=false;
+    acessgaranted=true;
   }else{
     acessgaranted=true;
   }

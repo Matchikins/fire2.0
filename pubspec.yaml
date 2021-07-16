@@ -33,6 +33,11 @@ dependencies:
   http: ^0.13.3
   google_fonts: ^2.1.0
   provider: ^5.0.0
+  intl: ^0.17.0
+  syncfusion_flutter_pdf: ^19.2.47-beta
+  path_provider: any
+  open_file: any
+  universal_html: ^1.2.4
 
 
 dev_dependencies:
