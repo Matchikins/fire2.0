@@ -1,5 +1,6 @@
 
 
+import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
 import 'package:cefops/Src/widgets/widget_ButtonLogin.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/res.dart';
@@ -118,7 +119,9 @@ class _loginPageState extends State<loginPage>
                                 primary: Colors.white,
                                 textStyle: const TextStyle(fontSize: 20),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Login(UserController.value.text, passwController.value.text);
+                              },
                               child: Text(
                                 'Esqueci a Senha',overflow: TextOverflow.visible,
                                 textAlign: TextAlign.left,
@@ -137,7 +140,7 @@ class _loginPageState extends State<loginPage>
                       ),
                       Container(
 
-                        child: logginButon(context, _formKey,)
+                        child: logginButon(context,UserController.value.text,passwController.value.text)
                       )
                     ],
                   ),

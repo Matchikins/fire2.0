@@ -27,16 +27,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
     futurePost = FetchPosts(context);
+    print("oii");
+    super.initState();
+
 
 
   }
-  @override
-  void dispose() {
-    FetchPosts(context);
-    super.dispose();
-  }
+
   @override
   Widget build(BuildContext context) {
     final  size = MediaQuery.of(context).size;

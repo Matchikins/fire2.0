@@ -67,12 +67,13 @@ class _EditNewsState extends State<EditNews> {
                     child: Text("Postar"),
                     onPressed: (){
                       setState(() {
+                        UpdateNews(titleControler.text);
                           if(titleControler.text ==null || postController.text==null){
                             return ;
 
 
                           }else{      setState(() {
-                            editPost=UpdateNews(titleControler.text, postController.text);
+
                           });
                           print(titleControler.text);
                           }

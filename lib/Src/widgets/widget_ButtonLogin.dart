@@ -1,10 +1,11 @@
+import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'widget_Navegation.dart';
 
 bool isloading = false;
 
-logginButon(context, _formKey) {
+logginButon(context, String user, String password) {
   final size = MediaQuery.of(context).size;
 
   return FlatButton(
@@ -30,16 +31,19 @@ logginButon(context, _formKey) {
             color: AppColors.blue, width: 1, style: BorderStyle.solid),
         borderRadius: BorderRadius.circular(7)),
     onPressed: () {
-      if (_formKey.currentState!.validate()) {
-        Navigator.push(
-            context,
-            MaterialPageRoute<Null>(
-              builder: (BuildContext context) {
-                return MyApp();
-              },
-              fullscreenDialog: true,
-            ));
-      } else {}
+
+
+
+      // if (_formKey.currentState!.validate()) {
+      //   Navigator.push(
+      //       context,
+      //       MaterialPageRoute<Null>(
+      //         builder: (BuildContext context) {
+      //           return MyApp();
+      //         },
+      //         fullscreenDialog: true,
+      //       ));
+      // } else {}
     },
   );
 }

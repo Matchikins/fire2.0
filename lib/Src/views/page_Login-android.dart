@@ -125,7 +125,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                       ),
                       Container(
 
-                        child: logginButon(context,_formKey)
+                        child: logginButon(context,UserController.value.text,passwController.value.text)
                       )
                     ],
                   ),

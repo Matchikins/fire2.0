@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cefops/Src/module/pdf/homeP.dart';
 import 'package:cefops/Src/views/admLvl1/page_FinanceStatus.dart';
 import 'package:cefops/Src/views/admLvl1/page_List_Alunos.dart';
 import 'package:cefops/Src/views/admLvl1/page_RequeriStatus.dart';
@@ -25,7 +26,7 @@ getDrawerItem(int pos,{context}) {
     case 5:
       return RequeriViews();
     case 6:
-      return EditNews();
+      return pdfHome();
     case 7:
       return RequerimentStatus();
     case 8:
