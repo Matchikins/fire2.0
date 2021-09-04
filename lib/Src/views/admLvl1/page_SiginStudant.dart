@@ -1,7 +1,7 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/model/model_Aluno.dart';
-import 'package:cefops/Src/repository/post/postAlunoRepository.dart';
+import 'package:cefops/Src/model/AlunoModel.dart';
+import 'package:cefops/Src/repository/AlunosRepository.dart';
 import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';

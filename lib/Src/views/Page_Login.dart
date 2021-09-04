@@ -1,8 +1,13 @@
 
 
+import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
+import 'package:cefops/Shared/Security/Services/USerServices.dart';
+import 'package:cefops/Src/views/page_Home.dart';
+import 'package:cefops/Src/widgets/widget_App.dart';
 import 'package:cefops/Src/widgets/widget_ButtonLogin.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
+import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
@@ -119,8 +124,18 @@ class _loginPageState extends State<loginPage>
                                 primary: Colors.white,
                                 textStyle: const TextStyle(fontSize: 20),
                               ),
-                              onPressed: () {
-                                Login(UserController.value.text, passwController.value.text);
+                              onPressed: () async{
+                                await Login("Emison", "1234");
+                                if(    ErroController.error.ok==true){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) =>  MyApp()),
+                                  );
+
+
+                                }
+
+
                               },
                               child: Text(
                                 'Esqueci a Senha',overflow: TextOverflow.visible,

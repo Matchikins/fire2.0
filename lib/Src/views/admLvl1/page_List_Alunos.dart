@@ -1,7 +1,8 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/model/model_Aluno.dart';
-import 'package:cefops/Src/repository/AlunoRepositrory.dart';
+import 'package:cefops/Src/model/AlunoModel.dart';
+import 'package:cefops/Src/repository/AlunosRepository.dart';
+import 'package:cefops/Src/widgets/widget_GetAlunos.dart';
 import 'package:flutter/material.dart';
 
 class ListUSers extends StatefulWidget {
@@ -13,7 +14,15 @@ class ListUSers extends StatefulWidget {
 
 class _ListUSersState extends State<ListUSers> {
   late Future<AlunoModel> futureAluno;
+  @override
+  void initState() {
+    GetAlunos() ;
+    print("oii");
+    super.initState();
 
+
+
+  }
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -21,11 +30,13 @@ class _ListUSersState extends State<ListUSers> {
     return Container(
       child:
       FutureBuilder(
-          future: fetchAlunos(),
+          future: GetAllAlunos(),
           builder:
               (BuildContext context, AsyncSnapshot<List<AlunoModel>> snapshot) {
+            print(snapshot.error);
             if (snapshot.hasData) {
               return ListView.builder(
+
                   itemCount: snapshot.data!.length,
                   itemBuilder:( BuildContext context,int Index){
                     return ExpansionTile(

@@ -2,6 +2,7 @@
 //
 //     final loginModel = loginModelFromJson(jsonString);
 
+import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
