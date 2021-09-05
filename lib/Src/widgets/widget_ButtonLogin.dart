@@ -1,11 +1,13 @@
+import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
+import 'package:cefops/Src/controller/status.dart';
 import 'package:flutter/material.dart';
 import 'widget_Navegation.dart';
 
 bool isloading = false;
 
-logginButon(context, String user, String password) {
+logginButon(context, _formKey, String user, String password) {
   final size = MediaQuery.of(context).size;
 
   return FlatButton(
@@ -17,11 +19,6 @@ logginButon(context, String user, String password) {
           style: TextStyle(
               fontSize: size.height * 0.03, fontWeight: FontWeight.w500),
         ),
-        if (isloading == true)
-          CircularProgressIndicator(
-            backgroundColor: AppColors.background,
-            valueColor: new AlwaysStoppedAnimation<Color>(AppColors.blue),
-          )
       ],
     ),
     color: AppColors.secondary,
@@ -30,20 +27,22 @@ logginButon(context, String user, String password) {
         side: BorderSide(
             color: AppColors.blue, width: 1, style: BorderStyle.solid),
         borderRadius: BorderRadius.circular(7)),
-    onPressed: () {
+    onPressed: () async {
+      statusApp.status.erros1.value = "";
 
+      if (_formKey.currentState!.validate()) {
+        statusApp.status.loading.value = true;
+        await Login(user, password);
 
+        if (ErroController.error.ok == true) {
+          statusApp.status.loading.value = false;
 
-      // if (_formKey.currentState!.validate()) {
-      //   Navigator.push(
-      //       context,
-      //       MaterialPageRoute<Null>(
-      //         builder: (BuildContext context) {
-      //           return MyApp();
-      //         },
-      //         fullscreenDialog: true,
-      //       ));
-      // } else {}
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => MyApp()),
+          );
+        }
+      } else {}
     },
   );
 }

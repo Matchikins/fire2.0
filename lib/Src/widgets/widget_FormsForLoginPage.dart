@@ -1,20 +1,20 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/status.dart';
 import 'package:flutter/material.dart';
 
 LoginForms(Controller, String labels, String hintTExt, String error,
-    IconData icons, bool isobscure, int colorIcon) {
+    IconData icons, bool isobscure, int colorIcon, bool icon2, context) {
   return TextFormField(
     controller: Controller,
+    onChanged: (String) {
+      statusApp.status.erros1.value = "";
+    },
     style: TextStyle(
       color: AppColors.textOnSecondary,
     ),
     decoration: InputDecoration(
         fillColor: Colors.black,
-        prefixIcon: Icon(
-          icons,
-          color: Color(colorIcon),
-        ),
         labelText: labels,
         labelStyle: TextStyles.titleListTile,
         hintText: hintTExt,
@@ -28,7 +28,22 @@ LoginForms(Controller, String labels, String hintTExt, String error,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(width: 2, color: AppColors.orange),
           borderRadius: BorderRadius.circular(10),
-        )),
+        ),
+        prefixIcon: Icon(icons, color: Color(colorIcon)),
+        suffixIcon: icon2
+            ? InkWell(
+                child: Icon(
+                  statusApp.status.verSenha.value
+                      ? Icons.visibility
+                      : Icons.visibility_off,
+                  color: Color(colorIcon),
+                ),
+                onTap: () {
+                  statusApp.status.verSenha.value =
+                      !statusApp.status.verSenha.value;
+                },
+              )
+            : null),
     obscureText: isobscure,
     validator: (value) {
       if (value == null || value.isEmpty) {

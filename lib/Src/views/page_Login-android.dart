@@ -1,10 +1,16 @@
-
+import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
+import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
+import 'package:cefops/Shared/themes/app_colors.dart';
+import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_ButtonLogin.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
+import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'dart:io' show Platform;
 
 import '../../res.dart';
+
 var _controler;
 final _formKey = GlobalKey<FormState>();
 final UserController = TextEditingController();
@@ -68,31 +74,35 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                         margin: EdgeInsets.only(bottom: 0.0),
                       ),
                      Container(
-                       width: MediaQuery.of(context).size.width*0.90,
-                       child:  LoginForms(
-                           UserController,
-                           "Insira Seu Usuário",
-                           "Usuário",
-                           "Por Favor informe seu  Usuário",
-                           Icons.person,
-                         false,
-                       colorIcons),
-                     ),
+                       width: MediaQuery.of(context).size.width * 0.90,
+                        child: LoginForms(
+                            UserController,
+                            "Insira Seu Usuário",
+                            "Usuário",
+                            "Por Favor informe seu  Usuário",
+                            Icons.person,
+                            false,
+                            colorIcons,
+                            false,
+                            context),
+                      ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.04,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width*0.90,
-                        child:LoginForms(
-                          passwController,
-                          "Insira Sua Senha",
-                          "Senha",
-                          "Por Favor Informe sua Senha",
-                          Icons.lock,
-                          true,
-                          colorIcons
-                        ),
-                      ),
+                          width: MediaQuery.of(context).size.width * 0.90,
+                          child: Obx(
+                            () => LoginForms(
+                                passwController,
+                                "Insira Sua Senha",
+                                "Senha",
+                                "Por Favor Informe sua Senha",
+                                Icons.lock,
+                                statusApp.status.verSenha.value,
+                                colorIcons,
+                                true,
+                                context),
+                          )),
                       Row(
                         children: [
                           SizedBox(
@@ -106,7 +116,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                                 primary: Colors.white,
                                 textStyle: const TextStyle(fontSize: 20),
                               ),
-                              onPressed: () {},
+                              onPressed: () async {},
                               child: Text(
                                 'Esqueci a Senha',
                                 textAlign: TextAlign.left,
@@ -121,12 +131,30 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                         ],
                       ),
                       SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      Center(
+                          child: Obx(() => Text(
+                                "${statusApp.status.erros1.value}",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                ),
+                              ))),
+                      SizedBox(
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       Container(
-
-                        child: logginButon(context,UserController.value.text,passwController.value.text)
-                      )
+                          child: Obx(() => statusApp.status.loading.value
+                              ? CircularProgressIndicator(
+                                  backgroundColor: AppColors.background,
+                                  valueColor: new AlwaysStoppedAnimation<Color>(
+                                      AppColors.blue),
+                                )
+                              : logginButon(
+                                  context,
+                                  _formKey,
+                                  UserController.text,
+                                  passwController.value.text)))
                     ],
                   ),
                 ),

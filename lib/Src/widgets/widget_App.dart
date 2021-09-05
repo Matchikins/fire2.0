@@ -1,4 +1,5 @@
 
+import 'package:cefops/Src/module/financeiro/interno/view/newFinanceView.dart';
 import 'package:cefops/Src/views/Page_Login.dart';
 import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
 import 'package:cefops/Src/views/page_Login-android.dart';

@@ -1,5 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/module/pdf/pdfGeneration.dart';
 import 'package:cefops/Src/widgets/background.dart';
 import 'package:flutter/material.dart';
 class RequeriViews extends StatelessWidget {
@@ -18,11 +19,20 @@ class RequeriViews extends StatelessWidget {
               children: [
 
                     Container(
-                      color: Colors.white ,
-                      width: size.width*0.4,
-                      height: size.height*0.04,
-                      child: Center(child: Text("Comprovante de Matrícula",style: TextStyles.titleRegular,)),
+                      color: Colors.white,
+                  width: size.width * 0.6,
+                  height: size.height * 0.06,
+                  child: Center(
+                      child: TextButton(
+                    child: Text(
+                      "Comprovante de Matrícula",
+                      style: TextStyles.titleRegular,
                     ),
+                    onPressed: () {
+                      pdfCreate("Oi teste de GEração", "Comprovante_Matricula");
+                    },
+                  )),
+                ),
 
 
               ],
