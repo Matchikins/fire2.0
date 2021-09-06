@@ -1,11 +1,11 @@
 import 'dart:io';
+import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
 import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
 import 'package:cefops/Src/views/page_Home.dart';
-import 'package:cefops/Src/views/studants/page_Course.dart';
-import 'package:cefops/Src/widgets/widget_Drawer.dart';
+
 import 'package:cefops/Src/widgets/widget_NavegatorRoutes.dart';
 
 import 'package:cefops/res.dart';
@@ -15,7 +15,7 @@ import 'package:get/get_utils/src/platform/platform.dart';
 
 
 bool acessgaranted = true;
-bool studantPage=true;
+bool studantPage=false;
 final ismobiles=GetPlatform.isMobile;
 void main() => runApp(MyApp());
 
@@ -79,18 +79,19 @@ class _MyHomePageState extends State<MyHomePage> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.04,
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: AppColors.primary
+                ),
+                  accountName: Text("${UserController.user.name} ${UserController.user.lastName}"),
+                  accountEmail: Text("${UserController.user.email}"),
+                  currentAccountPicture:Center(child:
+                  CircleAvatar(child: Image.network("${UserController.user.photo}"),),),
               ),
-              Center(
-                child: Text("Menu",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: MediaQuery.of(context).size.height * 0.04)),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.04,
-              ),
+              Divider(color: AppColors.background,),
+
+
+
                 ListTile(
                 tileColor: Colors.white,
                 leading: Icon(

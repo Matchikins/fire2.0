@@ -7,4 +7,8 @@ class statusApp extends GetxController {
   var senhaIncorreta = false.obs;
   var erros1 = "".obs;
   var verSenha = true.obs;
+  var user = "".obs;
+  var password = "".obs;
+  var closeDialog=1.obs;
+  var devendo=false.obs;
 }

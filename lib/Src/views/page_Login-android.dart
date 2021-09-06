@@ -2,7 +2,7 @@ import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/widgets/widget_ButtonLogin.dart';
+import 'package:cefops/Src/views/Page_Login.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +46,8 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -150,11 +152,47 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                                   valueColor: new AlwaysStoppedAnimation<Color>(
                                       AppColors.blue),
                                 )
-                              : logginButon(
-                                  context,
-                                  _formKey,
-                                  UserController.text,
-                                  passwController.value.text)))
+                              : FlatButton(
+                            height: size.height * 0.07,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      fontSize: size.height * 0.03, fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                            color: AppColors.secondary,
+                            textColor: AppColors.textOnSecondary,
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: AppColors.blue, width: 1, style: BorderStyle.solid),
+                                borderRadius: BorderRadius.circular(7)),
+                            onPressed: () async {
+
+
+
+                              if (_formKey.currentState!.validate()) {
+                                statusApp.status.loading.value = true;
+
+                                  await Login(userController.text.toString(), passwController.toString());
+
+
+
+                                if (ErroController.error.ok == true) {
+                                  statusApp.status.loading.value = false;
+
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => MyApp()),
+                                  );
+                                }
+                              } else {}
+                            },
+                          )
+                          )
+                      )
                     ],
                   ),
                 ),

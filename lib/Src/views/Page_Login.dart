@@ -1,11 +1,7 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
-import 'package:cefops/Shared/Security/Services/USerServices.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/views/page_Home.dart';
-import 'package:cefops/Src/widgets/widget_App.dart';
-import 'package:cefops/Src/widgets/widget_ButtonLogin.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:cefops/res.dart';
@@ -16,7 +12,7 @@ import 'package:get/get.dart';
 
 var _controler;
 final _formKey = GlobalKey<FormState>();
-final UserController = TextEditingController();
+final userController = TextEditingController();
 final passwController = TextEditingController();
 String os = Platform.operatingSystem;
 bool android = false;
@@ -37,18 +33,22 @@ class _loginPageState extends State<loginPage>
 
     super.initState();
     _controller = AnimationController(vsync: this);
-
+    passwController.addListener(() {
+    });
+    userController.addListener(() { });
   }
 
   @override
   void dispose() {
-    UserController.dispose();
+    userController.dispose();
     passwController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -89,7 +89,7 @@ class _loginPageState extends State<loginPage>
                       Container(
                         width: MediaQuery.of(context).size.width / 3,
                         child: LoginForms(
-                            UserController,
+                            userController,
                             "Insira Seu Usuário",
                             "Usuário",
                             "Por Favor informe seu  Usuário",
@@ -130,7 +130,6 @@ class _loginPageState extends State<loginPage>
                                 textStyle: const TextStyle(fontSize: 20),
                               ),
                               onPressed: () async{
-                                await Login("Emison", "1234");
                                 if(    ErroController.error.ok==true){
                                   Navigator.push(
                                     context,
@@ -175,11 +174,48 @@ class _loginPageState extends State<loginPage>
                                   valueColor: new AlwaysStoppedAnimation<Color>(
                                       AppColors.blue),
                                 )
-                              : logginButon(
-                                  context,
-                                  _formKey,
-                                  UserController.text,
-                                  passwController.value.text)))
+                              : FlatButton(
+                            height: size.height * 0.07,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      fontSize: size.height * 0.03, fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                            color: AppColors.secondary,
+                            textColor: AppColors.textOnSecondary,
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: AppColors.blue, width: 1, style: BorderStyle.solid),
+                                borderRadius: BorderRadius.circular(7)),
+                            onPressed: () async {
+
+
+
+                              if (_formKey.currentState!.validate()) {
+                                statusApp.status.loading.value = true;
+
+
+                                await Login(userController.text, passwController.text.toString());
+
+
+
+                                if (ErroController.error.ok == true) {
+                                  statusApp.status.loading.value = false;
+
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => MyApp()),
+                                  );
+                                }
+                              } else {}
+                            },
+                          )
+                          )
+                      ),
                     ],
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Src/module/pdf/http/itemmodel.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -78,14 +79,41 @@ class _pdfHomeState extends State<pdfHome> {
     isloading = false;
 
     var timeformat = DateFormat(" dd/MM/yyyy  hh:mm").format(dia);
+    var timeformat2 = DateFormat(" dd/MM/yyyy  ").format(dia);
+
     PdfDocument document = PdfDocument();
     final page = document.pages.add();
 
-    page.graphics.drawString("${textControl.text.toString()}",
-        PdfStandardFont(PdfFontFamily.helvetica, 22));
-
-    page.graphics.drawImage(PdfBitmap(await _readImageData("contosirma.jpg")),
-        Rect.fromLTWH(0, 100, 300, 450));
+    page.graphics.drawString("Escola De Enfermagem Almeida Santos Itaquera",
+        PdfStandardFont(PdfFontFamily.timesRoman, 14),
+        bounds: Rect.fromLTWH(0, 40, 400, 90),);
+    page.graphics.drawString("ATESTADO DE MATRÍCULA",
+        PdfStandardFont(PdfFontFamily.timesRoman, 12),
+        bounds: Rect.fromLTWH(0, 80, 400, 120),);
+    page.graphics.drawString("ATESTO, atendendo o requerimento do(a) interessado(a),"
+        " que ${UserController.user.name} ${UserController.user.lastName},inscrito(a) no  ",
+      PdfStandardFont(PdfFontFamily.timesRoman, 12),
+      bounds: Rect.fromLTWH(0, 120, 600, 120),);
+    page.graphics.drawString("CPF sob o nº ${UserController.user.id.toString()}, é aluno(a) regularmente matriculado(a) no Curso de (informar),",
+      PdfStandardFont(PdfFontFamily.timesRoman, 12),
+      bounds: Rect.fromLTWH(0, 138, 600, 120),);
+    page.graphics.drawString("ministrado pelo Departamento de (informar), cursando o (informar) semestre no período (noturno),",
+      PdfStandardFont(PdfFontFamily.timesRoman, 12),
+      bounds: Rect.fromLTWH(0, 156, 600, 120),);
+    page.graphics.drawString("devendo cumprir a carga horária total de (informar) horas, no período de (data) a (data).",
+      PdfStandardFont(PdfFontFamily.timesRoman, 12),
+      bounds: Rect.fromLTWH(0, 174, 600, 120),);
+    page.graphics.drawString("Informo ainda que a Escola De Enfermagem Almeida Santos Itaquera, inscrita no CNPJ",
+      PdfStandardFont(PdfFontFamily.timesRoman, 12),
+      bounds: Rect.fromLTWH(0, 192, 600, 120),);
+    page.graphics.drawString("sob o nº 08.347.198/0001, está situada na Rua Américo Salvador Novelli, 256 - Itaquera, São Paulo.",
+      PdfStandardFont(PdfFontFamily.timesRoman, 12),
+      bounds: Rect.fromLTWH(0, 210, 600, 120),);
+    page.graphics.drawString("São Paulo, ${timeformat2}. ",
+      PdfStandardFont(PdfFontFamily.timesRoman, 12),
+      bounds: Rect.fromLTWH(0, 228, 600, 120),);
+    // page.graphics.drawImage(PdfBitmap(await _readImageData("contosirma.jpg")),
+    //     Rect.fromLTWH(0, 100, 300, 450));
 
     // PdfGrid grid= PdfGrid();
     // grid.style= PdfGridStyle(

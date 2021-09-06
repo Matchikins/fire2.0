@@ -1,7 +1,10 @@
+import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
+import 'package:cefops/Src/widgets/widget_Alert.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +29,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     futurePost = FetchPosts(context);
-    print("oii");
+if (statusApp.status.closeDialog==1) {
+      if (statusApp.status.devendo==true) {
+        delay(context);
+      }  
+}  
+
     super.initState();
 
 
@@ -49,6 +57,7 @@ class _HomePageState extends State<HomePage> {
         ],
     )
       ),
+
 
       child: Center(
 
@@ -103,7 +112,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
+
+
+                  return Text("${snapshot.error}");
                   }
 
                   // By default, show a loading spinner.
@@ -129,3 +140,9 @@ verifyMobile( ){
       return heightforMobile=0.6;
     }
 }
+Future delay(context) async{
+  await new Future.delayed(new Duration(seconds: 5), ()
+  {
+    showAlertDialog(context);
+  });
+  }
