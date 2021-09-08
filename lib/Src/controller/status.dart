@@ -11,4 +11,10 @@ class statusApp extends GetxController {
   var password = "".obs;
   var closeDialog=1.obs;
   var devendo=false.obs;
+  var  selectedIndex = 0.obs;
+  var title="Início".obs;
+  var adm=false.obs;
+  var aluno=false.obs;
+  var secretaria=false.obs;
+  var financeiro=false.obs;
 }

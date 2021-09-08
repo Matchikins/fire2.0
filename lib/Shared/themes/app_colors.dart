@@ -17,6 +17,11 @@ abstract class AppColors{
   static final textOnSecondary =Color(0xff000000);
   static final background =Color(0xffffffff);
   static final heading =Color(0xff465e89);
+  static final menuColor=Color(0xff15355C);
+  static final iconColor=Color(0xffFD7E14);
+
+
+
 
 
 

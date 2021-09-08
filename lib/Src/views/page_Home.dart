@@ -1,6 +1,7 @@
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/navigatorController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
@@ -29,6 +30,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     futurePost = FetchPosts(context);
+    print("Carregando a tomada de descisão");
+    MenuDescicion(UserController.user.role.first);
+
 if (statusApp.status.closeDialog==1) {
       if (statusApp.status.devendo==true) {
         delay(context);

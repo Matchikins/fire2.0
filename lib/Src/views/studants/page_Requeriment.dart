@@ -1,8 +1,10 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/module/pdf/pdfGeneration.dart';
+import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/module/pdf/ComprovanteMatriculaPDFModel.dart';
 import 'package:cefops/Src/widgets/background.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 class RequeriViews extends StatelessWidget {
   const RequeriViews({Key? key}) : super(key: key);
 
@@ -22,16 +24,24 @@ class RequeriViews extends StatelessWidget {
                       color: Colors.white,
                   width: size.width * 0.6,
                   height: size.height * 0.06,
-                  child: Center(
-                      child: TextButton(
-                    child: Text(
-                      "Comprovante de Matrícula",
-                      style: TextStyles.titleRegular,
-                    ),
-                    onPressed: () {
-                      pdfCreate("Oi teste de GEração", "Comprovante_Matricula");
-                    },
-                  )),
+                  child: Obx(
+
+                    () => Center(
+                        child: TextButton(
+                      child:statusApp.status.loading.value ?
+                      CircularProgressIndicator(
+                        color: Colors.red,
+                        backgroundColor: Colors.amber,
+                      ): Text(
+                        "Comprovante de Matrícula",
+                        style: TextStyles.titleRegular,
+                      ),
+                      onPressed: () {
+                        statusApp.status.loading.value=true;
+                        ComprovMatricula();
+                      },
+                    )),
+                  ),
                 ),
 
 

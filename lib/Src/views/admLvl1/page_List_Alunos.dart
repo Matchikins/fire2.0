@@ -2,7 +2,6 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/model/AlunoModel.dart';
 import 'package:cefops/Src/repository/AlunosRepository.dart';
-import 'package:cefops/Src/widgets/widget_GetAlunos.dart';
 import 'package:flutter/material.dart';
 
 class ListUSers extends StatefulWidget {
@@ -16,7 +15,7 @@ class _ListUSersState extends State<ListUSers> {
   late Future<AlunoModel> futureAluno;
   @override
   void initState() {
-    GetAlunos() ;
+
     print("oii");
     super.initState();
 

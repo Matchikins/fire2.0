@@ -8,6 +8,7 @@ import 'package:cefops/Src/views/admLvl1/page_SiginStudant.dart';
 
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
 import 'package:websafe_platform/websafe_platform.dart';
@@ -17,7 +18,7 @@ var websafePlatform = WebsafePlatform();
 bool isIos = websafePlatform.isIOS();
 bool isWeb = websafePlatform.isWeb();
 bool isAndroid=websafePlatform.isAndroid();
-bool acessgaranted=true;
+
 final testt=GetPlatform.isMobile;
 final windows=GetPlatform.isDesktop;
 
@@ -30,6 +31,11 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return GetMaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [const Locale('pt', 'BR')],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Georgia',
@@ -74,3 +80,4 @@ class AppWidget extends StatelessWidget {
 
   } catch(e){return loginPage();}
 }
+
