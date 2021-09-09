@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
-import 'package:cefops/Src/model/AlunoModel.dart';
+import 'package:cefops/Shared/urls.dart';
+import 'package:cefops/Src/model/aluno/AlunoModel.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<AlunoModel>> GetAllAlunos()async{
   final response=await http.get(
-    Uri.parse("http://10.0.1.250:8810/api/v1/alunos"),
+    Uri.parse("${urls.app}/alunos"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer ${UserController.user.token}',
@@ -16,11 +17,10 @@ Future<List<AlunoModel>> GetAllAlunos()async{
   );
   final data = utf8.decode(response.bodyBytes);
   var decodeData = jsonDecode(data);
-  print("********************");
-print(response.statusCode);
-  print("********************");
+
   if (response.statusCode == 200) {
     ErroController.error.ok.value=true;
+
     List jsonResponse = decodeData;
 
     return jsonResponse.map((aluno) => AlunoModel.fromJson(aluno)).toList();
@@ -43,7 +43,7 @@ print(response.statusCode);
 }
 Future<AlunoModel> createAluno(int id,String name,String lastName,int Cpf,String email,int grupe,) async {
   final response = await http.post(
-    Uri.parse('http://localhost:8810/api/v1/alunos'),
+    Uri.parse('${urls.app}/alunos'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer ${UserController.user.token}',

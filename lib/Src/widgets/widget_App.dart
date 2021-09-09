@@ -1,6 +1,8 @@
 
 import 'package:cefops/Src/module/financeiro/interno/view/newFinanceView.dart';
 import 'package:cefops/Src/views/Page_Login.dart';
+import 'package:cefops/Src/views/admLvl1/HomePageEmployes.dart';
+import 'package:cefops/Src/views/admLvl1/page_List_Alunos.dart';
 import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
 import 'package:cefops/Src/views/page_Login-android.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
@@ -35,7 +37,12 @@ class AppWidget extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
-      supportedLocales: [const Locale('pt', 'BR')],
+      supportedLocales: [
+        const Locale('pt', 'BR'),
+
+      ],
+      locale: const Locale('zh'),
+
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Georgia',
@@ -57,11 +64,21 @@ class AppWidget extends StatelessWidget {
             name: "/navegation",
             page: ()=> MyApp()),
         GetPage(
-            name: "/siginStudant",
+            name: "/cadastrarAluno",
             page: ()=> SiginStudant()),
         GetPage(
             name: "/editNews",
             page: ()=> EditNews()),
+        GetPage(
+            name: "/home",
+            page: ()=> EmployeesPage()),
+        GetPage(
+            name: "/ListAlunos",
+            page: ()=> ListUSers()),
+        GetPage(
+            name: "/home",
+            page: ()=> EmployeesPage()),
+
 
 
       ],

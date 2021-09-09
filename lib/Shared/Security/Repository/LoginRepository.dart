@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
+import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Shared/Security/Model/ErrorModel.dart';
 import 'package:cefops/Shared/Security/Model/LoginModel.dart';
@@ -13,7 +14,7 @@ import 'package:http/http.dart' as http;
 String token="";
 Future<LoginModel> Login(String username,String password) async {
   http.Response response = await http.post(
-    Uri.parse('http://10.0.1.250:8810/auth/signin'),
+    Uri.parse('${urls.auth}/signin'),
 
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
