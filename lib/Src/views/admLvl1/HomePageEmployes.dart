@@ -32,6 +32,7 @@ class _EmployeesPageState extends State<EmployeesPage> {
 
     return Scaffold(
       body: Container(
+        height: size.height*0.9,
           child: FutureBuilder(
               future: GetAllRequeriment(),
               builder: (BuildContext context,
@@ -39,41 +40,44 @@ class _EmployeesPageState extends State<EmployeesPage> {
                 print(snapshot.error);
 
                 if (mostrar == true) {
-                  return Row(
-                    children: [
+                  return Container(
+                    height: size.height*0.04,
+                    child: Row(
+                      children: [
 
-                      Container(
-                        margin: EdgeInsets.only(left: size.width / 5),
-                        width: size.width / 2,
-                        height: size.height*0.01,
-                        alignment: Alignment.topCenter,
-                        child: LinearProgressIndicator(
-                          backgroundColor: AppColors.secondary,
-                          color: AppColors.primary,
-                          value: 0.01,
-                          semanticsValue: "1555",
+                        Container(
+                          margin: EdgeInsets.only(left: size.width / 5),
+                          width: size.width / 2,
+                          alignment: Alignment.topCenter,
+                          child: LinearProgressIndicator(
+                            backgroundColor: AppColors.secondary,
+                            color: AppColors.primary,
+                            value: 0.01,
+                            semanticsValue: "1555",
+                          ),
                         ),
-                      ),
-                            Container(
-                              margin: EdgeInsets.only(left: size.width * 0.09),
-                              width: size.width / 6,
-                              height: size.height*0.3,
-                              child: Localizations.override(
-                                context: context,
-                                locale: Locale('pt'),
-                                child: SfCalendar(
-                                  view: CalendarView.month,
+                              Container(
+                                margin: EdgeInsets.only(left: size.width * 0.09),
+                                width: size.width / 6,
+                                height: size.height*0.3,
+                                child: Localizations.override(
+                                  context: context,
+                                  locale: Locale('pt'),
+                                  child: SfCalendar(
+                                    view: CalendarView.month,
+                                  ),
                                 ),
                               ),
-                            ),
 
-                    ],
+                      ],
+                    ),
                   );
                 } else if (snapshot.hasData) {
                   return Container(
+                    height: size.height/5,
                     child: Row(
                       children: [
-                        GetStudants()
+                        GetRequeriments(snapshot)
                       ],
                     )
                   );

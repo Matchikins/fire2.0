@@ -6,6 +6,9 @@ import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 import 'package:flutter/material.dart';
 
  GetRequeriments(snapshot) {
+   print("********");
+   print(snapshot);
+   print("********");
  return ListView.builder(
 
     itemCount: snapshot.data!.length,
@@ -37,5 +40,7 @@ import 'package:flutter/material.dart';
 
       );
     }
+
 );
+
 }
