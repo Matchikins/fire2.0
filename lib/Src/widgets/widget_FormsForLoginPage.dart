@@ -2,14 +2,17 @@ import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:flutter/material.dart';
-
-LoginForms(Controller, String labels, String hintTExt, String error,
-    IconData icons, bool isobscure, int colorIcon, bool icon2, context) {
+var text="";
+LoginForms(Controlle, String labels, String hintTExt, String error,
+    IconData icons, bool isobscure,  bool icon2, context,) {
   return TextFormField(
-    controller: Controller,
+
+
+
     onChanged: (String) {
       statusApp.status.erros1.value = "";
     },
+
     style: TextStyle(
       color: AppColors.textOnSecondary,
     ),
@@ -29,14 +32,14 @@ LoginForms(Controller, String labels, String hintTExt, String error,
           borderSide: BorderSide(width: 2, color: AppColors.orange),
           borderRadius: BorderRadius.circular(10),
         ),
-        prefixIcon: Icon(icons, color: Color(colorIcon)),
+        prefixIcon: Icon(icons, color: AppColors.primary),
         suffixIcon: icon2
             ? InkWell(
                 child: Icon(
                   statusApp.status.verSenha.value
                       ? Icons.visibility
                       : Icons.visibility_off,
-                  color: Color(colorIcon),
+                  color: AppColors.primary,
                 ),
                 onTap: () {
                   statusApp.status.verSenha.value =

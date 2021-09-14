@@ -1,15 +1,15 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
-import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
+import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/views/Page_Login.dart';
+import 'package:cefops/Src/views/Security/Page_Login.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'dart:io' show Platform;
 
-import '../../res.dart';
+import '../../../res.dart';
 
 var _controler;
 final _formKey = GlobalKey<FormState>();
@@ -84,7 +84,6 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                             "Por Favor informe seu  Usuário",
                             Icons.person,
                             false,
-                            colorIcons,
                             false,
                             context),
                       ),
@@ -101,7 +100,7 @@ class _loginPage_MobileState extends State<loginPage_Mobile>
                                 "Por Favor Informe sua Senha",
                                 Icons.lock,
                                 statusApp.status.verSenha.value,
-                                colorIcons,
+
                                 true,
                                 context),
                           )),

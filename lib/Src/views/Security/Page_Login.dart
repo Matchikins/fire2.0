@@ -1,5 +1,5 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
-import 'package:cefops/Shared/Security/Repository/LoginRepository.dart';
+import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
@@ -95,7 +95,7 @@ class _loginPageState extends State<loginPage>
                             "Por Favor informe seu  Usuário",
                             Icons.person,
                             false,
-                            colorIcons,
+
                             false,
                             context),
                       ),
@@ -112,7 +112,7 @@ class _loginPageState extends State<loginPage>
                                 "Por Favor Informe sua Senha",
                                 Icons.lock,
                                 statusApp.status.verSenha.value,
-                                colorIcons,
+
                                 true,
                                 context),
                           )),

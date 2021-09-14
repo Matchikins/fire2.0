@@ -1,10 +1,11 @@
 
 import 'package:cefops/Src/module/financeiro/interno/view/newFinanceView.dart';
-import 'package:cefops/Src/views/Page_Login.dart';
+import 'package:cefops/Src/views/Security/Page_Login.dart';
+import 'package:cefops/Src/views/Security/Singup.dart';
 import 'package:cefops/Src/views/admLvl1/HomePageEmployes.dart';
 import 'package:cefops/Src/views/admLvl1/page_List_Alunos.dart';
 import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
-import 'package:cefops/Src/views/page_Login-android.dart';
+import 'package:cefops/Src/views/Security/page_Login-android.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
 import 'package:cefops/Src/views/admLvl1/page_SiginStudant.dart';
 
@@ -55,7 +56,7 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
             name: "/",
-            page: ()=> _viewDetect()
+            page: ()=> Singup()
         ),
 
         GetPage(

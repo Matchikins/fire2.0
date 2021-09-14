@@ -11,28 +11,32 @@ String signUpModelToJson(SignUpModel data) => json.encode(data.toJson());
 
 class SignUpModel {
   SignUpModel({
-    required this.email,
-    required this.fullName,
-    required this.password,
     required this.username,
+    required this.password,
+    required this.email,
+    required this.fristName,
+    required this.lastName,
   });
 
-  String email;
-  String fullName;
-  String password;
   String username;
+  String password;
+  String email;
+  String fristName;
+  String lastName;
 
   factory SignUpModel.fromJson(Map<String, dynamic> json) => SignUpModel(
-    email: json["email"],
-    fullName: json["fullName"],
-    password: json["password"],
     username: json["username"],
+    password: json["password"],
+    email: json["email"],
+    fristName: json["fristName"],
+    lastName: json["lastName"],
   );
 
   Map<String, dynamic> toJson() => {
-    "email": email,
-    "fullName": fullName,
-    "password": password,
     "username": username,
+    "password": password,
+    "email": email,
+    "fristName": fristName,
+    "lastName": lastName,
   };
 }
