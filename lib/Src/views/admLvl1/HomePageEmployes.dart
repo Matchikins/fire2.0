@@ -1,12 +1,10 @@
-import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
-import 'package:cefops/Src/controller/navigatorController.dart';
-import 'package:cefops/Src/model/adm/RequerimentModel.dart';
-import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
+import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/widgets/widget_Alert.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
 import 'package:cefops/Src/widgets/widget_GetStudants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class EmployeesPage extends StatefulWidget {
@@ -17,78 +15,121 @@ class EmployeesPage extends StatefulWidget {
 }
 
 class _EmployeesPageState extends State<EmployeesPage> {
-  late Future<RequerimentModel> futureRequerimt;
-  var mostrar = true;
-
-  @override
-  void initState() {
-    MenuDescicion(UserController.user.role.first);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: Container(
-        height: size.height*0.9,
-          child: FutureBuilder(
-              future: GetAllRequeriment(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<RequerimentModel>> snapshot) {
-                print(snapshot.error);
-
-                if (mostrar == true) {
-                  return Container(
-                    height: size.height*0.04,
-                    child: Row(
+        padding: EdgeInsets.all(10),
+        height: size.height,
+        child: Column(
+          children: [
+            Container(
+              width: size.width / 2,
+              height: size.height * 0.01,
+              margin: EdgeInsets.only(left: 60),
+              child: LinearProgressIndicator(
+                value: 0.01,
+                backgroundColor: AppColors.secondary,
+                color: AppColors.primary,
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            Container(
+              width: size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: size.width * 0.24,
+                    color: Colors.white70,
+                    height: size.height * 0.85,
+                    child: Column(
                       children: [
-
-                        Container(
-                          margin: EdgeInsets.only(left: size.width / 5),
-                          width: size.width / 2,
-                          alignment: Alignment.topCenter,
-                          child: LinearProgressIndicator(
-                            backgroundColor: AppColors.secondary,
-                            color: AppColors.primary,
-                            value: 0.01,
-                            semanticsValue: "1555",
+                        Center(
+                          child: Text(
+                            "Requerimentos Aberto",
+                            style: TextStyles.titleListTile,
                           ),
                         ),
-                              Container(
-                                margin: EdgeInsets.only(left: size.width * 0.09),
-                                width: size.width / 6,
-                                height: size.height*0.3,
-                                child: Localizations.override(
-                                  context: context,
-                                  locale: Locale('pt'),
-                                  child: SfCalendar(
-                                    view: CalendarView.month,
-                                  ),
-                                ),
-                              ),
-
+                        Container(
+                          height: size.height / 2,
+                          child: GetRequeriments(),
+                        ),
                       ],
                     ),
-                  );
-                } else if (snapshot.hasData) {
-                  return Container(
-                    height: size.height/5,
-                    child: Row(
+                  ),
+                  Container(
+                    width: size.width * 0.24,
+                    color: Colors.white70,
+                    height: size.height * 0.85,
+                    child: Column(
                       children: [
-                        GetRequeriments(snapshot)
+                        Center(
+                          child: Text(
+                            "Requerimentos Em andamento",
+                            style: TextStyles.titleListTile,
+                          ),
+                        ),
+                        Container(
+                          height: size.height / 2,
+                          child: GetRequerimentsAndando(),
+                        ),
                       ],
-                    )
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(
-                        color: AppColors.blue,
-                        backgroundColor: AppColors.orange),
-                  );
-                }
-              })),
+                    ),
+                  ),
+                  Container(
+                    width: size.width * 0.24,
+                    color: Colors.white70,
+                    height: size.height * 0.85,
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Text(
+                            "Requerimentos Concluídos",
+                            style: TextStyles.titleListTile,
+                          ),
+                        ),
+                        Container(
+                          height: size.height*0.8,
+                          child: GetStudants(),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: size.height*0.8,
+                    width: size.width / 5,
+                    child: Column(
+                      children: [
+                        Localizations.override(
+                          context: context,
+                          locale: Locale('pt'),
+                          child: SfCalendar(
+                            view: CalendarView.month,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          var now=DateTime.now();
+          print(now);
+          // Add your onPressed code here!
+        },
+        child: const Icon(Icons.add),
+        backgroundColor: AppColors.primary,
+      ),
     );
   }
 }
