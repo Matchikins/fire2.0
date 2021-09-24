@@ -9,7 +9,6 @@ showAlertDialog(BuildContext context) {
     child: Text("Cancelar"),
     onPressed:  () {
       Get.to(MyApp());
-      statusApp.status.closeDialog.value=2;
 
     },
   );

@@ -14,26 +14,42 @@ class RequerimentModel {
     required this.id,
     required this.aluno,
     required this.tipo,
+    required this.status,
     required this.entregue,
+    required this.abertoEm,
+    required this.concluido,
+    required this.responsavel,
   });
 
   int id;
   Aluno aluno;
   Tipo tipo;
+  String status;
   DateTime entregue;
+  DateTime abertoEm;
+  bool concluido;
+  String responsavel;
 
   factory RequerimentModel.fromJson(Map<String, dynamic> json) => RequerimentModel(
     id: json["id"],
     aluno: Aluno.fromJson(json["aluno"]),
     tipo: Tipo.fromJson(json["tipo"]),
+    status: json["status"],
     entregue: DateTime.parse(json["entregue"]),
+    abertoEm: DateTime.parse(json["abertoEm"]),
+    concluido: json["concluido"],
+    responsavel: json["responsavel"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "aluno": aluno.toJson(),
     "tipo": tipo.toJson(),
+    "status": status,
     "entregue": "${entregue.year.toString().padLeft(4, '0')}-${entregue.month.toString().padLeft(2, '0')}-${entregue.day.toString().padLeft(2, '0')}",
+    "abertoEm": abertoEm.toIso8601String(),
+    "concluido": concluido,
+    "responsavel": responsavel,
   };
 }
 

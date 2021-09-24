@@ -1,16 +1,18 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
+import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/views/Security/Singup.dart';
 import 'package:cefops/Src/widgets/widget_FormsForLoginPage.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:cefops/res.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
-
 import 'package:get/get.dart';
 
-var _controler;
+
+
 final _formKey = GlobalKey<FormState>();
 final userController = TextEditingController();
 final passwController = TextEditingController();
@@ -27,15 +29,12 @@ class _loginPageState extends State<loginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
-
   @override
   void initState() {
-
     super.initState();
     _controller = AnimationController(vsync: this);
-    passwController.addListener(() {
-    });
-    userController.addListener(() { });
+    passwController.addListener(() {});
+    userController.addListener(() {});
   }
 
   @override
@@ -48,10 +47,8 @@ class _loginPageState extends State<loginPage>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       theme:
           ThemeData(brightness: Brightness.dark, primaryColor: Colors.blueGrey),
       home: Scaffold(
@@ -60,17 +57,12 @@ class _loginPageState extends State<loginPage>
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("assets/images/enfermagem.jpg"),
-                    fit: BoxFit.cover
-                )
-
-            ),
+                    fit: BoxFit.cover)),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Container(
-
               child: Center(
                   child: Container(
-
                 color: Colors.white,
                 width: MediaQuery.of(context).size.width * 0.4,
                 height: MediaQuery.of(context).size.height * 0.7,
@@ -79,7 +71,6 @@ class _loginPageState extends State<loginPage>
                   child: Column(
                     children: [
                       Container(
-
                         height: MediaQuery.of(context).size.height / 4,
                         width: MediaQuery.of(context).size.width / 4,
                         child: Image.asset(
@@ -95,7 +86,6 @@ class _loginPageState extends State<loginPage>
                             "Por Favor informe seu  Usuário",
                             Icons.person,
                             false,
-
                             false,
                             context),
                       ),
@@ -112,7 +102,6 @@ class _loginPageState extends State<loginPage>
                                 "Por Favor Informe sua Senha",
                                 Icons.lock,
                                 statusApp.status.verSenha.value,
-
                                 true,
                                 context),
                           )),
@@ -122,27 +111,24 @@ class _loginPageState extends State<loginPage>
                             width: MediaQuery.of(context).size.width * 0.25,
                           ),
                           Expanded(
-
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(16.0),
                                 primary: Colors.white,
                                 textStyle: const TextStyle(fontSize: 20),
                               ),
-                              onPressed: () async{
-                                if(    ErroController.error.ok==true){
+                              onPressed: () async {
+
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) =>  MyApp()),
+                                    MaterialPageRoute(
+                                        builder: (context) => Singup()),
                                   );
-
-
-                                }
-
 
                               },
                               child: Text(
-                                'Esqueci a Senha',overflow: TextOverflow.visible,
+                                'Esqueci a Senha',
+                                overflow: TextOverflow.visible,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.black,
@@ -175,47 +161,41 @@ class _loginPageState extends State<loginPage>
                                       AppColors.blue),
                                 )
                               : FlatButton(
-                            height: size.height * 0.07,
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Login',
-                                  style: TextStyle(
-                                      fontSize: size.height * 0.03, fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            ),
-                            color: AppColors.secondary,
-                            textColor: AppColors.textOnSecondary,
-                            shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                    color: AppColors.blue, width: 1, style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(7)),
-                            onPressed: () async {
+                                  height: size.height * 0.07,
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        'Login',
+                                        style: TextStyle(
+                                            fontSize: size.height * 0.03,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ],
+                                  ),
+                                  color: AppColors.secondary,
+                                  textColor: AppColors.textOnSecondary,
+                                  shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          color: AppColors.blue,
+                                          width: 1,
+                                          style: BorderStyle.solid),
+                                      borderRadius: BorderRadius.circular(7)),
+                                  onPressed: () async {
+                                    if (_formKey.currentState!.validate()) {
+                                      statusApp.status.loading.value = true;
+                                      await Login("adm", "1234");
+                                      if (ErroController.error.ok == true) {
+                                        statusApp.status.loading.value = false;
 
-
-
-                              if (_formKey.currentState!.validate()) {
-                                statusApp.status.loading.value = true;
-
-
-                                await Login(userController.text, passwController.text.toString());
-
-
-
-                                if (ErroController.error.ok == true) {
-                                  statusApp.status.loading.value = false;
-
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => MyApp()),
-                                  );
-                                }
-                              } else {}
-                            },
-                          )
-                          )
-                      ),
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => MyApp()),
+                                        );
+                                      }
+                                    } else {}
+                                  },
+                                ))),
                     ],
                   ),
                 ),
@@ -224,8 +204,6 @@ class _loginPageState extends State<loginPage>
           );
         }),
       ),
-
     );
-
   }
 }
