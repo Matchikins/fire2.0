@@ -15,7 +15,6 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer ${UserController.user.token}',
-
     },
   );
 
@@ -74,11 +73,37 @@ Future<RequerimentModel> CeeateRequeriment() async {
     throw Exception('conflito de usuario');
 
   }
+  else if(response.statusCode==500) {
+
+    throw Exception('Seção Expirada');
+
+  }
   else if(response.statusCode==400) {
 
     throw Exception('falha na requisição');
 
   }else{
     throw Exception("erro ao criar usuario");
+  }
+}
+Future<RequerimentModel> updateReq(String title) async {
+  final response = await http.put(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'title': title,
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return RequerimentModel.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to update album.');
   }
 }

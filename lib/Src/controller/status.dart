@@ -17,4 +17,7 @@ class statusApp extends GetxController {
   var aluno=false.obs;
   var secretaria=false.obs;
   var financeiro=false.obs;
+  var  requerimentosAberto = 0.obs;
+  var  requerimentosAndando = 0.obs;
+  var  requerimentosConcluido = 0.obs;
 }

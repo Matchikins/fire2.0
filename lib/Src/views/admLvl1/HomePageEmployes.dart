@@ -1,10 +1,12 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_Alert.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
 import 'package:cefops/Src/widgets/widget_GetStudants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class EmployeesPage extends StatefulWidget {
@@ -13,7 +15,7 @@ class EmployeesPage extends StatefulWidget {
   @override
   _EmployeesPageState createState() => _EmployeesPageState();
 }
-
+int aberto=statusApp.status.requerimentosAberto.value;
 class _EmployeesPageState extends State<EmployeesPage> {
   @override
   Widget build(BuildContext context) {
@@ -49,8 +51,8 @@ class _EmployeesPageState extends State<EmployeesPage> {
                     child: Column(
                       children: [
                         Center(
-                          child: Text(
-                            "Requerimentos Aberto",
+                          child:  Text(
+                            "Requerimentos Aberto ${statusApp.status.requerimentosAberto}",
                             style: TextStyles.titleListTile,
                           ),
                         ),
@@ -94,7 +96,7 @@ class _EmployeesPageState extends State<EmployeesPage> {
                         ),
                         Container(
                           height: size.height*0.8,
-                          child: GetStudants(),
+                          child: GetRequerimentsConcluido(),
                         )
                       ],
                     ),

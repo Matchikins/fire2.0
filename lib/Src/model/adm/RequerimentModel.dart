@@ -1,8 +1,4 @@
-// To parse this JSON data, do
-//
-//     final requerimentModel = requerimentModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<RequerimentModel> requerimentModelFromJson(String str) => List<RequerimentModel>.from(json.decode(str).map((x) => RequerimentModel.fromJson(x)));
@@ -97,22 +93,26 @@ class Tipo {
   Tipo({
     required this.id,
     required this.name,
+    required this.grupo,
     required this.diasPentregar,
   });
 
   int id;
   String name;
+  String grupo;
   int diasPentregar;
 
   factory Tipo.fromJson(Map<String, dynamic> json) => Tipo(
     id: json["id"],
     name: json["name"],
+    grupo: json["grupo"],
     diasPentregar: json["diasPentregar"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "name": name,
+    "grupo": grupo,
     "diasPentregar": diasPentregar,
   };
 }
