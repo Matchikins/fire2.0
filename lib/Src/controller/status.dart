@@ -20,4 +20,5 @@ class statusApp extends GetxController {
   var  requerimentosAberto = 0.obs;
   var  requerimentosAndando = 0.obs;
   var  requerimentosConcluido = 0.obs;
+  var clicouAtualizar=false.obs;
 }

@@ -5,6 +5,7 @@ import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/adm/RequerimentModel.dart';
 import 'package:http/http.dart' as http;
 
@@ -86,24 +87,27 @@ Future<RequerimentModel> CeeateRequeriment() async {
     throw Exception("erro ao criar usuario");
   }
 }
-Future<RequerimentModel> updateReq(String title) async {
-  final response = await http.put(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+Future <void> updateReq(int id,String resp,String status) async {
+  statusApp.status.loading.value=true;
+  print("${urls.app}/requerimetos?id=$id&responsavel=$resp&st=$status}");
+  final response = await http.patch(
+    Uri.parse('${urls.app}/requerimetos?id=$id&responsavel=$resp&st=$status'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${UserController.user.token}',
     },
-    body: jsonEncode(<String, String>{
-      'title': title,
-    }),
   );
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return RequerimentModel.fromJson(jsonDecode(response.body));
+
+    statusApp.status.loading.value=false;
+    statusApp.status.clicouAtualizar.value=true;
+
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to update album.');
+    throw Exception('Falha ao atualizar');
   }
 }
+
+

@@ -68,8 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         drawer: Drawer(
-          child: Obx(
-            () => Container(
+          child:  Container(
               color: AppColors.menuColor,
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -239,7 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-        ),
+
         body: Obx(
           () => getDrawerItem(statusApp.status.selectedIndex.value,
               context: context),
