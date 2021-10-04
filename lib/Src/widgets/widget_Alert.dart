@@ -1,10 +1,12 @@
 import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 showAlertDialog(BuildContext context) {
-  // set up the buttons
+  final CpfController = TextEditingController();
+  final size =MediaQuery.of(context).size;
   Widget cancelButton = TextButton(
     child: Text("Cancelar"),
     onPressed:  () {
@@ -13,16 +15,43 @@ showAlertDialog(BuildContext context) {
     },
   );
   Widget continueButton = TextButton(
-    child: Text("Ver Conta"),
+    child: Text("Salvar"),
     onPressed:  () {},
   );
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("Alerta",style: TextStyle(
-      color: Colors.red
-    ),),
-    content: Text("Foi detectado uma ou mais Contas em atraso"),
+    title: Center(
+      child: Text("Cadastrando um Novo Requerimento ",style: TextStyle(
+        color: Colors.red
+      ),),
+    ),
+    content:Container(
+      width: size.width /2,
+      child: Column(
+        children: [
+          inputsForms(CpfController, "CPF do Aluno", "CPF", "Preencha o Campo"),
+          Container(
+            child: Row(
+              children: [
+             Container(
+
+               child:
+             inputsForms(CpfController, "CPF do Aluno", "CPF", "Preencha o Campo"),),
+                SizedBox(width: size.width*0.04,),
+                Text("0sdsd21"),
+
+
+              ],
+            ),
+          )
+
+
+        ],
+      ),
+
+
+    ),
     actions: [
       cancelButton,
       continueButton,

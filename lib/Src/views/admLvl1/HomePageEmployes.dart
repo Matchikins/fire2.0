@@ -1,5 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/requerimentsController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_Alert.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
@@ -15,13 +16,14 @@ class EmployeesPage extends StatefulWidget {
   @override
   _EmployeesPageState createState() => _EmployeesPageState();
 }
-int aberto=statusApp.status.requerimentosAberto.value;
+
 class _EmployeesPageState extends State<EmployeesPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Container(
+
+      return Scaffold(
+        body: Container(
           padding: EdgeInsets.all(10),
           height: size.height,
           child: Column(
@@ -58,7 +60,7 @@ class _EmployeesPageState extends State<EmployeesPage> {
                           ),
                           Container(
                             height: size.height / 2,
-                            child: Obx(()=>  GetRequeriments(),)
+                            child:  GetRequeriments(),
 
                           ),
                         ],
@@ -124,23 +126,18 @@ class _EmployeesPageState extends State<EmployeesPage> {
             ],
           ),
 
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          var now=DateTime.now();
-          print(now);
-          if (statusApp.status.clicouAtualizar.value==true) {
-            setState(() {
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showAlertDialog(context);
 
-            });
-            statusApp.status.clicouAtualizar.value=false;
-          }
 
-          // Add your onPressed code here!
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: AppColors.primary,
-      ),
-    );
+            // Add your onPressed code here!
+          },
+          child: const Icon(Icons.add),
+          backgroundColor: AppColors.primary,
+        ),
+      );
+
   }
 }

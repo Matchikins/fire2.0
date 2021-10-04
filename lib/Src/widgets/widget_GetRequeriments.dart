@@ -1,12 +1,15 @@
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/requerimentsController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/adm/RequerimentModel.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+
+
 
 GetRequeriments() {
   int total = 0;
@@ -73,7 +76,6 @@ GetRequeriments() {
                                                 filter[Index].id,
                                                 UserController.user.name.value,
                                                 "andando");
-
 
                                           },
                                           icon: Icon(Icons.add))
