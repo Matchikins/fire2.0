@@ -3,6 +3,7 @@ import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:cefops/Shared/urls.dart';
+import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/model/aluno/AlunoModel.dart';
 import 'package:http/http.dart' as http;
 
@@ -41,6 +42,46 @@ Future<List<AlunoModel>> GetAllAlunos()async{
   }
 
 }
+Future<OneStudantModel> GetStudantById(id)async{
+  final response=await http.get(
+    Uri.parse("${urls.app}/alunos/$id"),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${UserController.user.token}',
+
+    },
+  );
+  final data = utf8.decode(response.bodyBytes);
+  var decodeData = jsonDecode(data);
+
+  if (response.statusCode == 200) {
+    ErroController.error.ok.value=true;
+
+    var jsonResponse = decodeData;
+    var data=OneStudantModel.fromJson(jsonResponse);
+    RequerimentController.req.StudantFullName.value=data.name+" "+data.lastName;
+    RequerimentController.req.linkPhoto.value=data.photo;
+
+    return OneStudantModel.fromJson(jsonResponse);
+  }
+
+
+  if (response.statusCode==500) {
+    ErroController.error.ok.value=false;
+
+    return Logar();
+
+  }
+  else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    ErroController.error.ok.value=false;
+    print(response.body);
+    throw Exception('error');
+  }
+
+}
+
 Future<AlunoModel> createAluno(int id,String name,String lastName,int Cpf,String email,int grupe,) async {
   final response = await http.post(
     Uri.parse('${urls.app}/alunos'),

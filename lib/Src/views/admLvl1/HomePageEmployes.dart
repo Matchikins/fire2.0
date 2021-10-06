@@ -1,5 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/requerimentsController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/widgets/widget_Alert.dart';
@@ -44,7 +45,6 @@ class _EmployeesPageState extends State<EmployeesPage> {
               Container(
                 width: size.width,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       width: size.width * 0.24,
@@ -129,6 +129,8 @@ class _EmployeesPageState extends State<EmployeesPage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            RequerimentController.req.linkPhoto.value="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png";
+            RequerimentController.req.StudantFullName.value="";
             showAlertDialog(context);
 
 

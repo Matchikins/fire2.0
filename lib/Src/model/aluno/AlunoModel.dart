@@ -48,3 +48,49 @@ class AlunoModel {
     "enable": enable,
   };
 }
+
+
+
+OneStudantModel oneStudantModelFromJson(String str) => OneStudantModel.fromJson(json.decode(str));
+
+String oneStudantModelToJson(OneStudantModel data) => json.encode(data.toJson());
+
+class OneStudantModel {
+  OneStudantModel({
+    required this.id,
+    required this.name,
+    required this.lastName,
+    required this.cpf,
+    required this.email,
+    required this.photo,
+    required this.enable,
+  });
+
+  String id;
+  String name;
+  String lastName;
+  String cpf;
+  String email;
+  String photo;
+  bool enable;
+
+  factory OneStudantModel.fromJson(Map<String, dynamic> json) => OneStudantModel(
+    id: json["id"],
+    name: json["name"],
+    lastName: json["lastName"],
+    cpf: json["cpf"],
+    email: json["email"],
+    photo: json["photo"],
+    enable: json["enable"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "lastName": lastName,
+    "cpf": cpf,
+    "email": email,
+    "photo": photo,
+    "enable": enable,
+  };
+}

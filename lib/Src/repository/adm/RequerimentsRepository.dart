@@ -54,11 +54,11 @@ Future<RequerimentModel> CeeateRequeriment() async {
     body: jsonEncode(<String, dynamic>{
       "id": 1,
       "aluno": {
-        "id": RequerimentController.req.idAluno,
+        "id": RequerimentController.req.idStudant,
 
       },
       "tipo": {
-        "id": RequerimentController.req.tipoRequerimento,
+        "id": RequerimentController.req.tipoRequeriment,
 
       },
 
