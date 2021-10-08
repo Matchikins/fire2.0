@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
 
-                  if (statusApp.status.aluno.value == true)
+                  if (UserController.user.role.contains("Aluno")||UserController.user.role.contains("ADM"))
                     ListTile(
                       leading: Icon(
                         Icons.book,
@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.pop(context);
                       },
                     ),
-                  if (statusApp.status.aluno.value == true)
+                  if (UserController.user.role.contains("Aluno")||UserController.user.role.contains("ADM"))
                     ListTile(
                       title: Text(
                         'Minhas Notas',
@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.pop(context);
                       },
                     ),
-                  if (statusApp.status.aluno.value == true)
+                  if (UserController.user.role.contains("Aluno")||UserController.user.role.contains("ADM"))
                     ListTile(
                       title: Text(
                         'Requerimentos',
@@ -147,12 +147,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       leading: Icon(Icons.note_add, color: AppColors.iconColor),
                       onTap: () {
-                        statusApp.status.selectedIndex.value = 3;
+                        statusApp.status.selectedIndex.value = 5;
                         statusApp.status.title.value = "Requerimentos";
                         Navigator.pop(context);
                       },
                     ),
-                  if (statusApp.status.aluno.value == true)
+                  if (UserController.user.role.contains("Aluno")||UserController.user.role.contains("ADM"))
                     ListTile(
                       title: Text(
                         'Financeiro',
@@ -170,8 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //Fim da area aluno
 
                   //Inicio area secretaria
-                  if (statusApp.status.adm.value == true ||
-                      statusApp.status.secretaria.value == true)
+                  if (UserController.user.role.contains("secretaria")||UserController.user.role.contains("ADM"))
                     ListTile(
                       title: Text(
                         'Cadastrar Aluno',
@@ -187,8 +186,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.pop(context);
                       },
                     ),
-                  if (statusApp.status.adm.value == true ||
-                      statusApp.status.secretaria.value == true)
+                  if (UserController.user.role.contains("secretaria")||UserController.user.role.contains("ADM"))
+
                     ListTile(
                       title: Text(
                         'Listar Alunos',
@@ -205,8 +204,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
 
-                  if (statusApp.status.adm.value == true ||
-                      statusApp.status.secretaria.value == true)
+                  if (UserController.user.role.contains("secretaria")||UserController.user.role.contains("ADM"))
+
                     ListTile(
                       title: Text(
                         'Postagem',

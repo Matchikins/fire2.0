@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 
 final _formKey = GlobalKey<FormState>();
 final userController = TextEditingController();
-final passwController = TextEditingController();
+final passwordController = TextEditingController();
 String os = Platform.operatingSystem;
 bool android = false;
 int colorIcons = 0xff15355C;
@@ -29,20 +29,9 @@ class _loginPageState extends State<loginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(vsync: this);
-    passwController.addListener(() {});
-    userController.addListener(() {});
-  }
 
-  @override
-  void dispose() {
-    userController.dispose();
-    passwController.dispose();
-    super.dispose();
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +85,7 @@ class _loginPageState extends State<loginPage>
                           width: MediaQuery.of(context).size.width / 3,
                           child: Obx(
                             () => LoginForms(
-                                passwController,
+                                passwordController,
                                 "Insira Sua Senha",
                                 "Senha",
                                 "Por Favor Informe sua Senha",
@@ -181,9 +170,13 @@ class _loginPageState extends State<loginPage>
                                           style: BorderStyle.solid),
                                       borderRadius: BorderRadius.circular(7)),
                                   onPressed: () async {
+                                    print("******");
+                                    print(userController.value.text);
+                                    print("******");
                                     if (_formKey.currentState!.validate()) {
                                       statusApp.status.loading.value = true;
-                                      await Login("adm", "1234");
+                                      print(userController.value.text);
+                                      await Login(userController.value.text, passwordController.value.text);
                                       if (ErroController.error.ok == true) {
                                         statusApp.status.loading.value = false;
 

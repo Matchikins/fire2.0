@@ -50,6 +50,7 @@ Future<LoginModel> Login(String username,String password) async {
       statusApp.status.devendo.value=mod.fullInfo.enable;
       UserController.user.role.value = mod.role;
       UserController.user.id.value=mod.fullInfo.cpf;
+      print(mod);
 
       return mod;
     }
