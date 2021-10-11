@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class RequerimentViewController extends GetxController{
  static RequerimentViewController sts=RequerimentViewController();
   String grup="Secretaria";
- String Req="Comprovante Matrícula";
+ String Req="";
 
   GrupSet(grupS){
       grup=grupS;

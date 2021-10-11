@@ -1,32 +1,39 @@
 
-import 'package:cefops/Src/controller/requeriment_view_controller.dart';
+import 'package:cefops/Src/controller/requerimentTypeController.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DropMenuItems extends StatelessWidget {
-  var item=['Req'];
 
-  DropMenuItems(this.item, {Key? key}) : super(key: key);
+  DropMenuItems( {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RequerimentViewController());
-    return GetBuilder<RequerimentViewController>(
+    final controller = Get.put(RequerimentTypeController());
+    return GetBuilder<RequerimentTypeController>(
+        builder: (_) =>   DropdownButton<String>(
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 16,
+          ),
+          hint: Text('Select City'),
+          onChanged: ( newValue) {
 
-        builder: (_) =>  DropdownButton<String>(
-          value: controller.Req,
-          hint: Text("Selecione Um Item"),
+            controller.setSelected(newValue);
+            controller.update();
 
-          onChanged: (String? newValue) {
-            controller.ReqSet(newValue);
           },
-          items: item
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
+          value: controller.selected.value,
+          items: RequerimentTypeController.reqType.items.map((item) {
+
+            return  DropdownMenuItem(
+              child:  Text(item['name']),
+              value: item['name'].toString(),
+
             );
-          }).toList(),
+          }).toList()
+
         )
     );
   }

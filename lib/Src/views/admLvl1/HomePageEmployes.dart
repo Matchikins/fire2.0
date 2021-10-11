@@ -4,6 +4,7 @@ import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/requeriment_view_controller.dart';
 import 'package:cefops/Src/controller/requerimentsController.dart';
 import 'package:cefops/Src/controller/status.dart';
+import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:cefops/Src/widgets/widget_Alert.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
 import 'package:cefops/Src/widgets/widget_GetStudants.dart';
@@ -18,7 +19,8 @@ class EmployeesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    var size = MediaQuery.of(context).size;
-    return Scaffold(
+   var teste =GetRequeRequerimentType();
+   return Scaffold(
       body: Container(
         padding: EdgeInsets.all(10),
 

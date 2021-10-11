@@ -41,7 +41,6 @@ Future<LoginModel> Login(String username,String password) async {
       ErroController.error.ok.value = true;
       var mod = LoginModel.fromJson(jsonDecode(response.body));
       token = mod.token;
-      print(response.body);
       UserController.user.token.value = mod.token;
       UserController.user.name.value = mod.fullInfo.name;
       UserController.user.lastName.value=mod.fullInfo.lastName;
@@ -50,7 +49,7 @@ Future<LoginModel> Login(String username,String password) async {
       statusApp.status.devendo.value=mod.fullInfo.enable;
       UserController.user.role.value = mod.role;
       UserController.user.id.value=mod.fullInfo.cpf;
-      print(mod);
+
 
       return mod;
     }

@@ -1,6 +1,8 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/requeriment_view_controller.dart';
+import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_grup.dart';
 import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
@@ -14,6 +16,8 @@ showAlertDialog(BuildContext context) {
   final cpfController = TextEditingController();
   final nameController = TextEditingController();
   final observaao = TextEditingController();
+
+
   final size = MediaQuery.of(context).size;
   Widget cancelButton = TextButton(
     child: Text("Cancelar"),
@@ -117,7 +121,7 @@ showAlertDialog(BuildContext context) {
                   }),
                 ),
                 Container(
-                  child: DropMenuItems(["Comprovante Matrícula"]),
+                  child: DropMenuItems(),
                 ),
               ])),
           SizedBox(height: size.height * 0.01),

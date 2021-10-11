@@ -22,7 +22,6 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
   final data = utf8.decode(response.bodyBytes);
   var decodeData = jsonDecode(data);
 
-  print(decodeData);
   if (response.statusCode == 200) {
 
     ErroController.error.ok.value=true;

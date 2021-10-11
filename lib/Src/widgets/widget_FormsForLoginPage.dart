@@ -3,12 +3,12 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:flutter/material.dart';
 var text="";
-LoginForms(Controlle, String labels, String hintTExt, String error,
+LoginForms(controlle, String labels, String hintTExt, String error,
     IconData icons, bool isobscure,  bool icon2, context,) {
   return TextFormField(
 
 
-
+    controller:controlle,
     onChanged: (String) {
       statusApp.status.erros1.value = "";
     },
