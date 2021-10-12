@@ -7,8 +7,8 @@ LoginForms(controlle, String labels, String hintTExt, String error,
     IconData icons, bool isobscure,  bool icon2, context,) {
   return TextFormField(
 
+controller: controlle,
 
-    controller:controlle,
     onChanged: (String) {
       statusApp.status.erros1.value = "";
     },

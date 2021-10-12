@@ -19,14 +19,15 @@ class EmployeesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    var size = MediaQuery.of(context).size;
-   var teste =GetRequeRequerimentType();
    return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(10),
 
         child: Container(
           height: size.height,
+          width: size.width,
           child:Column(
+
+
               children: [
                 Container(
                   width: size.width / 2,
@@ -104,6 +105,7 @@ class EmployeesPage extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        margin: EdgeInsets.only(left: size.width*0.02),
                         height: size.height*0.8,
                         width: size.width / 5,
                         child: Column(
@@ -133,6 +135,7 @@ class EmployeesPage extends StatelessWidget {
           RequerimentController.req.linkPhoto.value="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png";
           RequerimentController.req.StudantFullName.value="";
           showAlertDialog(context);
+
 
 
           // Add your onPressed code here!

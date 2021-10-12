@@ -1,5 +1,6 @@
 
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
+import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,26 +12,24 @@ class DropMenuItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(RequerimentTypeController());
+    var teste =GetRequeRequerimentType();
     return GetBuilder<RequerimentTypeController>(
         builder: (_) =>   DropdownButton<String>(
           style: TextStyle(
             color: Colors.black54,
             fontSize: 16,
-          ),
-          hint: Text('Select City'),
-          onChanged: ( newValue) {
 
-            controller.setSelected(newValue);
-            controller.update();
+          ),
+          hint: Text('Selecione Um tipo'),
+          onChanged: (dynamic newValue) {
+            RequerimentTypeController.reqType.setSelected(newValue);
+         print(RequerimentTypeController.reqType.selected);
 
           },
-          value: controller.selected.value,
-          items: RequerimentTypeController.reqType.items.map((item) {
-
+          items: RequerimentTypeController.reqType.itemMap.keys.map(( dynamic item) {
             return  DropdownMenuItem(
-              child:  Text(item['name']),
-              value: item['name'].toString(),
-
+              value:RequerimentTypeController.reqType.itemMap[item].toString(),
+              child:  Text(item),
             );
           }).toList()
 

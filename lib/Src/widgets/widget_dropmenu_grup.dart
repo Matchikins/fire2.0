@@ -1,5 +1,6 @@
 
 import 'package:cefops/Src/controller/requeriment_view_controller.dart';
+import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,7 @@ class DropMenuGrup extends StatelessWidget {
 
           onChanged: (String? newValue) {
             controller.GrupSet(newValue);
+
           },
 
           items: grupo

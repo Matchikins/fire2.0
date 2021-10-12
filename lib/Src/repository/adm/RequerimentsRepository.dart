@@ -36,7 +36,6 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
   else {
 
     ErroController.error.ok.value=false;
-    print(response.body);
     throw Exception('error');
   }
 
@@ -88,7 +87,6 @@ Future<RequerimentModel> CeeateRequeriment() async {
 }
 Future <void> updateReq(int id,String resp,String status) async {
   statusApp.status.loading.value=true;
-  print("${urls.app}/requerimetos?id=$id&responsavel=$resp&st=$status}");
   final response = await http.patch(
     Uri.parse('${urls.app}/requerimetos?id=$id&responsavel=$resp&st=$status'),
     headers: <String, String>{

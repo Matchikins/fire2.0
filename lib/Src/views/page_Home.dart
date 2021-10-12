@@ -121,7 +121,6 @@ if (statusApp.status.closeDialog==1) {
                   return Text("${snapshot.error}");
                   }
 
-                  // By default, show a loading spinner.
                   return CircularProgressIndicator(
                     color: AppColors.background,
                     backgroundColor: AppColors.orange,

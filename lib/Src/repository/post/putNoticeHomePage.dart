@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/module/pdf/web.dart';
 import 'package:http/http.dart' as http;
@@ -9,7 +10,7 @@ Future UpdateNews(String Name,) async {
   status.loading;
   final  client = http.Client();
   final response = await http.post(
-    Uri.parse('https://eledo.online/api/RESTv1/Generate'),
+    Uri.parse('${urls.url}/pdf/Generate'),
 
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
