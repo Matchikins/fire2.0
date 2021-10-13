@@ -5,6 +5,7 @@ import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/adm/RequerimentModel.dart';
 import 'package:http/http.dart' as http;
@@ -41,7 +42,7 @@ Future<List<RequerimentModel>> GetAllRequeriment()async{
 
 }
 
-Future<RequerimentModel> CeeateRequeriment() async {
+Future CeeateRequeriment(requerimentID,alunoID) async {
   isAluno();
   final response = await http.post(
     Uri.parse('${urls.app}/requerimento'),
@@ -50,15 +51,15 @@ Future<RequerimentModel> CeeateRequeriment() async {
       'Authorization': 'Bearer ${UserController.user.token}',
     },
     body: jsonEncode(<String, dynamic>{
-      "id": 1,
       "aluno": {
-        "id": RequerimentController.req.idStudant,
+        "id":alunoID,
 
       },
       "tipo": {
-        "id": RequerimentController.req.tipoRequeriment,
+        "id": requerimentID,
 
       },
+
 
     }),
   );
@@ -82,7 +83,7 @@ Future<RequerimentModel> CeeateRequeriment() async {
     throw Exception('falha na requisição');
 
   }else{
-    throw Exception("erro ao criar usuario");
+    throw Exception("erro ao criar Requerimento ");
   }
 }
 Future <void> updateReq(int id,String resp,String status) async {
@@ -103,7 +104,7 @@ Future <void> updateReq(int id,String resp,String status) async {
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Falha ao atualizar');
+    throw Exception('Falha ao atualizar:');
   }
 }
 

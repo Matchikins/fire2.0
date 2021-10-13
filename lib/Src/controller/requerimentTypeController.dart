@@ -8,19 +8,27 @@ class RequerimentTypeController extends GetxController{
   var id="".obs;
   String selected="";
   var items=[];
-  Map<String,int> itemMap={};
+  Map<int,String> itemMap={
+    1:"nada"
+  };
+
+
   setItems(List data){
     items=data;
     for(var item in data){
-      itemMap[item['name']]=item["id"];
+      itemMap[item['id']]=item["name"];
     }
     update();
 
+
   }
+
 
 setSelected(value){
   selected=value;
   update();
+  print("oiiiiiiiiiiiiiiiiiiiiiiiii");
+  print(value);
 
 }
 

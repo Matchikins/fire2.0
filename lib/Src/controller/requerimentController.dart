@@ -1,7 +1,9 @@
 import 'package:cefops/Shared/Security/Controller/userController.dart';
+import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:get/get.dart';
-class RequerimentController{
+class RequerimentController extends GetxController{
   static RequerimentController req=RequerimentController();
+  var get = GetRequeRequerimentType();
   var idStudant="".obs;
   var tipoRequeriment=0.obs;
   var StudantFullName="".obs;

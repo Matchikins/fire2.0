@@ -170,9 +170,6 @@ class _loginPageState extends State<loginPage>
                                           style: BorderStyle.solid),
                                       borderRadius: BorderRadius.circular(7)),
                                   onPressed: () async {
-                                    print("******");
-                                    print(userController.value.text);
-                                    print("******");
                                     if (_formKey.currentState!.validate()) {
                                       statusApp.status.loading.value = true;
                                       print(userController.value.text);

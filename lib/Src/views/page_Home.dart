@@ -5,7 +5,7 @@ import 'package:cefops/Src/controller/navigatorController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/model_Publication.dart';
 import 'package:cefops/Src/repository/PostRepository.dart';
-import 'package:cefops/Src/widgets/widget_Alert.dart';
+import 'package:cefops/Src/widgets/widget_new_requeriment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:google_fonts/google_fonts.dart';

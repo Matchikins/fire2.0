@@ -25,8 +25,9 @@ Future<List<RequerimentTypeModel>> GetRequeRequerimentType()async{
 
     ErroController.error.ok.value=true;
     List jsonResponse = decodeData;
-    var model =jsonResponse.map((req) => RequerimentTypeModel.fromJson(req)).toList();
     RequerimentTypeController.reqType.setItems(decodeData);
+    var model=jsonResponse.map((req) => RequerimentTypeModel.fromJson(req)).toList();
+
 
     return model;
   }

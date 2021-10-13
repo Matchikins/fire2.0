@@ -5,7 +5,7 @@ import 'package:cefops/Src/controller/requeriment_view_controller.dart';
 import 'package:cefops/Src/controller/requerimentsController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
-import 'package:cefops/Src/widgets/widget_Alert.dart';
+import 'package:cefops/Src/widgets/widget_new_requeriment.dart';
 import 'package:cefops/Src/widgets/widget_GetRequeriments.dart';
 import 'package:cefops/Src/widgets/widget_GetStudants.dart';
 import 'package:flutter/cupertino.dart';

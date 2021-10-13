@@ -62,7 +62,7 @@ Future<OneStudantModel> GetStudantById(id)async{
     RequerimentController.req.StudantFullName.value=data.name+" "+data.lastName;
     RequerimentController.req.linkPhoto.value=data.photo;
 
-    return OneStudantModel.fromJson(jsonResponse);
+    return data;
   }
 
 

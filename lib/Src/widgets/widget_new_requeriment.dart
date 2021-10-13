@@ -2,6 +2,7 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/requeriment_view_controller.dart';
+import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_grup.dart';
@@ -11,6 +12,7 @@ import 'package:cefops/Src/widgets/widget_dropmenu_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 showAlertDialog(BuildContext context) {
   final cpfController = TextEditingController();
@@ -27,7 +29,12 @@ showAlertDialog(BuildContext context) {
   );
   Widget continueButton = TextButton(
     child: Text("Salvar"),
-    onPressed: () {},
+    onPressed: () {
+      CeeateRequeriment(
+          RequerimentTypeController.reqType.selected,
+          RequerimentController.req.idStudant.value);
+
+    },
   );
 
   // set up the AlertDialog
@@ -45,6 +52,7 @@ showAlertDialog(BuildContext context) {
           Center(
               child: Obx(
                  () {
+
                   return Container(
                       child: Image.network(
                           RequerimentController.req.linkPhoto.value,height: size.height*0.1,));
@@ -72,6 +80,7 @@ showAlertDialog(BuildContext context) {
                       if (value == null || value.isEmpty) {
                         return "error";
                       }
+
                       return null;
                     },
                     maxLines: 1,
@@ -80,6 +89,8 @@ showAlertDialog(BuildContext context) {
                 IconButton(
                     onPressed: () {
                       GetStudantById(cpfController.value.text);
+                      RequerimentController.req.idStudant.value=cpfController.value.text;
+                      print(RequerimentController.req.idStudant.value);
                     },
                     icon: Icon(Icons.search)),
                 Container(
