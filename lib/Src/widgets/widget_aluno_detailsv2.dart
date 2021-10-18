@@ -3,7 +3,7 @@ import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/requeriment_view_controller.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
-import 'package:cefops/Src/widgets/widget_studant_infos_routes.dart';
+import 'package:cefops/Src/views/studantDetails/widget/widget_studant_infos_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,15 +36,22 @@ AlunoDetails(BuildContext context) {
   AlertDialog alert = AlertDialog(
     title: Container(
       child: Column(
+
         children: [
+          Container(
+            margin: EdgeInsets.only(left: 35),
+            child: Text("Geremias dsfssssssssssssssssssssss",
+              style: TextStyle(fontSize: 15),
+              textAlign: TextAlign.end,),
+          ),
           Row(
             children: [
 
               ElevatedButton( onPressed: (){
                 statusApp.status.navegar.value=0;              },
                 child: Container(
-                  width: 120,
-                  height: 60,
+                  width: 60,
+                  height: 40,
                   decoration: BoxDecoration(
                   ),
                   child: Center(
@@ -93,7 +100,7 @@ AlunoDetails(BuildContext context) {
           SingleChildScrollView(
         child: Container(
           width: Get.width,
-          height: Get.height*0.69,
+          height: Get.height*0.64,
           child: Obx(
               () => SetStudantPage(statusApp.status.navegar.value,
               context: context),

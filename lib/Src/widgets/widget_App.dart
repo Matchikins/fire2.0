@@ -1,7 +1,7 @@
 import 'package:cefops/Src/views/Security/Page_Login.dart';
 import 'package:cefops/Src/views/admLvl1/page_Employes.dart';
 import 'package:cefops/Src/views/admLvl1/page_List_Studants.dart';
-import 'package:cefops/Src/views/admLvl1/page_Studant_Details.dart';
+import 'package:cefops/Src/views/studantDetails/pages/page_studant_details-menu.dart';
 import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
 import 'package:cefops/Src/views/Security/page_Login-android.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
@@ -52,7 +52,7 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
             name: "/",
-            page: ()=> StudantDetails()
+            page: ()=> StudantDetailsMenu()
         ),
 
         GetPage(

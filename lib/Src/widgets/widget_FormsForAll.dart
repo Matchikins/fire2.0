@@ -45,10 +45,10 @@ class FormsForAll extends StatelessWidget {
 }
 
 
- inputsForms(Controller, String labels,String hintTExt, String error,   ){
+ inputsForms(controller, String labels,String hintTExt, String error,   ){
    return TextFormField(
 
-     controller: Controller,
+     controller: controller,
      style: TextStyle(color: Colors.black,),
      decoration: InputDecoration(
 

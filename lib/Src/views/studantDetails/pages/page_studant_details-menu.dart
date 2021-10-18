@@ -3,13 +3,14 @@ import 'package:cefops/Src/widgets/widget_aluno_detailsv2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class StudantDetails extends StatelessWidget {
-  const StudantDetails({Key? key}) : super(key: key);
+class StudantDetailsMenu extends StatelessWidget {
+  const StudantDetailsMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+
         child: (Column(
           children: [
             Container(
