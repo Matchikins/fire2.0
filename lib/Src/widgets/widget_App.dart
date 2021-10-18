@@ -1,8 +1,7 @@
-import 'package:cefops/Src/module/financeiro/interno/view/newFinanceView.dart';
 import 'package:cefops/Src/views/Security/Page_Login.dart';
-import 'package:cefops/Src/views/Security/Singup.dart';
-import 'package:cefops/Src/views/admLvl1/HomePageEmployes.dart';
-import 'package:cefops/Src/views/admLvl1/page_List_Alunos.dart';
+import 'package:cefops/Src/views/admLvl1/page_Employes.dart';
+import 'package:cefops/Src/views/admLvl1/page_List_Studants.dart';
+import 'package:cefops/Src/views/admLvl1/page_Studant_Details.dart';
 import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
 import 'package:cefops/Src/views/Security/page_Login-android.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
@@ -12,9 +11,7 @@ import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-
 import 'package:websafe_platform/websafe_platform.dart';
-import 'package:get/get.dart';
 var websafePlatform = WebsafePlatform();
 
 bool isIos = websafePlatform.isIOS();
@@ -55,7 +52,7 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
             name: "/",
-            page: ()=> _viewDetect()
+            page: ()=> StudantDetails()
         ),
 
         GetPage(

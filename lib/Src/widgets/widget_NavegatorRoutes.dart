@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/module/pdf/homeP.dart';
-import 'package:cefops/Src/views/admLvl1/HomePageEmployes.dart';
+import 'package:cefops/Src/views/admLvl1/page_Employes.dart';
 import 'package:cefops/Src/views/admLvl1/page_FinanceStatus.dart';
-import 'package:cefops/Src/views/admLvl1/page_List_Alunos.dart';
+import 'package:cefops/Src/views/admLvl1/page_List_Studants.dart';
 import 'package:cefops/Src/views/admLvl1/page_RequeriStatus.dart';
 import 'package:cefops/Src/views/admLvl1/page_SiginStudant.dart';
 import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
@@ -12,7 +12,6 @@ import 'package:cefops/Src/views/page_Home.dart';
 import 'package:cefops/Src/views/studants/page_Course.dart';
 import 'package:cefops/Src/views/studants/page_Requeriment.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
-import 'package:flutter/material.dart';
 
 getDrawerItem(int pos,{context}) {
   switch (pos) {

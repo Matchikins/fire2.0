@@ -11,7 +11,7 @@ class DropMenuItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> _roles = RequerimentTypeController.reqType.itemMap
+    final List<Map<String, dynamic>> _roles = RequerimentTypeController.reqType.itemMap as List<Map<String, dynamic>>;
 
     return  GetBuilder<RequerimentController>(
      init: RequerimentController(),
