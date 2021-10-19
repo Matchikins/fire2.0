@@ -18,8 +18,9 @@ class ViewInfoFromStudant extends StatelessWidget {
           children: [
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
 
               children: [
                 ElevatedButton(
