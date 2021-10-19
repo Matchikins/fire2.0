@@ -43,21 +43,7 @@ class FormsStudants extends StatelessWidget {
                   alignment: Alignment.center,
                 )))),
 
-            Positioned(
-                left: Get.width/1.5,
-                child: Container(
-                  width: Get.width*0.22,
-                  height:  Get.height*0.5,
-                  child:SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Text("Requerimentos",style: TextStyles.titleListTile,),
-                        GetStudants()
-                      ],
-                    ),
-                  ),
-                )
-            ),
+
             Positioned(
                 left: Get.width/2.01,
                 top: Get.height*0.2,

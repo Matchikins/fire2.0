@@ -45,6 +45,9 @@ AlunoDetails(BuildContext context) {
               textAlign: TextAlign.end,),
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.min,
             children: [
 
               ElevatedButton( onPressed: (){
@@ -99,7 +102,7 @@ AlunoDetails(BuildContext context) {
       ),
           SingleChildScrollView(
         child: Container(
-          width: Get.width,
+          width: Get.width*0.7,
           height: Get.height*0.64,
           child: Obx(
               () => SetStudantPage(statusApp.status.navegar.value,

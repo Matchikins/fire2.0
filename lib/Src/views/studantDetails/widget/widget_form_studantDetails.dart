@@ -23,6 +23,7 @@ class FormStudntDetails extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child:  TextFormField(
 
+
             controller: controller,
             style: TextStyle(color: Colors.black,),
             decoration: InputDecoration(

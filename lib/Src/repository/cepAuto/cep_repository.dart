@@ -28,6 +28,10 @@ Future <CepModel> GetCep(cpf) async{
     if (response.statusCode==200) {
       var cep=CepModel.fromJson(jsonDecode(response.body));
       cepControll.cepst.bairro.value=cep.bairro;
+      cepControll.cepst.uf.value=cep.uf;
+      cepControll.cepst.localidade.value=cep.localidade;
+      cepControll.cepst.logradouro.value=cep.logradouro;
+      cepControll.cepst.complemento.value=cep.complemento;
 
 
       return cep;

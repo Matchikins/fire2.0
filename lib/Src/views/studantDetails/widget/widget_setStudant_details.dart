@@ -1,5 +1,5 @@
 
-import 'package:cefops/Src/views/studantDetails/pages/page_studant_andress.dart';
+import 'package:cefops/Src/views/studantDetails/pages/page_studant_anddress.dart';
 
 import '../pages/page_forms_studants.dart';
 
@@ -8,6 +8,6 @@ SetStudantDetails(int pos,{context}) {
     case 0:
       return FormsStudants() ;
     case 1:
-      return StudantAndress();
+      return StudantAnddress();
   }
 }
