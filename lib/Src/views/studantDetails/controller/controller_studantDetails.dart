@@ -9,6 +9,7 @@ class StudandDetailsController extends GetxController{
   var status="Ativo".obs;
   var civilState="Estado Civil".obs;
   var statusCod=true;
+  var pageIndex=0.obs;
 
 
   setStatusCod(status){

@@ -11,12 +11,8 @@ import 'package:cefops/Src/controller/status.dart';
 
 
 AlunoDetails(BuildContext context) {
-  final cpfController = TextEditingController();
-  final nameController = TextEditingController();
-  final observaao = TextEditingController();
 
 
-  final size = MediaQuery.of(context).size;
   Widget cancelButton = TextButton(
     child: Text("Cancelar"),
     onPressed: () {
@@ -50,7 +46,11 @@ AlunoDetails(BuildContext context) {
             mainAxisSize: MainAxisSize.min,
             children: [
 
-              ElevatedButton( onPressed: (){
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary:  Colors.orange
+                ),
+                onPressed: (){
                 statusApp.status.navegar.value=0;              },
                 child: Container(
                   width: 60,

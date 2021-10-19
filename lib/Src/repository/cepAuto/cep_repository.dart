@@ -19,11 +19,11 @@ Future <CepModel> GetCep(cpf) async{
       seconds: 5),
       onTimeout: () {
 
-
         return throw TimeoutException("Connection Time out");
       }
 
   );
+
   try{
     if (response.statusCode==200) {
       var cep=CepModel.fromJson(jsonDecode(response.body));
@@ -32,11 +32,11 @@ Future <CepModel> GetCep(cpf) async{
       cepControll.cepst.localidade.value=cep.localidade;
       cepControll.cepst.logradouro.value=cep.logradouro;
       cepControll.cepst.complemento.value=cep.complemento;
-
-
       return cep;
-
+    }if (response.statusCode==400) {
+      return throw new Exception("error cep invalido");
     }
+
   }catch (e){
     return throw new Exception("error");
 

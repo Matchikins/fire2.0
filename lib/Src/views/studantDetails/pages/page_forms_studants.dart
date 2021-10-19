@@ -1,6 +1,7 @@
 
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_civilState.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_gender.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_state.dart';
@@ -22,6 +23,8 @@ class FormsStudants extends StatelessWidget {
     final burnDataController = TextEditingController();
     final emailController = TextEditingController();
     final nationController = TextEditingController();
+    var controller = StudandDetailsController.details;
+
 
 
     return Form(
@@ -144,7 +147,7 @@ class FormsStudants extends StatelessWidget {
                   height: Get.height*0.15,
                 ),
                 ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){controller.navegar.value=1;},
                     child: Text("Continuar")),
               ],
 

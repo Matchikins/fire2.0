@@ -3,6 +3,7 @@ import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/controller_cep.dart';
 import 'package:cefops/Src/repository/cepAuto/cep_repository.dart';
 import 'package:cefops/Src/views/Security/Singup.dart';
+import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class StudantAnddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int page=1;
     final cepController = TextEditingController();
     final lograController = TextEditingController();
     final complementoController = TextEditingController();
@@ -19,6 +21,8 @@ class StudantAnddress extends StatelessWidget {
     final ufController = TextEditingController();
     final numeroController = TextEditingController();
     final bairroController = TextEditingController();
+    var controller = StudandDetailsController.details;
+
 
     return Container(
       height: Get.height,
@@ -32,7 +36,7 @@ class StudantAnddress extends StatelessWidget {
             width: Get.width*0.2,
             alignment: Alignment.centerLeft,
             child:  TextFormField(
-
+              maxLength: 8,
               onChanged: (value){
                 if(value.length==8){
                   Future.delayed(const Duration(seconds: 2),(){
@@ -149,6 +153,16 @@ class StudantAnddress extends StatelessWidget {
                 );
               }
           ),
+          SizedBox(
+            height: Get.height*0.05,
+          ),
+          Center(
+
+            ),
+              ElevatedButton(
+                  onPressed: (){controller.navegar.value=1;},
+                  child: Text("Continuar")),
+
         ],
       )
     );
