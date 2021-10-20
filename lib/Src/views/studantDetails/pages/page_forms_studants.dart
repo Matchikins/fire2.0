@@ -1,6 +1,7 @@
 
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_civilState.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_gender.dart';
@@ -24,6 +25,7 @@ class FormsStudants extends StatelessWidget {
     final emailController = TextEditingController();
     final nationController = TextEditingController();
     var controller = StudandDetailsController.details;
+    var infos=StudantInfoController.data;
 
 
 
@@ -38,12 +40,16 @@ class FormsStudants extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Image.network(
-                  RequerimentController.req.linkPhoto.value,
-                  fit: BoxFit.cover,
-                  width: 120,
-                  height: 120,
-                  alignment: Alignment.center,
+                child: Obx(
+                   () {
+                    return Image.network(
+                      StudantInfoController.data.photo.value,
+                      fit: BoxFit.cover,
+                      width: 120,
+                      height: 120,
+                      alignment: Alignment.center,
+                    );
+                  }
                 )))),
 
 
@@ -61,14 +67,14 @@ class FormsStudants extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    FormStudntDetails(nameController,
+                    FormStudntDetails(nameController..text = '${infos.name}',
                         "Nome",
                         "Nome do Aluno",
                         "preencha o nome do aluno"),
                     SizedBox(
                       width: Get.width*0.01,
                     ),
-                    FormStudntDetails(lastController,
+                    FormStudntDetails(lastController..text = '${infos.lastName}',
                         "Sobreome",
                         "Sobreome do Aluno",
                         "preencha o nome do Sobreome"),
@@ -129,7 +135,7 @@ class FormsStudants extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    FormStudntDetails(emailController,
+                    FormStudntDetails(emailController..text = '${infos.email}',
                         "Email",
                         "Email do Aluno",
                         "preencha o Email do aluno"),

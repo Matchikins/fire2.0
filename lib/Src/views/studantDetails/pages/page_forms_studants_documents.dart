@@ -1,8 +1,8 @@
 
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/controller_cep.dart';
-import 'package:cefops/Src/repository/cepAuto/cep_repository.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
+import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,13 +14,17 @@ class FormsStudantsDocuments extends StatelessWidget {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     final cpfController = TextEditingController();
-    final lastController = TextEditingController();
-    final stateController = TextEditingController();
-    final burnInController = TextEditingController();
-    final burnDataController = TextEditingController();
-    final emailController = TextEditingController();
-    final nationController = TextEditingController();
-    var controller = StudandDetailsController.details;
+    final rgController = TextEditingController();
+    final estadoRgController = TextEditingController();
+    final dataRgController = TextEditingController();
+    final tituloController = TextEditingController();
+    final estadoTituloController = TextEditingController();
+    final zonaTituloController = TextEditingController();
+    final secaoTituloController = TextEditingController();
+    final dataEmisoaTituloController = TextEditingController();
+    var docController = DocumentsController.data;
+    var pageController = StudandDetailsController.details;
+
 
     return Container(
         height: Get.height,
@@ -30,7 +34,7 @@ class FormsStudantsDocuments extends StatelessWidget {
           children: [
             Row(children: [
               Container(
-                height: Get.height*0.09,
+                height: Get.height*0.1,
                 width: Get.width*0.2,
                 alignment: Alignment.centerLeft,
                 child:  Form(
@@ -43,10 +47,8 @@ class FormsStudantsDocuments extends StatelessWidget {
                        _formKey.currentState!.validate();
                      }
 
-
-
                     },
-                    controller: cpfController,
+                    controller: cpfController..text = '${docController.cpf}',
                     style: TextStyle(color: Colors.black,),
                     decoration: InputDecoration(
                         fillColor: Colors.black,
@@ -74,7 +76,7 @@ class FormsStudantsDocuments extends StatelessWidget {
 
               IconButton(
                   onPressed: () {
-                    if(nationController.value.text.length==11){
+                    if(cpfController.value.text.length==11){
 
                     }else {
                       print("Error");
@@ -86,8 +88,8 @@ class FormsStudantsDocuments extends StatelessWidget {
                       () {
                     return Container(
                       child:  FormStudntDetails(
-                          nationController
-                            ..text = '${cepControll.cepst.logradouro}',
+                          tituloController
+                            ..text = '${docController.titulo}',
                           "Titulo eleitoral",
                           "Insira o Titulo eleitoral",
                           "preencha o Titulo eleitoral "),
@@ -102,8 +104,8 @@ class FormsStudantsDocuments extends StatelessWidget {
                         () {
                       return Container(
                         child:  FormStudntDetails(
-                            nationController
-                              ..text = '${cepControll.cepst.bairro}',
+                            rgController
+                              ..text = '${docController.rg}',
                             "RG",
                             "Insira o RG",
                             "preencha o RG "),
@@ -115,9 +117,9 @@ class FormsStudantsDocuments extends StatelessWidget {
                         () {
                       return Container(
                         child:  FormStudntDetails(
-                            nationController
-                              ..text = '${cepControll.cepst.complemento}',
-                            "Estado Emissor",
+                            estadoTituloController
+                              ..text = '${docController.estadoEmissortitulo}',
+                            "Estado Emissor do Titulo",
                             "Insira o Estado Emissor",
                             "preencha o Estado Emissor"),
                       );
@@ -131,8 +133,8 @@ class FormsStudantsDocuments extends StatelessWidget {
                     child:  Row(
                       children: [
                         FormStudntDetails(
-                            nationController
-                              ..text = '${cepControll.cepst.localidade}',
+                            estadoRgController
+                              ..text = '${docController.estadoEmissorRg}',
                             "Estado Emissor RG",
                             "Insira o RG",
                             "preencha o RG "),
@@ -140,8 +142,8 @@ class FormsStudantsDocuments extends StatelessWidget {
 
                         Container(
                           child:  FormStudntDetails(
-                              nationController
-                                ..text = '${cepControll.cepst.uf}',
+                              zonaTituloController
+                                ..text = '${docController.zona}',
                               "Zona",
                               "Zona",
                               "Zona ") ,
@@ -150,15 +152,15 @@ class FormsStudantsDocuments extends StatelessWidget {
                         SizedBox(width: Get.width*0.02,),
                         Container(
                           child:  FormStudntDetails(
-                              nationController,
+                              secaoTituloController ..text = '${docController.secao}',
                               "Seção",
                               "Seção",
                               "Seção "), width: Get.width*0.05,),
                         SizedBox(width: Get.width*0.02,),
                         FormStudntDetails(
-                            nationController
-                              ..text = '${cepControll.cepst.localidade}',
-                            "Data de Emissão",
+                            dataEmisoaTituloController
+                              ..text = '${docController.dataEmissorTitulo}',
+                            "Data de Emissão Titulo",
                             "Insira a  Data de Emissão",
                             "preencha a Data de Emissão "),
 
@@ -173,7 +175,7 @@ class FormsStudantsDocuments extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               child: FormStudntDetails(
-                  nationController
+                  dataRgController
                     ..text = '${cepControll.cepst.localidade}',
                   "Data de Emissão RG",
                   "Insira a  Data de Emissão do RG",
@@ -186,7 +188,7 @@ class FormsStudantsDocuments extends StatelessWidget {
 
             ),
             ElevatedButton(
-                onPressed: (){controller.navegar.value=1;},
+                onPressed: (){pageController.navegar.value=1;},
                 child: Text("Continuar")),
 
           ],

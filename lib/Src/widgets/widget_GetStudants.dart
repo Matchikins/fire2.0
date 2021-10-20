@@ -2,21 +2,27 @@
 
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart';
 import 'package:cefops/Src/model/aluno/AlunoModel.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
+import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
+import 'package:cefops/Src/views/studantDetails/pages/page_studant_details-menu.dart';
 import 'package:flutter/material.dart';
 
 GetStudants(){
-
+  String fullName="";
+  var infos=StudantAllInfoController.data.studantsInfo;
   return FutureBuilder(
+
       future: GetAllAlunos(),
       builder:
           (BuildContext context, AsyncSnapshot<List<AlunoModel>> snapshot) {
         print(snapshot.error);
         if (snapshot.hasData) {
+          var data=snapshot.data;
           return ListView.builder(
 
-              itemCount: snapshot.data!.length,
+              itemCount: data!.length,
               itemBuilder:( BuildContext context,int Index){
                 return ExpansionTile(
 
@@ -25,14 +31,14 @@ GetStudants(){
                       children: [
                         CircleAvatar(
                           radius: 22,
-                          backgroundImage: NetworkImage(snapshot.data![Index].photo),
+                          backgroundImage: NetworkImage(data[Index].photo),
 
                         ),
 
                         SizedBox(
                           width: 22,
                         ),
-                        Text(snapshot.data![Index].name+ " "+snapshot.data![Index].lastName,style: TextStyles.titleListTile,),
+                        Text(data[Index].name+ " "+data[Index].lastName,style: TextStyles.titleListTile,),
                         SizedBox(
                           width: 22,
                         ),
@@ -42,17 +48,28 @@ GetStudants(){
                   ),
                   children: [
                     ListTile(
-                      title: Text("CPF: ${snapshot.data![Index].cpf}",style: TextStyles.titleListTile),
+                      title: Text("CPF: ${data[Index].cpf}",style: TextStyles.titleListTile),
                     ),
                     ListTile(
-                      title: Text("E-mail: ${snapshot.data![Index].email}",style: TextStyles.titleListTile),
+                      title: Text("E-mail: ${data[Index].email}",style: TextStyles.titleListTile),
                     ),
 
                     Container(
                       child: Row(
                         children: [
-                          Container(child: TextButton(  child: Text("Editar",style: TextStyle(color: AppColors.blue),),onPressed: (){})),
-                          TextButton( child: Text("Suspender",style: TextStyle(color: AppColors.orange)),onPressed: (){}),
+                          Container(child: TextButton(  child: Text("Editar",style: TextStyle(color: AppColors.blue),),onPressed: (){
+                            fullName=data[Index].name+" "+data[Index].lastName;
+                            infos.name.value=data[Index].name;
+                            infos.lastName.value=data[Index].lastName;
+                            infos.email.value=data[Index].email;
+                            infos.photo.value=data[Index].photo;
+                            infos.fullName.value=fullName;
+                            DocumentsController.data.cpf.value=data[Index].cpf;
+                            AlunoDetails(context);
+
+                          })),
+                          TextButton( child: Text("Suspender",style: TextStyle(color: AppColors.orange)),onPressed: (){
+                          }),
                           TextButton( child: Text("Deletar",style: TextStyle(color: Colors.red)),onPressed: (){}),
 
                         ],

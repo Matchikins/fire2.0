@@ -1,95 +1,133 @@
-
-import 'package:cefops/Src/widgets/widget_aluno_detailsv2.dart';
+import 'package:cefops/Src/controller/requerimentController.dart';
+import 'package:cefops/Src/controller/requerimentTypeController.dart';
+import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
+import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
+import 'package:cefops/Src/views/studantDetails/widget/widget_studant_infos_routes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:cefops/Src/controller/status.dart';
 
-class StudantDetailsMenu extends StatelessWidget {
-  const StudantDetailsMenu({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+AlunoDetails(BuildContext context) {
 
-        child: (Column(
-          children: [
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                GestureDetector( onTap: (){
-                  print("Clicou no 1");
-                },
-                  child: Container(
-                    width: 120,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
 
-                    ),
-                    child: Center(
-                      child: Text("Info"),
-                    ),
+  Widget cancelButton = TextButton(
+    child: Text("Cancelar"),
+    onPressed: () {
+      Get.back();    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Salvar"),
+    onPressed: () {
+      CeeateRequeriment(
+          RequerimentTypeController.reqType.selected,
+          RequerimentController.req.idStudant.value);
+
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Container(
+      child: Column(
+
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 35),
+            child: Obx(
+              () {
+                return Text("${StudantInfoController.data.fullName}",
+                  style: TextStyle(fontSize: 15),
+                  textAlign: TextAlign.end,);
+              }
+            ),
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary:  Colors.orange
+                ),
+                onPressed: (){
+                statusApp.status.navegar.value=0;              },
+                child: Container(
+                  width: 60,
+                  height: 40,
+                  decoration: BoxDecoration(
+                  ),
+                  child: Center(
+                    child: Text("Info"),
                   ),
                 ),
-
-                GestureDetector( onTap: (){
-                  print("Clicou no 2");
-                },
-                  child: Container(
-                    width: 120,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-
-                    ),
-                    child: Center(
-                      child: Text("Notas"),
-                    ),
-                  ),
-                ),
-                GestureDetector( onTap: (){
-                  print("Clicou no 3");
-                },
-                  child: Container(
-                    width: 120,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-
-                    ),
-                    child: Center(
-                      child: Text("Diario"),
-                    ),
-                  ),
-                ),
-
-
-
-              ],
-            ),
-            ),
-            SizedBox(
-              height: Get.height*0.02,
-            ),
-            Container(
-              width: Get.width,
-              height: Get.height*0.89,
-              decoration: BoxDecoration(
-                color:Colors.white,
               ),
-            )
-          ],
-        )
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          AlunoDetails(context);
-        },
+              SizedBox(
+                width: Get.width*0.01,
+              ),
+              ElevatedButton( onPressed: (){
+                statusApp.status.navegar.value=1;              },
+                child: Container(
+                  width: 120,
+                  height: 60,
+                  decoration: BoxDecoration(
 
+                  ),
+                  child: Center(
+                    child: Text("Notas"),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: Get.width*0.01,
+              ),
+              ElevatedButton( onPressed: (){
+                print("Clicou no 3");
+              },
+                child: Container(
+                  width: 120,
+                  height: 60,
+                  decoration: BoxDecoration(
+
+                  ),
+                  child: Center(
+                    child: Text("Diario"),
+                  ),
+                ),
+              ),
+            ],
+          ),
+      SizedBox(
+        height:Get.height*0.01 ,
       ),
-    );
-  }
+          SingleChildScrollView(
+        child: Container(
+          width: Get.width*0.7,
+          height: Get.height*0.64,
+          child: Obx(
+              () => SetStudantPage(statusApp.status.navegar.value,
+              context: context),
+  ),
+        ),
+      )
+        ],
+      ),
+    ),
+
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

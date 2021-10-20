@@ -24,6 +24,7 @@ Future<List<AlunoModel>> GetAllAlunos()async{
 
     List jsonResponse = decodeData;
 
+
     return jsonResponse.map((aluno) => AlunoModel.fromJson(aluno)).toList();
   }
 
