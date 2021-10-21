@@ -15,9 +15,10 @@ class StudantAnddress extends StatelessWidget {
   Widget build(BuildContext context) {
     int page=1;
     final cepController = TextEditingController();
-    final lograController = TextEditingController();
+    final ruaController = TextEditingController();
     final complementoController = TextEditingController();
-    final localidadeController = TextEditingController();
+    final cidadeController = TextEditingController();
+    final estadoController = TextEditingController();
     final ufController = TextEditingController();
     final numeroController = TextEditingController();
     final bairroController = TextEditingController();
@@ -80,11 +81,11 @@ class StudantAnddress extends StatelessWidget {
               () {
                 return Container(
                   child:  FormStudntDetails(
-                      lograController
+                      ruaController
                         ..text = '${cepControll.cepst.logradouro}',
-                      "logradouro",
-                      "Insira o logradouro",
-                      "preencha o logradouro "),
+                      "Endereço",
+                      "Insira o Endereço",
+                      "preencha o Endereço "),
                 );
               }
             ),
@@ -125,13 +126,22 @@ class StudantAnddress extends StatelessWidget {
                   child:  Row(
                     children: [
                       FormStudntDetails(
-                          localidadeController
+                          cidadeController
                             ..text = '${cepControll.cepst.localidade}',
-                          "localidade",
-                          "Insira o localidade",
-                          "preencha o localidade "),
+                          "Cidade",
+                          "Insira o Cidade",
+                          "preencha o Cidade "),
                       SizedBox(width: Get.width*0.02,),
-
+                      Container(
+                        child:  FormStudntDetails(
+                           estadoController
+                              ..text = '${cepControll.cepst.estado}',
+                            "Estado",
+                            "Estado",
+                            "Estado ") ,
+                        width: Get.width*0.1,
+                      ),
+                      SizedBox(width: Get.width*0.02,),
                       Container(
                         child:  FormStudntDetails(
                             ufController

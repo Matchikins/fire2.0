@@ -32,6 +32,7 @@ Future <CepModel> GetCep(cpf) async{
       cepControll.cepst.localidade.value=cep.localidade;
       cepControll.cepst.logradouro.value=cep.logradouro;
       cepControll.cepst.complemento.value=cep.complemento;
+      cepControll.cepst.setEstado(cep.uf);
       return cep;
     }if (response.statusCode==400) {
       return throw new Exception("error cep invalido");

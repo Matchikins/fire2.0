@@ -2,6 +2,7 @@ import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
+import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_studant_infos_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ AlunoDetails(BuildContext context) {
   Widget cancelButton = TextButton(
     child: Text("Cancelar"),
     onPressed: () {
+      DocumentsController.data.deleteAllData();
       Get.back();    },
   );
   Widget continueButton = TextButton(
