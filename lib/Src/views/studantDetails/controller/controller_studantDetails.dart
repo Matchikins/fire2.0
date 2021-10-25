@@ -8,22 +8,18 @@ class StudandDetailsController extends GetxController{
   var gender="Sexo".obs;
   var status="Ativo".obs;
   var civilState="Estado Civil".obs;
-  var statusCod=true;
   var pageIndex=0.obs;
 
 
-  setStatusCod(status){
-    if (status=="Ativo") {
-      statusCod=true;
 
+setActive(bool data){
+    switch(data){
+      case true:
+        return status.value="Ativo" ;
+      case false:
+        return status.value="Inativo" ;
     }
-    else{
-      statusCod=false;
-    }
-
-  }
-
-
+}
 
 
 

@@ -19,8 +19,8 @@ class FormsStudants extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     final nameController = TextEditingController();
     final lastController = TextEditingController();
-    final stateController = TextEditingController();
-    final burnInController = TextEditingController();
+    final telCellController = TextEditingController();
+    final telResController = TextEditingController();
     final burnDataController = TextEditingController();
     final emailController = TextEditingController();
     final nationController = TextEditingController();
@@ -80,34 +80,7 @@ class FormsStudants extends StatelessWidget {
                         "preencha o nome do Sobreome"),
                   ],
                 ),
-                Row(
-                  children: [
-                    Container(
-                      width: Get.width*0.09,
-                      child: FormStudntDetails(stateController,
-                          "Estado Natal",
-                          "Estado Natal",
-                          "preencha o Estado Natal"),
-                    ),
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    FormStudntDetails(burnInController,
-                        "Naturalidade",
-                        "Naturalidade do Aluno",
-                        "preencha A Naturalidade"),
-                    SizedBox(
-                      width: Get.width*0.01,
-                    ),
-                    Container(
-                      width: Get.width*0.1,
-                      child: FormStudntDetails(burnDataController,
-                          "Data  nascimento",
-                          "Data de nascimento",
-                          "preencha A Data de nascimento"),
-                    ),
-                  ],
-                ),
+
                 Row(
                   children: [
                     Container(
@@ -128,6 +101,16 @@ class FormsStudants extends StatelessWidget {
                         width: Get.width*0.09,
                         child: DropDownCivilState()
                     ),
+                    SizedBox(
+                      width: Get.width*0.01,
+                    ),
+                    Container(
+                      width: Get.width*0.1,
+                      child: FormStudntDetails(burnDataController..text = '${infos.dataNacimento}',
+                          "Data  nascimento",
+                          "Data de nascimento",
+                          "preencha A Data de nascimento"),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -142,13 +125,39 @@ class FormsStudants extends StatelessWidget {
                     SizedBox(
                       width: Get.width*0.01,
                     ),
-                    FormStudntDetails(nationController,
-                        "Nacionalidade",
-                        "Nacionalidade do Aluno",
-                        "preencha  a Nacionalidade"),
+                    Container(
+                      width: Get.width*0.09,
+                      child: FormStudntDetails(telCellController..text = '${infos.teleCelular}',
+                          "Telefone Celular",
+                          "Telefone do Aluno",
+                          "preencha o Telefone do aluno"),
+                    ),
+
+                    SizedBox(
+                      width: Get.width*0.01,
+                    ),
+                    Container(
+                      width: Get.width*0.09,
+                      child: FormStudntDetails(telResController..text = '${infos.teleResidencial}',
+                          "Tel Residencial",
+                          "Telefone rescidencial Aluno",
+                          "preencha  a Telefone Residencial"),
+                    ),
 
                   ],
                 ),
+                Row(
+                  children: [
+                    Container(
+                      width: Get.width*0.09,
+                      child: FormStudntDetails(nationController..text = '${infos.nacionalidade}',
+                          "Nacionalidade",
+                          "Nacionalidade do Aluno",
+                          "preencha  a Nacionalidade"),
+                    ),
+                  ],
+                ),
+
                 SizedBox(
                   height: Get.height*0.15,
                 ),

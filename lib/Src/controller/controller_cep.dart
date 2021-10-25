@@ -20,16 +20,6 @@ class cepControll extends GetxController{
 
 
 
-
-
-
-
-
-
-
-
-
-
   setEstado(String data){
     switch (data) {
       case "AC":
