@@ -13,6 +13,7 @@ import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:http/http.dart' as http;
 
 String token="";
+
 Future<LoginModel> Login(String username,String password) async {
   http.Response response = await http.post(
     Uri.parse('${urls.auth}/signin'),
@@ -34,7 +35,6 @@ Future<LoginModel> Login(String username,String password) async {
         return throw TimeoutException("Connection Time out");
       }
   );
-
   try {
     if (response.statusCode == 200) {
       statusApp.status.loading.value = false;
