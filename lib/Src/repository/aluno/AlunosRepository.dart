@@ -25,7 +25,7 @@ import 'package:http/http.dart' as http;
       ErroController.error.ok.value = true;
 
       List jsonResponse = decodeData;
-
+print(response.body);
 
       return jsonResponse.map((aluno) => AlunoModel.fromJson(aluno)).toList();
     }

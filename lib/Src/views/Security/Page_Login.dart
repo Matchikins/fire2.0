@@ -52,7 +52,11 @@ class _loginPageState extends State<loginPage>
             child: Container(
               child: Center(
                   child: Container(
-                color: Colors.white,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12)
+                    ),
+
                 width: MediaQuery.of(context).size.width * 0.4,
                 height: MediaQuery.of(context).size.height * 0.7,
                 child: Form(
