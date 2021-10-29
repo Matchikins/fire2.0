@@ -1,8 +1,3 @@
-// To parse this JSON data, do
-//
-//     final cepModel = cepModelFromJson(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 CepModel cepModelFromJson(String str) => CepModel.fromJson(json.decode(str));

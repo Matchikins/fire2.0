@@ -13,4 +13,5 @@ class StudantAllInfoController extends GetxController{
 
 
 
+
 }

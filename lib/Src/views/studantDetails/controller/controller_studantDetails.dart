@@ -1,4 +1,5 @@
 
+import 'package:cefops/Src/model/aluno/AlunoModel.dart';
 import 'package:cefops/Src/repository/post/putNoticeHomePage.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +22,12 @@ setActive(bool data){
     }
 }
 
+setDropInfos(AlunoModel data){
+  gender.value=data.;
+   status="Ativo".obs;
+  civilState="Estado Civil".obs;
+
+}
 
 
 

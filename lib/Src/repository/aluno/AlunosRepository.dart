@@ -5,7 +5,9 @@ import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/model/aluno/AlunoModel.dart';
+import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:http/http.dart' as http;
+import "dart:developer" as developer;
 
 
 
@@ -25,7 +27,11 @@ import 'package:http/http.dart' as http;
       ErroController.error.ok.value = true;
 
       List jsonResponse = decodeData;
-print(response.body);
+developer.log(
+  "${response.body}",
+  name: "Listar alunos"
+
+);
 
       return jsonResponse.map((aluno) => AlunoModel.fromJson(aluno)).toList();
     }

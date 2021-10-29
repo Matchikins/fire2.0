@@ -15,6 +15,7 @@ import 'package:intl/intl.dart';
 GetStudants(){
   String fullName="";
   var infos=StudantAllInfoController.data.studantsInfo;
+  var documentSet=DocumentsController.data;
   return FutureBuilder(
 
       future: GetAllAlunos(),
@@ -61,25 +62,11 @@ GetStudants(){
                       child: Row(
                         children: [
                           Container(child: TextButton(  child: Text("Editar",style: TextStyle(color: AppColors.blue),),onPressed: (){
-                            final DateTime now = data[Index].dataNanscimento;
-                            final DateFormat formatter = DateFormat('dd-MM-yyyy');
-                            final String formatted = formatter.format(now);
-                            fullName=data[Index].name+" "+data[Index].lastName;
-                            infos.name.value=data[Index].name;
-                            infos.lastName.value=data[Index].lastName;
-                            infos.email.value=data[Index].email;
-                            infos.photo.value=data[Index].photo;
-                            infos.fullName.value=fullName;
-                            infos.teleCelular.value=data[Index].teleFoneCelular;
-                            infos.teleResidencial.value=data[Index].teleFone;
-                            infos.dataNacimento.value=formatted.toString();
-                            infos.sexo.value=data[Index].sexo;
-                            infos.nacionalidade.value=data[Index].nacionalidade;
-                            infos.stsCivil.value=data[Index].estadoCivil;
+                            infos.setInfos(data[Index]);
                             StudandDetailsController.details.setActive(data[Index].enable);
-                            StudantInfoController.data.sexo.value=data[Index].sexo;
                             StudandDetailsController.details.civilState.value=data[Index].estadoCivil;
                             DocumentsController.data.cpf.value=data[Index].cpf;
+                            documentSet.setDocuments(data[Index]);
                             AlunoDetails(context);
 
                           })),

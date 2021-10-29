@@ -11,6 +11,7 @@ import 'package:cefops/Shared/Security/Model/ErrorModel.dart';
 import 'package:cefops/Shared/Security/Model/LoginModel.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:http/http.dart' as http;
+import "dart:developer" as developer;
 
 String token="";
 
@@ -64,6 +65,11 @@ Future<LoginModel> Login(String username,String password) async {
       if (erros.message == "Invalid username or password !") {
         statusApp.status.loading.value = false;
         statusApp.status.erros1.value = "usuário ou senha inválido";
+        developer.log(
+            "Erro 01",
+            name: "Erro de senha",
+            error: "Usário ou senha incorreta"
+        );
         throw new Exception("Usuário ou senha Incorreta");
       }
 
@@ -118,10 +124,17 @@ Future <SignUpModel> SingUpNewUser(fristName,lastName,cpf,email,password) async{
     }
   }catch (e){
     statusApp.status.loading.value=false;
+    developer.log(
+      "Erro 01"
+    );
    return throw new Exception("error");
 
 
   }
+  developer.log(
+      "Erro 01",
+          error: "Falha ao connectar"
+  );
   return throw SocketException("Falha na conexão, verifique sua rede");
 
 }

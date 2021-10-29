@@ -1,4 +1,4 @@
-import 'package:cefops/Src/model/aluno/AlunoModel.dart';
+import 'package:cefops/Src/model/aluno/AlunoModel.darto';
 import 'package:cefops/Src/widgets/widget_GetStudants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,6 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/model/aluno/AlunoModel.dart';
+import 'package:cefops/Src/model/aluno/AlunoModel.darto';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
 import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
 import 'package:cefops/res.dart';

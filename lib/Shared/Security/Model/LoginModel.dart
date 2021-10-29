@@ -1,36 +1,26 @@
-// To parse this JSON data, do
-//
-//     final loginModel = loginModelFromJson(jsonString);
-
-import 'package:meta/meta.dart';
-import 'dart:convert';
-
-LoginModel loginModelFromJson(String str) => LoginModel.fromJson(json.decode(str));
-
-String loginModelToJson(LoginModel data) => json.encode(data.toJson());
-
 class LoginModel {
   LoginModel({
     required this.role,
     required this.fullInfo,
     required this.token,
   });
+  late final List<String> role;
+  late final FullInfo fullInfo;
+  late final String token;
 
-  List<String> role;
-  FullInfo fullInfo;
-  String token;
+  LoginModel.fromJson(Map<String, dynamic> json){
+    role = List.castFrom<dynamic, String>(json['role']);
+    fullInfo = FullInfo.fromJson(json['fullInfo']);
+    token = json['token'];
+  }
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
-    role: List<String>.from(json["role"].map((x) => x)),
-    fullInfo: FullInfo.fromJson(json["fullInfo"]),
-    token: json["token"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "role": List<dynamic>.from(role.map((x) => x)),
-    "fullInfo": fullInfo.toJson(),
-    "token": token,
-  };
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['role'] = role;
+    _data['fullInfo'] = fullInfo.toJson();
+    _data['token'] = token;
+    return _data;
+  }
 }
 
 class FullInfo {
@@ -43,32 +33,33 @@ class FullInfo {
     required this.photo,
     required this.enable,
   });
+  late final String id;
+  late final String name;
+  late final String lastName;
+  late final String cpf;
+  late final String email;
+  late final String photo;
+  late final bool enable;
 
-  String id;
-  String name;
-  String lastName;
-  String cpf;
-  String email;
-  String photo;
-  bool enable;
+  FullInfo.fromJson(Map<String, dynamic> json){
+    id = json['id'];
+    name = json['name'];
+    lastName = json['lastName'];
+    cpf = json['cpf'];
+    email = json['email'];
+    photo = json['photo'];
+    enable = json['enable'];
+  }
 
-  factory FullInfo.fromJson(Map<String, dynamic> json) => FullInfo(
-    id: json["id"],
-    name: json["name"],
-    lastName: json["lastName"],
-    cpf: json["cpf"],
-    email: json["email"],
-    photo: json["photo"],
-    enable: json["enable"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "lastName": lastName,
-    "cpf": cpf,
-    "email": email,
-    "photo": photo,
-    "enable": enable,
-  };
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['id'] = id;
+    _data['name'] = name;
+    _data['lastName'] = lastName;
+    _data['cpf'] = cpf;
+    _data['email'] = email;
+    _data['photo'] = photo;
+    _data['enable'] = enable;
+    return _data;
+  }
 }
