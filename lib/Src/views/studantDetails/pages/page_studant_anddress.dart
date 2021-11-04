@@ -1,8 +1,9 @@
 
+
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/controller_cep.dart';
+import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart';
 import 'package:cefops/Src/repository/cepAuto/cep_repository.dart';
-import 'package:cefops/Src/views/Security/Singup.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class StudantAnddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int page=1;
-    final cepController = TextEditingController();
+    final cepControllerText = TextEditingController();
     final ruaController = TextEditingController();
     final complementoController = TextEditingController();
     final cidadeController = TextEditingController();
@@ -23,6 +24,20 @@ class StudantAnddress extends StatelessWidget {
     final numeroController = TextEditingController();
     final bairroController = TextEditingController();
     var controller = StudandDetailsController.details;
+    var endereco=StudantAllInfoController.data.anddress;
+    var cepOnline=cepControll.endereco;
+
+    if(cepOnline.cep.isEmpty){
+      cepOnline.cep.value=endereco.cep.value;
+      cepOnline.localidade.value=endereco.cidade.value;
+      cepOnline.uf.value=endereco.uf.value;
+      cepOnline.estado.value=endereco.estado.value;
+      cepOnline.bairro.value=endereco.bairro.value;
+      cepOnline.complemento.value=endereco.complemento.value;
+      cepOnline.logradouro.value=endereco.rua.value;
+    }
+
+
 
 
     return Container(
@@ -33,7 +48,7 @@ class StudantAnddress extends StatelessWidget {
         children: [
           Row(children: [
           Container(
-            height: Get.height*0.08,
+            height: Get.height*0.1,
             width: Get.width*0.2,
             alignment: Alignment.centerLeft,
             child:  TextFormField(
@@ -41,11 +56,11 @@ class StudantAnddress extends StatelessWidget {
               onChanged: (value){
                 if(value.length==8){
                   Future.delayed(const Duration(seconds: 2),(){
-                    GetCep(cepController.value.text);
+                    GetCep(cepControllerText.value.text);
                   });
                 }
               },
-              controller: cepController,
+              controller: cepControllerText..text = '${endereco.cep}',
               style: TextStyle(color: Colors.black,),
               decoration: InputDecoration(
                   fillColor: Colors.black,
@@ -69,8 +84,8 @@ class StudantAnddress extends StatelessWidget {
 
           IconButton(
               onPressed: () {
-                if(cepController.value.text.length==8){
-                  GetCep(cepController.value.text);
+                if(cepControllerText.value.text.length==8){
+                  GetCep(cepControllerText.value.text);
                 }else {
                   print("Error");
                 }
@@ -79,10 +94,13 @@ class StudantAnddress extends StatelessWidget {
               icon: Icon(Icons.search)),
             Obx(
               () {
+                if(cepOnline.cep.isEmpty){
+                  cepOnline.logradouro.value=endereco.cidade.value;
+                };
                 return Container(
                   child:  FormStudntDetails(
                       ruaController
-                        ..text = '${cepControll.cepst.logradouro}',
+                        ..text = '${cepOnline.logradouro}',
                       "Endereço",
                       "Insira o Endereço",
                       "preencha o Endereço "),
@@ -98,8 +116,8 @@ class StudantAnddress extends StatelessWidget {
                     return Container(
                       child:  FormStudntDetails(
                           bairroController
-                            ..text = '${cepControll.cepst.bairro}',
-                          "bairro",
+                            ..text = '${cepOnline.bairro}',
+                          "Bairro",
                           "Insira o bairro",
                           "preencha o bairro "),
                     );
@@ -111,8 +129,8 @@ class StudantAnddress extends StatelessWidget {
                     return Container(
                       child:  FormStudntDetails(
                           complementoController
-                            ..text = '${cepControll.cepst.complemento}',
-                          "complemento",
+                            ..text = '${cepOnline.complemento}',
+                          "Complemento",
                           "Insira o complemento",
                           "preencha o complemento "),
                     );
@@ -127,7 +145,7 @@ class StudantAnddress extends StatelessWidget {
                     children: [
                       FormStudntDetails(
                           cidadeController
-                            ..text = '${cepControll.cepst.localidade}',
+                            ..text = '${cepOnline.localidade}',
                           "Cidade",
                           "Insira o Cidade",
                           "preencha o Cidade "),
@@ -135,7 +153,7 @@ class StudantAnddress extends StatelessWidget {
                       Container(
                         child:  FormStudntDetails(
                            estadoController
-                              ..text = '${cepControll.cepst.estado}',
+                              ..text = '${cepOnline.estado}',
                             "Estado",
                             "Estado",
                             "Estado ") ,
@@ -145,7 +163,7 @@ class StudantAnddress extends StatelessWidget {
                       Container(
                         child:  FormStudntDetails(
                             ufController
-                              ..text = '${cepControll.cepst.uf}',
+                              ..text = '${cepOnline.uf}',
                             "UF",
                             "UF",
                             "UF ") ,
@@ -154,8 +172,8 @@ class StudantAnddress extends StatelessWidget {
                       SizedBox(width: Get.width*0.02,),
                     Container(
                     child:  FormStudntDetails(
-                    numeroController,
-                    "número",
+                    numeroController..text = '${endereco.numero}',
+                    "Número",
                     "número",
                     "número "), width: Get.width*0.05,),
                     ],
@@ -169,12 +187,36 @@ class StudantAnddress extends StatelessWidget {
           Center(
 
             ),
-              ElevatedButton(
-                  onPressed: (){controller.navegar.value=1;},
-                  child: Text("Continuar")),
+              Obx(
+               () {
+
+                  return endereco.carregando.value ?  CircularProgressIndicator():
+                  ElevatedButton(
+                      onPressed: (){
+
+                        endereco.cep.value=cepControllerText.text;
+                        endereco.cidade.value=cidadeController.text;
+                        endereco.numero.value=numeroController.text;
+                        endereco.rua.value=ruaController.text;
+                        endereco.complemento.value=complementoController.text;
+                        endereco.bairro.value=bairroController.text;
+                        endereco.estado.value=estadoController.text;
+                        endereco.uf.value=estadoController.text;
+                        endereco.carregando.value=true;
+                        Future.delayed(Duration(seconds: 5),(){
+                          endereco.carregando.value=false;
+                          controller.navegar.value=2;
+
+
+                        });
+                        },
+                      child: Text("Continuar")) ;
+                }
+              ),
 
         ],
       )
     );
   }
 }
+

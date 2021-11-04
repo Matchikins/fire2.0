@@ -1,7 +1,5 @@
-import 'package:cefops/Src/model/aluno/AlunoModel.darto';
 import 'package:cefops/Src/widgets/widget_GetStudants.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ListUSers extends StatefulWidget {
   const ListUSers({Key? key}) : super(key: key);

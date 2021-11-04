@@ -27,12 +27,12 @@ Future <CepModel> GetCep(cpf) async{
   try{
     if (response.statusCode==200) {
       var cep=CepModel.fromJson(jsonDecode(response.body));
-      cepControll.cepst.bairro.value=cep.bairro;
-      cepControll.cepst.uf.value=cep.uf;
-      cepControll.cepst.localidade.value=cep.localidade;
-      cepControll.cepst.logradouro.value=cep.logradouro;
-      cepControll.cepst.complemento.value=cep.complemento;
-      cepControll.cepst.setEstado(cep.uf);
+      cepControll.endereco.bairro.value=cep.bairro;
+      cepControll.endereco.uf.value=cep.uf;
+      cepControll.endereco.localidade.value=cep.localidade;
+      cepControll.endereco.logradouro.value=cep.logradouro;
+      cepControll.endereco.complemento.value=cep.complemento;
+      cepControll.endereco.setEstado(cep.uf);
       return cep;
     }if (response.statusCode==400) {
       return throw new Exception("error cep invalido");

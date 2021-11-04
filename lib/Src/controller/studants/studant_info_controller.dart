@@ -1,5 +1,5 @@
 
-import 'package:cefops/Src/model/aluno/AlunoModel.dart';
+import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -11,14 +11,14 @@ class StudantInfoController extends GetxController{
   var email="".obs;
   var cpf="".obs;
   var photo="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-photo-appliances-flatart-icons-lineal-color-flatarticons.png".obs;
-  var dataNacimento="".obs;
-  var sexo="".obs;
-  var ativo=true;
+  var birthDate="".obs;
+  var gender="".obs;
+  var activi=true;
   var stsCivil="".obs;
-  var teleCelular="".obs;
-  var teleResidencial="".obs;
-  var nacionalidade="".obs;
-
+  var phoneCell="".obs;
+  var phoneHome="".obs;
+  var nation="".obs;
+  var loading=false.obs;
 
 
 setInfos(AlunoModel data){
@@ -30,11 +30,11 @@ setInfos(AlunoModel data){
   lastName.value=data.lastName;
   email.value=data.email;
   photo.value=data.photo;
-  teleCelular.value=data.teleFoneCelular;
-  teleResidencial.value=data.teleFone;
-  dataNacimento.value=formatted.toString();
-  sexo.value=data.sexo;
-  nacionalidade.value=data.nacionalidade;
+  phoneCell.value=data.teleFoneCelular;
+  phoneHome.value=data.teleFone;
+  birthDate.value=formatted.toString();
+  gender.value=data.sexo;
+  nation.value=data.nacionalidade;
   stsCivil.value=data.estadoCivil;
 }
 

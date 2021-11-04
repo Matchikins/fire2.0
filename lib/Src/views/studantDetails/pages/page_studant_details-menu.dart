@@ -12,7 +12,6 @@ import 'package:cefops/Src/controller/status.dart';
 
 AlunoDetails(BuildContext context) {
 
-
   Widget cancelButton = TextButton(
     child: Text("Cancelar"),
     onPressed: () {
@@ -25,7 +24,6 @@ AlunoDetails(BuildContext context) {
       CeeateRequeriment(
           RequerimentTypeController.reqType.selected,
           RequerimentController.req.idStudant.value);
-
     },
   );
 
@@ -70,13 +68,16 @@ AlunoDetails(BuildContext context) {
               SizedBox(
                 width: Get.width*0.01,
               ),
-              ElevatedButton( onPressed: (){
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary:  Colors.orange
+                ),
+                onPressed: (){
                 statusApp.status.navegar.value=1;              },
                 child: Container(
-                  width: 120,
-                  height: 60,
+                  width: 60,
+                  height: 40,
                   decoration: BoxDecoration(
-
                   ),
                   child: Center(
                     child: Text("Notas"),
@@ -86,12 +87,16 @@ AlunoDetails(BuildContext context) {
               SizedBox(
                 width: Get.width*0.01,
               ),
-              ElevatedButton( onPressed: (){
-                print("Clicou no 3");
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary:  Colors.orange
+                ),
+                onPressed: (){
+
               },
                 child: Container(
-                  width: 120,
-                  height: 60,
+                  width: 60,
+                  height: 40,
                   decoration: BoxDecoration(
 
                   ),

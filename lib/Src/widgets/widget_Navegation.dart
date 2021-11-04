@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   UserAccountsDrawerHeader(
                     decoration: BoxDecoration(color: AppColors.primary),
                     accountName: Text(
-                        "${UserController.user.name} ${UserController.user.lastName}"),
+                        "${UserController.user.Fullname} "),
                     accountEmail: Text("${UserController.user.email}"),
                     currentAccountPicture: Center(
                       child: CircleAvatar(

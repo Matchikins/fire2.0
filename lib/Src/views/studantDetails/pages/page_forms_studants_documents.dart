@@ -176,7 +176,7 @@ class FormsStudantsDocuments extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: FormStudntDetails(
                   dataRgController
-                    ..text = '${cepControll.cepst.localidade}',
+                    ..text = '${cepControll.endereco.localidade}',
                   "Data de Emissão RG",
                   "Insira a  Data de Emissão do RG",
                   "preencha a Data de Emissão "),

@@ -29,7 +29,7 @@ Future<void> ComprovMatricula() async{
   page.graphics.drawString("DECLARAÇÃO  DE MATRÍCULA",
     PdfStandardFont(PdfFontFamily.timesRoman, 12),
     bounds: Rect.fromLTWH(155, 90, 400, 120),);
-  page.graphics.drawString("Declaro para os devidos fins que ${UserController.user.name} ${UserController.user.lastName}, portador(a) do CPF:${UserController.user.id.toString()}",
+  page.graphics.drawString("Declaro para os devidos fins que ${UserController.user.Fullname}, portador(a) do CPF:${UserController.user.id.toString()}",
     PdfStandardFont(PdfFontFamily.timesRoman, 12),
     bounds: Rect.fromLTWH(marginEsquerda, 130, 600, 120),);
   page.graphics.drawString("é aluno (a) regularmente matriculado (a) no Curso de Educação Profissional de",

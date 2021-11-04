@@ -3,8 +3,7 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/studants/studant_all_info_controller.dart';
-import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
-import 'package:cefops/Src/model/aluno/AlunoModel.dart';
+import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/studantDetails/controller/documents_controller.dart';
@@ -15,6 +14,7 @@ import 'package:intl/intl.dart';
 GetStudants(){
   String fullName="";
   var infos=StudantAllInfoController.data.studantsInfo;
+  var endereco=StudantAllInfoController.data.anddress;
   var documentSet=DocumentsController.data;
   return FutureBuilder(
 
@@ -52,7 +52,7 @@ GetStudants(){
                   ),
                   children: [
                     ListTile(
-                      title: Text("CPF: ${data[Index].cpf}",style: TextStyles.titleListTile),
+                      title: Text("CPF: ${data[Index].id}",style: TextStyles.titleListTile),
                     ),
                     ListTile(
                       title: Text("E-mail: ${data[Index].email}",style: TextStyles.titleListTile),
@@ -63,10 +63,12 @@ GetStudants(){
                         children: [
                           Container(child: TextButton(  child: Text("Editar",style: TextStyle(color: AppColors.blue),),onPressed: (){
                             infos.setInfos(data[Index]);
-                            StudandDetailsController.details.setActive(data[Index].enable);
+                            StudandDetailsController.details.setActive(data[Index].enabled);
+                            StudandDetailsController.details.gender.value=data[Index].sexo;
                             StudandDetailsController.details.civilState.value=data[Index].estadoCivil;
-                            DocumentsController.data.cpf.value=data[Index].cpf;
+                            DocumentsController.data.cpf.value=data[Index].id;
                             documentSet.setDocuments(data[Index]);
+                            endereco.SetEndereco(data[Index]);
                             AlunoDetails(context);
 
                           })),

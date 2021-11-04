@@ -5,16 +5,16 @@ import 'dart:io';
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Model/SignUpModel.dart';
+import 'package:cefops/Shared/Security/Model/login_model.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Shared/Security/Model/ErrorModel.dart';
-import 'package:cefops/Shared/Security/Model/LoginModel.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:http/http.dart' as http;
 import "dart:developer" as developer;
 
 String token="";
-
+var controller=UserController.user;
 Future<LoginModel> Login(String username,String password) async {
   http.Response response = await http.post(
     Uri.parse('${urls.auth}/signin'),
@@ -42,14 +42,11 @@ Future<LoginModel> Login(String username,String password) async {
       ErroController.error.ok.value = true;
       var mod = LoginModel.fromJson(jsonDecode(response.body));
       token = mod.token;
-      UserController.user.token.value = mod.token;
-      UserController.user.name.value = mod.fullInfo.name;
-      UserController.user.lastName.value=mod.fullInfo.lastName;
-      UserController.user.email.value=mod.fullInfo.email;
-      UserController.user.photo.value=mod.fullInfo.photo;
-      statusApp.status.devendo.value=mod.fullInfo.enable;
-      UserController.user.role.value = mod.role;
-      UserController.user.id.value=mod.fullInfo.cpf;
+      controller.token.value = mod.token;
+      controller.Fullname.value = mod.fullName;
+      controller.photo.value=mod.foto;
+      controller.role.value = mod.role;
+      controller.id.value=mod.alunoId;
 
 
       return mod;

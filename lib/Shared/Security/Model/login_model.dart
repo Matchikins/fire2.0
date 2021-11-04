@@ -1,44 +1,39 @@
+
+import 'package:meta/meta.dart';
+import 'dart:convert';
+
+LoginModel loginModelFromJson(String str) => LoginModel.fromJson(json.decode(str));
+
+String loginModelToJson(LoginModel data) => json.encode(data.toJson());
+
 class LoginModel {
   LoginModel({
-      String? alunoId, 
-      List<String>? role, 
-      String? foto, 
-      String? full Name, 
-      String? token,}){
-    _alunoId = alunoId;
-    _role = role;
-    _foto = foto;
-    _full Name = full Name;
-    _token = token;
-}
+   required this.alunoId,
+   required this.role,
+   required this.foto,
+   required this.fullName,
+   required this.token,
+  });
 
-  LoginModel.fromJson(dynamic json) {
-    _alunoId = json['AlunoId'];
-    _role = json['role'] != null ? json['role'].cast<String>() : [];
-    _foto = json['foto'];
-    _full Name = json['Full Name'];
-    _token = json['token'];
-  }
-  String? _alunoId;
-  List<String>? _role;
-  String? _foto;
-  String? _full Name;
-  String? _token;
+  String alunoId;
+  List<String> role;
+  String foto;
+  String fullName;
+  String token;
 
-  String? get alunoId => _alunoId;
-  List<String>? get role => _role;
-  String? get foto => _foto;
-  String? get full Name => _full Name;
-  String? get token => _token;
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
+    alunoId: json["AlunoId"],
+    role: List<String>.from(json["role"].map((x) => x)),
+    foto: json["foto"],
+    fullName: json["FullName"],
+    token: json["token"],
+  );
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['AlunoId'] = _alunoId;
-    map['role'] = _role;
-    map['foto'] = _foto;
-    map['Full Name'] = _full Name;
-    map['token'] = _token;
-    return map;
-  }
-
+  Map<String, dynamic> toJson() => {
+    "AlunoId": alunoId,
+    "role": List<dynamic>.from(role.map((x) => x)),
+    "foto": foto,
+    "FullName": fullName,
+    "token": token,
+  };
 }

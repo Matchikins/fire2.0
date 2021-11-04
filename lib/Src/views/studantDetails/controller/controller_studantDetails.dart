@@ -1,12 +1,10 @@
-
-import 'package:cefops/Src/model/aluno/AlunoModel.dart';
-import 'package:cefops/Src/repository/post/putNoticeHomePage.dart';
+import 'package:cefops/Src/model/aluno/aluno_model.dart';
 import 'package:get/get.dart';
 
 class StudandDetailsController extends GetxController{
   static StudandDetailsController details=StudandDetailsController();
   var navegar=0.obs;
-  var gender="Sexo".obs;
+  var gender="Gênero".obs;
   var status="Ativo".obs;
   var civilState="Estado Civil".obs;
   var pageIndex=0.obs;
@@ -23,7 +21,7 @@ setActive(bool data){
 }
 
 setDropInfos(AlunoModel data){
-  gender.value=data.;
+  gender.value=data.sexo;
    status="Ativo".obs;
   civilState="Estado Civil".obs;
 

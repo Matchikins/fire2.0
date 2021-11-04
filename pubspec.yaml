@@ -69,6 +69,7 @@ flutter:
     - assets/images/asssinatura.png
     - assets/images/cefops1_orig.png
     - assets/images/enfermagem.jpg
+    - assets/images/fundo.png
     - assets/images/icon_add.png
     - assets/images/icon_blogger.png
     - assets/images/icon_home.png
@@ -81,6 +82,7 @@ flutter:
     - assets/images/Logo_Digital.png
     - assets/images/logo_Lara.png
     - assets/images/logoBranca.png
+    - assets/images/logoV4.png
     - assets/images/rodape.png
  
    

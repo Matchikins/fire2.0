@@ -5,6 +5,7 @@ import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/model/aluno/aluno_model.dart';
+import 'package:cefops/Src/model/aluno/aluno_model_one.dart';
 import 'package:http/http.dart' as http;
 import "dart:developer" as developer;
 

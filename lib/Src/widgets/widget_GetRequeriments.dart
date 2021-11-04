@@ -1,8 +1,6 @@
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/controller/requeriment_view_controller.dart';
-import 'package:cefops/Src/controller/requerimentsController.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/model/adm/RequerimentModel.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
@@ -83,7 +81,7 @@ class _Teste1State extends State<Teste1> {
                                       onPressed: () async {
                                         await updateReq(
                                             filter[Index].id,
-                                            UserController.user.name.value,
+                                            UserController.user.Fullname.value,
                                             "andando");
                                         setState(() {
 
@@ -191,7 +189,7 @@ GetRequeriments() {
                                           onPressed: () async {
                                             await updateReq(
                                                 filter[Index].id,
-                                                UserController.user.name.value,
+                                                UserController.user.Fullname.value,
                                                 "andando");
 
 

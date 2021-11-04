@@ -30,7 +30,7 @@ class DropDownGender extends StatelessWidget {
             controller.gender.value = newValue!;
 
           },
-          items: <String>['Sexo','Feminino', 'Masculino', 'Outros',]
+          items: <String>['Gênero','Feminino', 'Masculino', 'Outros',]
               .map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,

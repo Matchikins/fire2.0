@@ -18,7 +18,7 @@ class FormsStudants extends StatelessWidget {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     final nameController = TextEditingController();
-    final lastController = TextEditingController();
+    final lastNameController = TextEditingController();
     final telCellController = TextEditingController();
     final telResController = TextEditingController();
     final burnDataController = TextEditingController();
@@ -74,7 +74,7 @@ class FormsStudants extends StatelessWidget {
                     SizedBox(
                       width: Get.width*0.01,
                     ),
-                    FormStudntDetails(lastController..text = '${infos.lastName}',
+                    FormStudntDetails(lastNameController..text = '${infos.lastName}',
                         "Sobreome",
                         "Sobreome do Aluno",
                         "preencha o nome do Sobreome"),
@@ -106,7 +106,7 @@ class FormsStudants extends StatelessWidget {
                     ),
                     Container(
                       width: Get.width*0.1,
-                      child: FormStudntDetails(burnDataController..text = '${infos.dataNacimento}',
+                      child: FormStudntDetails(burnDataController..text = '${infos.birthDate}',
                           "Data  nascimento",
                           "Data de nascimento",
                           "preencha A Data de nascimento"),
@@ -127,7 +127,7 @@ class FormsStudants extends StatelessWidget {
                     ),
                     Container(
                       width: Get.width*0.09,
-                      child: FormStudntDetails(telCellController..text = '${infos.teleCelular}',
+                      child: FormStudntDetails(telCellController..text = '${infos.phoneCell}',
                           "Telefone Celular",
                           "Telefone do Aluno",
                           "preencha o Telefone do aluno"),
@@ -138,7 +138,7 @@ class FormsStudants extends StatelessWidget {
                     ),
                     Container(
                       width: Get.width*0.09,
-                      child: FormStudntDetails(telResController..text = '${infos.teleResidencial}',
+                      child: FormStudntDetails(telResController..text = '${infos.phoneHome}',
                           "Tel Residencial",
                           "Telefone rescidencial Aluno",
                           "preencha  a Telefone Residencial"),
@@ -150,7 +150,7 @@ class FormsStudants extends StatelessWidget {
                   children: [
                     Container(
                       width: Get.width*0.09,
-                      child: FormStudntDetails(nationController..text = '${infos.nacionalidade}',
+                      child: FormStudntDetails(nationController..text = '${infos.nation}',
                           "Nacionalidade",
                           "Nacionalidade do Aluno",
                           "preencha  a Nacionalidade"),
@@ -161,9 +161,28 @@ class FormsStudants extends StatelessWidget {
                 SizedBox(
                   height: Get.height*0.15,
                 ),
-                ElevatedButton(
-                    onPressed: (){controller.navegar.value=1;},
-                    child: Text("Continuar")),
+                Obx(
+                 () {
+                    return  infos.loading.value?
+                    CircularProgressIndicator():
+                    ElevatedButton(
+                        onPressed: (){
+                          infos.name.value=nameController.text;
+                          infos.lastName.value=lastNameController.text;
+                          infos.birthDate.value=burnDataController.text;
+                          infos.email.value=emailController.text;
+                          infos.phoneCell.value=telCellController.text;
+                          infos.phoneHome.value=telResController.text;
+                          infos.nation.value=nationController.text;
+                          infos.loading.value=true;
+                          Future.delayed(Duration(seconds: 5),(){
+                            infos.loading.value=false;
+                            controller.navegar.value=1;
+                          });
+                          },
+                        child: Text("Continuar"));
+                  }
+                ),
               ],
 
             )

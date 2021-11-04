@@ -1,82 +1,79 @@
+
 import 'dart:convert';
 
-List<AlunoModel> alunoModelFromJson(String str) => List<AlunoModel>.from(json.decode(str).map((x) => AlunoModel.fromJson(x)));
+OneStudantModel oneStudantModelFromJson(String str) => OneStudantModel.fromJson(json.decode(str));
 
-String alunoModelToJson(List<AlunoModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String oneStudantModelToJson(OneStudantModel data) => json.encode(data.toJson());
 
-class AlunoModel {
-  AlunoModel({
-    required this.id,
-    required this.name,
-    required this.lastName,
+class OneStudantModel {
+  OneStudantModel({
     required this.dataNanscimento,
-    required this.email,
-    required this.teleFone,
-    required this.teleFoneCelular,
-    required this.photo,
-    required this.enabled,
-    required this.requerimentos,
-    required this.endereco,
-    required this.documentos,
     required this.sexo,
     required this.estadoCivil,
+    required this.enabled,
+    required this.photo,
+    required this.endereo,
+    required this.requerimentos,
+    required this.documentos,
+    required this.name,
+    required this.id,
+    required this.email,
+    required this.lastName,
+    required this.teleFoneCelular,
     required this.nacionalidade,
-    required this.links,
+    required this.teleFone,
   });
 
-  String id;
-  String name;
-  String lastName;
   DateTime dataNanscimento;
-  String email;
-  String teleFone;
-  String teleFoneCelular;
-  String photo;
-  bool enabled;
-  List<Requerimento> requerimentos;
-  Endereco endereco;
-  Documentos documentos;
   String sexo;
   String estadoCivil;
+  bool enabled;
+  String photo;
+  Endereo endereo;
+  List<Requerimento> requerimentos;
+  Documentos documentos;
+  String name;
+  String id;
+  String email;
+  String lastName;
+  String teleFoneCelular;
   String nacionalidade;
-  List<Link> links;
+  String teleFone;
 
-  factory AlunoModel.fromJson(Map<String, dynamic> json) => AlunoModel(
-    id: json["id"],
-    name: json["name"],
-    lastName: json["lastName"],
+  factory OneStudantModel.fromJson(Map<String, dynamic> json) => OneStudantModel(
     dataNanscimento: DateTime.parse(json["dataNanscimento"]),
-    email: json["email"],
-    teleFone: json["teleFone"],
-    teleFoneCelular: json["teleFoneCelular"],
-    photo: json["photo"],
-    enabled: json["enabled"],
-    requerimentos: List<Requerimento>.from(json["requerimentos"].map((x) => Requerimento.fromJson(x))),
-    endereco: Endereco.fromJson(json["endereco"]),
-    documentos: Documentos.fromJson(json["documentos"]),
     sexo: json["sexo"],
     estadoCivil: json["estadoCivil"],
+    enabled: json["enabled"],
+    photo: json["photo"],
+    endereo: Endereo.fromJson(json["endereço"]),
+    requerimentos: List<Requerimento>.from(json["requerimentos"].map((x) => Requerimento.fromJson(x))),
+    documentos: Documentos.fromJson(json["documentos"]),
+    name: json["name"],
+    id: json["id"],
+    email: json["email"],
+    lastName: json["lastName"],
+    teleFoneCelular: json["teleFoneCelular"],
     nacionalidade: json["nacionalidade"],
-    links: List<Link>.from(json["links"].map((x) => Link.fromJson(x))),
+    teleFone: json["teleFone"],
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "lastName": lastName,
     "dataNanscimento": dataNanscimento.toIso8601String(),
-    "email": email,
-    "teleFone": teleFone,
-    "teleFoneCelular": teleFoneCelular,
-    "photo": photo,
-    "enabled": enabled,
-    "requerimentos": List<dynamic>.from(requerimentos.map((x) => x.toJson())),
-    "endereco": endereco.toJson(),
-    "documentos": documentos.toJson(),
     "sexo": sexo,
     "estadoCivil": estadoCivil,
+    "enabled": enabled,
+    "photo": photo,
+    "endereço": endereo.toJson(),
+    "requerimentos": List<dynamic>.from(requerimentos.map((x) => x.toJson())),
+    "documentos": documentos.toJson(),
+    "name": name,
+    "id": id,
+    "email": email,
+    "lastName": lastName,
+    "teleFoneCelular": teleFoneCelular,
     "nacionalidade": nacionalidade,
-    "links": List<dynamic>.from(links.map((x) => x.toJson())),
+    "teleFone": teleFone,
   };
 }
 
@@ -172,8 +169,8 @@ class Documentos {
   };
 }
 
-class Endereco {
-  Endereco({
+class Endereo {
+  Endereo({
     required this.id,
     required this.cep,
     required this.rua,
@@ -195,7 +192,7 @@ class Endereco {
   String estado;
   String uf;
 
-  factory Endereco.fromJson(Map<String, dynamic> json) => Endereco(
+  factory Endereo.fromJson(Map<String, dynamic> json) => Endereo(
     id: json["id"],
     cep: json["cep"],
     rua: json["rua"],
@@ -217,26 +214,6 @@ class Endereco {
     "cidade": cidade,
     "estado": estado,
     "uf": uf,
-  };
-}
-
-class Link {
-  Link({
-    required this.rel,
-    required this.href,
-  });
-
-  String rel;
-  String href;
-
-  factory Link.fromJson(Map<String, dynamic> json) => Link(
-    rel: json["rel"],
-    href: json["href"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "rel": rel,
-    "href": href,
   };
 }
 
@@ -307,7 +284,3 @@ class Tipo {
     "diasPentregar": diasPentregar,
   };
 }
-
-
-
-
