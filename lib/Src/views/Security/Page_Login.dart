@@ -52,9 +52,24 @@ class _loginPageState extends State<loginPage>
             child: Stack(
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: Get.width*0.07,top: Get.height*0.07),
-                  alignment: Alignment.topLeft,
-                  child:Image(image: const AssetImage(Res.fundo),),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: Get.width/6,
+                      ),
+                      Expanded(
+                        child: Container(
+
+                          child:Image.asset(
+                            Res.fundo,
+
+                              colorBlendMode: BlendMode.modulate
+                          )
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   child: Center(
@@ -78,6 +93,7 @@ class _loginPageState extends State<loginPage>
                             width: MediaQuery.of(context).size.width / 4,
                             child: Image.asset(
                               Res.logoV4,
+
                             ),
                           ),
 

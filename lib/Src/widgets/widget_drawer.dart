@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 Mydrawer(String text,IconData icons,int color,int selec, int _selectedIndex,fun,int selecteditem,VoidCallback  ontap) {
   return ListTile(
     title: Text(text,
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
     ),
     leading: Icon(
       icons,

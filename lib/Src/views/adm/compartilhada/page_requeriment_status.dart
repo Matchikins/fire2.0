@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+/// Responsável por mostrar e filtrar os requerinetos
 class RequerimentStatus extends StatefulWidget {
+  ///início
   const RequerimentStatus({Key? key}) : super(key: key);
 
   @override

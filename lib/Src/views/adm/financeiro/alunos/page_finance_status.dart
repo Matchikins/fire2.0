@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
+///pagina responsável pelo  financeiro
 class FinancePage extends StatefulWidget {
+
+  ///inicio
+
   const FinancePage({Key? key}) : super(key: key);
 
   @override

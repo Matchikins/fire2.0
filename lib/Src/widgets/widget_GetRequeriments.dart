@@ -2,11 +2,12 @@ import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/model/adm/RequerimentModel.dart';
+import 'package:cefops/Src/model/adm/requeriment_model.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+
 
 class Teste1 extends StatefulWidget {
   const Teste1({Key? key}) : super(key: key);
@@ -18,7 +19,6 @@ class Teste1 extends StatefulWidget {
 class _Teste1State extends State<Teste1> {
   @override
   Widget build(BuildContext context) {
-    int total = 0;
 
     return FutureBuilder(
         future: GetAllRequeriment(),
@@ -32,12 +32,13 @@ class _Teste1State extends State<Teste1> {
               permissionFilter = data;
             } else {
               permissionFilter = data
-                  .where((u) => u.tipo.grupo == UserController.user.role.first)
+                  .where((RequerimentModel u) => u.tipo.grupo
+                  == UserController.user.role.first)
                   .toList();
             }
-            var filter =
-            permissionFilter.where((u) => u.status == 'aberto').toList();
-            total = filter.length;
+            List<RequerimentModel> filter =
+            permissionFilter.where((RequerimentModel u) => u.status
+                == 'aberto').toList();
             statusApp.status.requerimentosAberto.value = filter.length;
             return ListView.builder(
                 itemCount: filter.length,
@@ -60,7 +61,7 @@ class _Teste1State extends State<Teste1> {
                             style: TextStyles.titleListTile,
                           ),
                           Text(
-                            "Nome: ${filter[Index].aluno.name + " " + filter[Index].aluno.lastName}",
+                            "Nome: ",
                             style: TextStyles.titleListTile,
                           ),
                           Obx(
@@ -127,7 +128,7 @@ class _Teste1State extends State<Teste1> {
 
 
 GetRequeriments() {
-  int total = 0;
+
   return FutureBuilder(
       future: GetAllRequeriment(),
       builder: (BuildContext context,
@@ -145,14 +146,13 @@ GetRequeriments() {
           }
           var filter =
               permissionFilter.where((u) => u.status == 'aberto').toList();
-          total = filter.length;
           statusApp.status.requerimentosAberto.value = filter.length;
           return ListView.builder(
               itemCount: filter.length,
               itemBuilder: (BuildContext context, int Index) {
-                var now = filter[Index].abertoEm;
-                var formatter = new DateFormat(" d'/'MM'/'y 'as' hh:mm");
-                var previsaoFormater =
+                DateTime now = filter[Index].abertoEm;
+                DateFormat formatter = new DateFormat(" d'/'MM'/'y 'as' hh:mm");
+                String previsaoFormater =
                     DateFormat("'Previsão de Entrega:' dd/MM/yyyy").format(now
                         .add(Duration(days: filter[Index].tipo.diasPentregar)));
                 String formatted = formatter.format(now);
@@ -168,7 +168,7 @@ GetRequeriments() {
                             style: TextStyles.titleListTile,
                           ),
                           Text(
-                            "Nome: ${filter[Index].aluno.name + " " + filter[Index].aluno.lastName}",
+                            "Nome: ",
                             style: TextStyles.titleListTile,
                           ),
                           Obx(
@@ -237,12 +237,12 @@ GetRequerimentsAndando() {
         if (snapshot.hasData) {
           List<RequerimentModel> data = [];
           data = snapshot.data!.toList();
-          var permissionFilter;
+          Iterable<RequerimentModel> permissionFilter;
           if (UserController.user.role.first == "ADM") {
             permissionFilter = data;
           } else {
             permissionFilter = data
-                .where((u) => u.tipo.grupo == UserController.user.role.first);
+                .where((RequerimentModel u) => u.tipo.grupo == UserController.user.role.first);
           }
 
           var filter =
@@ -270,7 +270,7 @@ GetRequerimentsAndando() {
                           style: TextStyles.titleListTile,
                         ),
                         Text(
-                          "Nome: ${snapshot.data![Index].aluno.name + " " + snapshot.data![Index].aluno.lastName}",
+                          "Nome: ",
                           style: TextStyles.titleListTile,
                         ),
                         Text(
@@ -358,7 +358,7 @@ GetRequerimentsConcluido() {
                           style: TextStyles.titleListTile,
                         ),
                         Text(
-                          "Nome: ${snapshot.data![Index].aluno.name + " " + snapshot.data![Index].aluno.lastName}",
+                          "Nome: ",
                           style: TextStyles.titleListTile,
                         ),
                         Text(

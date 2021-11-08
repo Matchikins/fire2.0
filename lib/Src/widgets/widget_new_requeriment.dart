@@ -1,12 +1,9 @@
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
-import 'package:cefops/Src/controller/requeriment_view_controller.dart';
 import 'package:cefops/Src/repository/adm/RequerimentsRepository.dart';
-import 'package:cefops/Src/repository/adm/requerimentTypesRepository.dart';
 import 'package:cefops/Src/repository/aluno/AlunosRepository.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_grup.dart';
-import 'package:cefops/Src/widgets/widget_FormsForAll.dart';
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:cefops/Src/widgets/widget_dropmenu_items.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,13 +19,13 @@ showAlertDialog(BuildContext context) {
 
   final size = MediaQuery.of(context).size;
   Widget cancelButton = TextButton(
-    child: Text("Cancelar"),
+    child: const Text('Canceler'),
     onPressed: () {
       Get.to(MyApp());
     },
   );
   Widget continueButton = TextButton(
-    child: Text("Salvar"),
+    child: Text('Salvar'),
     onPressed: () {
       CeeateRequeriment(
           RequerimentTypeController.reqType.selected,
@@ -39,9 +36,9 @@ showAlertDialog(BuildContext context) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Center(
+    title: const Center(
       child: Text(
-        "Cadastrando um Novo Requerimento ",
+        'Cadastrando um Novo Requerimento',
         style: TextStyle(color: Colors.red),
       ),
     ),
@@ -58,7 +55,7 @@ showAlertDialog(BuildContext context) {
                           RequerimentController.req.linkPhoto.value,height: size.height*0.1,));
                 }
               )),
-          Container(
+          SizedBox(
               width: size.width,
               child: Row(children: [
                 Container(
@@ -66,19 +63,19 @@ showAlertDialog(BuildContext context) {
                   height: size.height * 0.076,
                   child: TextFormField(
                     controller: cpfController,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                     ),
                     decoration: InputDecoration(
                       fillColor: Colors.black,
-                      labelText: "CPF Do aluno",
+                      labelText: 'CPF Do aluno',
                       labelStyle: TextStyles.titleRegular,
-                      hintText: "Cpf",
+                      hintText: 'Cpf',
                       hintStyle: TextStyles.input,
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "error";
+                        return 'error';
                       }
 
                       return null;
@@ -93,10 +90,9 @@ showAlertDialog(BuildContext context) {
                       print(RequerimentController.req.idStudant.value);
                     },
                     icon: Icon(Icons.search)),
-                Container(
-                    child: DropMenuGrup(
+                DropMenuGrup(
                   ['Secretaria', 'Financeiro', 'Estágio'],
-                )),
+                ),
               ])),
           SizedBox(
             height: size.height * 0.01,
@@ -111,19 +107,19 @@ showAlertDialog(BuildContext context) {
                     return TextFormField(
                       controller: TextEditingController()
                         ..text = '${RequerimentController.req.StudantFullName}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                       ),
                       decoration: InputDecoration(
                         fillColor: Colors.black,
-                        labelText: "Nome Do aluno",
+                        labelText: 'Nome Do aluno',
                         labelStyle: TextStyles.titleRegular,
-                        hintText: "Nome",
+                        hintText: 'Nome',
                         hintStyle: TextStyles.input,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "error";
+                          return 'error';
                         }
                         return null;
                       },
@@ -147,19 +143,19 @@ showAlertDialog(BuildContext context) {
             height: size.height * 0.4,
             child: TextFormField(
               controller: observaao,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
               ),
               decoration: InputDecoration(
                 fillColor: Colors.black,
-                labelText: "Observação",
+                labelText: 'Observação',
                 labelStyle: TextStyles.titleRegular,
-                hintText: "O aluno...",
+                hintText: 'O aluno...',
                 hintStyle: TextStyles.input,
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return "error";
+                  return 'error';
                 }
                 return null;
               },

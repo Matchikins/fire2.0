@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:cefops/Src/model/model_Publication.dart';
+import 'package:cefops/Src/model/model_publication.dart';
 import 'package:http/http.dart' as http;
 
 Future<PostModel> FetchPosts(context)   async {

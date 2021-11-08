@@ -1,4 +1,4 @@
-import 'package:cefops/Src/module/financeiro/interno/controller/newFinanceController.dart';
+import 'package:cefops/Src/module/financeiro/interno/controller/new_finance_controller.dart';
 import 'package:cefops/Src/module/financeiro/interno/widget/newFinanceWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

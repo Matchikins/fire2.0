@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:cefops/Shared/urls.dart';
-import 'package:cefops/Src/model/model_Publication.dart';
+import 'package:cefops/Src/model/model_publication.dart';
 import 'package:cefops/Src/module/pdf/web.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';

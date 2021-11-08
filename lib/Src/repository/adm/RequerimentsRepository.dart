@@ -7,7 +7,7 @@ import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/requerimentTypeController.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/model/adm/RequerimentModel.dart';
+import 'package:cefops/Src/model/adm/requeriment_model.dart';
 import 'package:http/http.dart' as http;
 
 

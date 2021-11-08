@@ -2,12 +2,13 @@ import 'dart:io';
 
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Src/module/pdf/homeP.dart';
-import 'package:cefops/Src/views/admLvl1/page_Employes.dart';
-import 'package:cefops/Src/views/admLvl1/page_FinanceStatus.dart';
-import 'package:cefops/Src/views/admLvl1/page_List_Studants.dart';
-import 'package:cefops/Src/views/admLvl1/page_RequeriStatus.dart';
-import 'package:cefops/Src/views/admLvl1/page_SiginStudant.dart';
-import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
+import 'package:cefops/Src/views/adm/financeiro/interno/page_internal_finance.dart';
+import 'package:cefops/Src/views/adm/page_home_employes.dart';
+import 'package:cefops/Src/views/adm/financeiro/alunos/page_finance_status.dart';
+import 'package:cefops/Src/views/adm/secretaria/page_list_studants.dart';
+import 'package:cefops/Src/views/adm/compartilhada/page_requeriment_status.dart';
+import 'package:cefops/Src/views/adm/secretaria/page_sigin_studant.dart';
+import 'package:cefops/Src/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/Src/views/page_Home.dart';
 import 'package:cefops/Src/views/studants/page_Course.dart';
 import 'package:cefops/Src/views/studants/page_Requeriment.dart';
@@ -35,6 +36,8 @@ getDrawerItem(int pos,{context}) {
       return FinancePage();
     case 9:
       return EditNews();
+    case 10:
+      return InternalFinance();
   }
 }
 

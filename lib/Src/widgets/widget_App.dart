@@ -1,10 +1,11 @@
 import 'package:cefops/Src/views/Security/Page_Login.dart';
-import 'package:cefops/Src/views/admLvl1/page_Employes.dart';
-import 'package:cefops/Src/views/admLvl1/page_List_Studants.dart';
-import 'package:cefops/Src/views/admLvl1/page_editNews.dart';
+import 'package:cefops/Src/views/adm/financeiro/interno/page_internal_finance.dart';
+import 'package:cefops/Src/views/adm/page_home_employes.dart';
+import 'package:cefops/Src/views/adm/secretaria/page_list_studants.dart';
+import 'package:cefops/Src/views/adm/secretaria/page_update_news.dart';
 import 'package:cefops/Src/views/Security/page_Login-android.dart';
 import 'package:cefops/Src/views/studants/page_Socre.dart';
-import 'package:cefops/Src/views/admLvl1/page_SiginStudant.dart';
+import 'package:cefops/Src/views/adm/secretaria/page_sigin_studant.dart';
 
 import 'package:cefops/Src/widgets/widget_Navegation.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
             name: "/",
-            page: ()=> _viewDetect()
+            page: ()=> InternalFinance()
         ),
 
         GetPage(

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Src/model/model_Publication.dart';
+import 'package:cefops/Src/model/model_publication.dart';
 
 import 'package:cefops/Src/widgets/widget_NavegatorRoutes.dart';
 
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CEFOPS DIGITAL',
       home: MyHomePage(title: 'CEFOPS DIGITAL'),
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
+        appBar: AppBar(
           backgroundColor: AppColors.menuColor,
           title: Center(
               child: Obx(
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Icons.home,
                       color: AppColors.iconColor,
                     ),
-                    title: Text(
+                    title: const Text(
                       'Início',
                       style: TextStyle(color: Colors.white),
                     ),

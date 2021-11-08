@@ -8,7 +8,7 @@ import 'package:cefops/Shared/Security/Model/SignUpModel.dart';
 import 'package:cefops/Shared/Security/Model/login_model.dart';
 import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/status.dart';
-import 'package:cefops/Shared/Security/Model/ErrorModel.dart';
+import 'package:cefops/Shared/Security/Model/error_model.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
 import 'package:http/http.dart' as http;
 import "dart:developer" as developer;
@@ -38,6 +38,7 @@ Future<LoginModel> Login(String username,String password) async {
   );
   try {
     if (response.statusCode == 200) {
+      developer.log("${response.body}",name: "Resposta da Api");
       statusApp.status.loading.value = false;
       ErroController.error.ok.value = true;
       var mod = LoginModel.fromJson(jsonDecode(response.body));
