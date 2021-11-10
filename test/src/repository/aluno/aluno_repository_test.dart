@@ -19,7 +19,7 @@ main(){
    test("Buscar aluno por id", () async{
      final aluno=await GetStudantById("testeMock");
      expect(aluno.name, "Emison");
-     expect(aluno.enable, true);
+     expect(aluno, true);
    });
 
   });

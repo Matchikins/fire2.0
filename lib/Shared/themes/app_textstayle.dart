@@ -2,65 +2,72 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
-
+///Estilização do app
 class TextStyles {
-  static final titleHome = GoogleFonts.lexendDeca(
+  static final TextStyle titleHome = GoogleFonts.lexendDeca(
     fontSize: 32,
     fontWeight: FontWeight.w600,
     color: AppColors.heading,
   );
-  static final titleRegular = GoogleFonts.lexendDeca(
+  static final TextStyle titleWithe = GoogleFonts.lexendDeca(
+    fontSize: 12,
+    fontWeight: FontWeight.w100,
+    color: Colors.white,
+
+
+  );
+  static final TextStyle titleRegular = GoogleFonts.lexendDeca(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.heading,
   );
-  static final titleBoldHeading = GoogleFonts.lexendDeca(
+  static final TextStyle titleBoldHeading = GoogleFonts.lexendDeca(
     fontSize: 20,
     fontWeight: FontWeight.w600,
     color: AppColors.heading,
   );
 
-  static final titleBoldBackground = GoogleFonts.lexendDeca(
+  static final TextStyle titleBoldBackground = GoogleFonts.lexendDeca(
     fontSize: 20,
     fontWeight: FontWeight.w600,
     color: AppColors.background,
   );
-  static final titleListTile = GoogleFonts.lexendDeca(
+  static final TextStyle titleListTile = GoogleFonts.lexendDeca(
     fontSize: 14,
     fontWeight: FontWeight.w600,
     color: AppColors.heading,
   );
-  static final titleListTile2 = GoogleFonts.lexendDeca(
+  static final TextStyle titleListTile2 = GoogleFonts.lexendDeca(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.textOnPrimary,
   );
-  static final trailingRegular = GoogleFonts.lexendDeca(
+  static final TextStyle trailingRegular = GoogleFonts.lexendDeca(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.heading,
   );
-  static final trailingBold = GoogleFonts.lexendDeca(
+  static final TextStyle trailingBold = GoogleFonts.lexendDeca(
     fontSize: 16,
     fontWeight: FontWeight.w600,
     color: AppColors.heading,
   );
-  static final buttonPrimary = GoogleFonts.inter(
+  static final TextStyle buttonPrimary = GoogleFonts.inter(
     fontSize: 15,
     fontWeight: FontWeight.w400,
     color: AppColors.primary,
   );
-  static final buttonHeading = GoogleFonts.inter(
+  static final TextStyle buttonHeading = GoogleFonts.inter(
     fontSize: 15,
     fontWeight: FontWeight.w400,
     color: AppColors.heading,
   );
-  static final buttonGray = GoogleFonts.inter(
+  static final TextStyle buttonGray = GoogleFonts.inter(
     fontSize: 15,
     fontWeight: FontWeight.w400,
     color: AppColors.blue,
   );
-  static final buttonBackground = GoogleFonts.inter(
+  static final TextStyle buttonBackground = GoogleFonts.inter(
     fontSize: 15,
     fontWeight: FontWeight.w400,
     color: AppColors.background,
@@ -105,7 +112,7 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.background,
   );
-  static final captionBoldBackground = GoogleFonts.inter(
+  static final TextStyle captionBoldBackground = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: AppColors.background,
