@@ -1,13 +1,9 @@
-
-import 'package:cefops/Shared/themes/app_textstayle.dart';
-import 'package:cefops/Src/controller/requerimentController.dart';
 import 'package:cefops/Src/controller/studants/studant_info_controller.dart';
 import 'package:cefops/Src/views/studantDetails/controller/controller_studantDetails.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_civilState.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_gender.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_dropDown_state.dart';
 import 'package:cefops/Src/views/studantDetails/widget/widget_form_studantDetails.dart';
-import 'package:cefops/Src/widgets/widget_GetStudants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

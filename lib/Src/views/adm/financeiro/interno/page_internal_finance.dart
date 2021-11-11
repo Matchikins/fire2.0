@@ -1,6 +1,7 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
 import 'package:cefops/Src/views/adm/financeiro/interno/widgets/widget_get_next_finance.dart';
+import 'package:cefops/Src/views/adm/financeiro/interno/widgets/widget_finance_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -92,7 +93,10 @@ class InternalFinance extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.orange,
           child: const Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () {
+            NewFinanceInterna(context);
+
+          },
         ),
       ),
     );
