@@ -161,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       leading:
                           Icon(Icons.description, color: AppColors.iconColor),
                       onTap: () {
-                        statusApp.status.selectedIndex.value = 4;
+                        statusApp.status.selectedIndex.value = 10;
                         statusApp.status.title.value = "Financeiro";
                         Navigator.pop(context);
                       },

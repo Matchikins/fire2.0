@@ -6,7 +6,7 @@ abstract class AppColors{
   static final iconsBlue=Color(0xff15355C);
   static final iconsOrange=Color(0xffFD7E14);
   static final blue=Color(0xff15355C);
-  static final orange=Color(0xffFD7E14);
+  static final orange=Color(0xfff36f21);
   static final primary =Color(0xff15355c);
   static final primaryLight =Color(0xff465e89);
   static final primaryDark =Color(0xff000e32);

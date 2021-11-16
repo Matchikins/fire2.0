@@ -1,5 +1,4 @@
 import 'package:cefops/Shared/Security/Controller/ErrorControlers.dart';
-import 'package:cefops/Shared/Security/Controller/userController.dart';
 import 'package:cefops/Shared/Security/Repository/AuthRepository.dart';
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Src/controller/status.dart';
@@ -41,7 +40,7 @@ class _loginPageState extends State<loginPage>
       theme:
           ThemeData(brightness: Brightness.dark, primaryColor: Colors.blueGrey),
       home: Scaffold(
-        body: Builder(builder: (context) {
+        body: Builder(builder: (BuildContext context) {
           return Container(
 
               color: AppColors.blue,
@@ -104,9 +103,9 @@ class _loginPageState extends State<loginPage>
                             width: MediaQuery.of(context).size.width / 3,
                             child: LoginForms(
                                 userController,
-                                "Insira Seu Usuário",
-                                "Usuário",
-                                "Por Favor informe seu  Usuário",
+                                "Insira Seu E-mail",
+                                "E-mail",
+                                "Por Favor informe seu  E-mail",
                                 Icons.person,
                                 false,
                                 false,
@@ -179,9 +178,12 @@ class _loginPageState extends State<loginPage>
                           Container(
                               child: Obx(() => statusApp.status.loading.value
                                   ? CircularProgressIndicator(
-                                      backgroundColor: AppColors.background,
-                                      valueColor: new AlwaysStoppedAnimation<Color>(
-                                          AppColors.blue),
+                                      backgroundColor: AppColors.blue,
+                                      valueColor:AlwaysStoppedAnimation<Color>(
+                                          AppColors.orange,
+
+
+                                      ),
                                     )
                                   : FlatButton(
                                       height: size.height * 0.07,
@@ -208,14 +210,16 @@ class _loginPageState extends State<loginPage>
                                         if (_formKey.currentState!.validate()) {
                                           statusApp.status.loading.value = true;
                                           print(userController.value.text);
-                                          await Login(userController.value.text, passwordController.value.text);
+                                          await Login(userController.value.text,
+                                              passwordController.value.text);
                                           if (ErroController.error.ok == true) {
                                             statusApp.status.loading.value = false;
 
                                             Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (context) => MyApp()),
+                                                  builder:(BuildContext context)
+                                                  => MyApp()),
                                             );
                                           }
                                         } else {}

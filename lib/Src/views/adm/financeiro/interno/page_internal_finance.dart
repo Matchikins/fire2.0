@@ -1,5 +1,6 @@
 import 'package:cefops/Shared/themes/app_colors.dart';
 import 'package:cefops/Shared/themes/app_textstayle.dart';
+import 'package:cefops/Src/views/adm/financeiro/interno/controller/new_finance_controller.dart';
 import 'package:cefops/Src/views/adm/financeiro/interno/widgets/widget_get_next_finance.dart';
 import 'package:cefops/Src/views/adm/financeiro/interno/widgets/widget_finance_home.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import 'controller/finance_menu_controller.dart';
+
+
+FinanceMenuController _controller =FinanceMenuController();
 ///Pagina para visualizar As financias internas
 class InternalFinance extends StatelessWidget {
   ///inicio
@@ -16,79 +21,82 @@ class InternalFinance extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Container(
-                      height: Get.height * 0.94,
-                      width: Get.width / 6,
-                      color: AppColors.background,
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                            child: Text(
-                              "Contas Com Vencimentos Próximo",
-                              style: TextStyles.titleListTile,
-                            ),
-                          ),
-                          Container(
-                            height: Get.height * 0.80,
-                            child: GetNextFinance(),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      height: Get.height * 0.94,
-                      width: Get.width * 0.58,
-                      color: AppColors.blue,
-                      child: Column(
-                        children: <Widget>[
-                          _customMenu(),
-                          Center(
-                            child: Text(
-                              "Todas Entradas e Saida",
-                              style: TextStyles.titleListTile,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      height: Get.height * 0.94,
-                      width: Get.width * 0.2,
-                      color: AppColors.background,
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                            child: Localizations.override(
-                              context: context,
-                              locale: Locale('pt'),
-                              child: SfCalendar(
-                                view: CalendarView.month,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        height: Get.height ,
+                        width: Get.width / 6,
+                        color: AppColors.background,
+                        child: Column(
+                          children: <Widget>[
+                            Center(
+                              child: Text(
+                                "Contas Com Vencimentos Próximo",
+                                style: TextStyles.titleListTile,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ],
+                            Container(
+                              height: Get.height *0.94,
+                              child: GetNextFinance(),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        height: Get.height ,
+                        width: Get.width * 0.58,
+
+                        color: AppColors.blue,
+                        child: Column(
+                          children: <Widget>[
+                            _customMenu(),
+                            Center(
+                              child: Text(
+                                "Todas Entradas e Saida",
+                                style: TextStyles.titleListTile,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        height: Get.height * 0.94,
+                        width: Get.width * 0.2,
+                        color: AppColors.background,
+                        child: Column(
+                          children: <Widget>[
+                            Center(
+                              child: Localizations.override(
+                                context: context,
+                                locale: Locale('pt'),
+                                child: SfCalendar(
+                                  view: CalendarView.month,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.orange,
@@ -124,8 +132,12 @@ Widget _customMenu() {
                 height: _height,
                 width: _width,
                 color: Colors.amber,
-                child: Text("Abertura R\$:500",
-                    style: TextStyles.titleWithe, textAlign: TextAlign.center),
+                child: Obx(
+                  () {
+                    return Text("Abertura R\$:${_controller.valorAbertura}",
+                        style: TextStyles.titleWithe, textAlign: TextAlign.center);
+                  }
+                ),
               ),
               Container(
                 alignment: Alignment.center,

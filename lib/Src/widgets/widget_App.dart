@@ -52,7 +52,7 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
             name: "/",
-            page: ()=> InternalFinance()
+            page: ()=> _viewDetect()
         ),
 
         GetPage(

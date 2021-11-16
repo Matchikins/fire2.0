@@ -10,11 +10,12 @@ import 'package:cefops/Shared/urls.dart';
 import 'package:cefops/Src/controller/status.dart';
 import 'package:cefops/Shared/Security/Model/error_model.dart';
 import 'package:cefops/Shared/Security/Services/Logar.dart';
+import 'package:cefops/Src/module/exceptions/http/exception_request_error.dart';
 import 'package:http/http.dart' as http;
 import "dart:developer" as developer;
 
 String token="";
-var controller=UserController.user;
+UserController controller=UserController.user;
 Future<LoginModel> Login(String username,String password) async {
   http.Response response = await http.post(
     Uri.parse('${urls.auth}/signin'),
@@ -31,9 +32,9 @@ Future<LoginModel> Login(String username,String password) async {
       seconds: 20),
       onTimeout: () {
         statusApp.status.loading.value = false;
-        statusApp.status.erros1.value = "Falha na conexão, verifique sua rede";
-
-        return throw TimeoutException("Connection Time out");
+        statusApp.status.erros1.value = "Falha na conexão, verifique sua rede."
+            " COD:002";
+        return throw TimeoutException("Error 002: Tempo de Conexão excedido ");
       }
   );
   try {
@@ -41,7 +42,7 @@ Future<LoginModel> Login(String username,String password) async {
       developer.log("${response.body}",name: "Resposta da Api");
       statusApp.status.loading.value = false;
       ErroController.error.ok.value = true;
-      var mod = LoginModel.fromJson(jsonDecode(response.body));
+      LoginModel mod = LoginModel.fromJson(jsonDecode(response.body));
       token = mod.token;
       controller.token.value = mod.token;
       controller.Fullname.value = mod.fullName;
@@ -53,18 +54,18 @@ Future<LoginModel> Login(String username,String password) async {
       return mod;
     }
     else {
-      return throw new Exception("Erro 01");
+      return throw new Exception("Erro 001");
     }
   }
   catch (_) {
     if (response.statusCode == 500) {
-      var erros = ErrorModel.fromJson(jsonDecode(response.body));
+      ErrorModel erros = ErrorModel.fromJson(jsonDecode(response.body));
 
       if (erros.message == "Invalid username or password !") {
         statusApp.status.loading.value = false;
         statusApp.status.erros1.value = "usuário ou senha inválido";
         developer.log(
-            "Erro 01",
+            "Erro 001",
             name: "Erro de senha",
             error: "Usário ou senha incorreta"
         );
@@ -73,7 +74,8 @@ Future<LoginModel> Login(String username,String password) async {
 
     }
     if (response.statusCode == 403) {
-      return Logar();
+      Logar();
+      return  throw Exception("Error 003 token Expirado ou invalido ");
     }
 
     else {
@@ -108,7 +110,7 @@ Future <SignUpModel> SingUpNewUser(fristName,lastName,cpf,email,password) async{
         statusApp.status.loading.value = false;
         statusApp.status.erros1.value = "Falha na conexão, verifique sua rede";
 
-        return throw TimeoutException("Connection Time out");
+        return throw TimeoutException("Error 002 Connection Time out");
       }
 
   );
@@ -120,17 +122,17 @@ Future <SignUpModel> SingUpNewUser(fristName,lastName,cpf,email,password) async{
       return singUp;
 
     }
-  }catch (e){
+  }catch (e,a){
     statusApp.status.loading.value=false;
     developer.log(
-      "Erro 01"
+      "Erro 003"
     );
-   return throw new Exception("error");
+   return throw new Exception("error 003");
 
 
   }
   developer.log(
-      "Erro 01",
+      "Erro 001",
           error: "Falha ao connectar"
   );
   return throw SocketException("Falha na conexão, verifique sua rede");
